@@ -1,118 +1,286 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Case 1: Prosthetic Valve Endocarditis</title>
-  <link rel="stylesheet" href="../css/style.css" />
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Case 1 - Prosthetic Valve Endocarditis</title>
+
+<link rel="stylesheet" href="../css/style.css">
+
 </head>
 
 <body>
 
 <header>
-  <h1>BIOL 334 Clinical Microbiology Case Studies</h1>
-  <p>Case 1: Prosthetic Aortic Valve Endocarditis</p>
+    <h1>BIOL 334 Clinical Microbiology Case Studies</h1>
+    <p>Case 1: Prosthetic Aortic Valve Endocarditis</p>
 </header>
 
-<main class="case-layout">
+<main class="case-container">
 
-  <section class="patient-chart">
-    <a href="../index.html" class="back-link">← Return to Case Selection</a>
+    <a href="../index.html" class="back-link">
+        ← Return to Case Selection
+    </a>
 
-    <h2>Patient Chart</h2>
+    <section class="card">
 
-    <div class="case-banner">
-      <h3>William Osler</h3>
-      <p>67-year-old patient</p>
-      <p><strong>Chief concern:</strong> Fever, fatigue, and night sweats after prosthetic valve replacement.</p>
-    </div>
+        <h2>Patient Chart</h2>
 
-    <h3>Patient Background</h3>
-    <p>
-      William Osler underwent placement of a prosthetic aortic valve six months ago.
-      He now presents with fatigue, fever, night sweats, mild shortness of breath,
-      and swelling in his ankles.
-    </p>
+        <div class="patient-banner">
+            <h3>William Osler</h3>
+            <p>67-year-old male</p>
+            <p>
+                Fever, fatigue, and night sweats following prosthetic
+                aortic valve replacement.
+            </p>
+        </div>
 
-    <h3>Clinical Findings</h3>
-    <table>
-      <tr><th>Finding</th><th>Result</th></tr>
-      <tr><td>Temperature</td><td>101.9°F</td></tr>
-      <tr><td>Heart rate</td><td>110 bpm</td></tr>
-      <tr><td>Blood pressure</td><td>118/72 mm Hg</td></tr>
-      <tr><td>Cardiac exam</td><td>New holosystolic murmur</td></tr>
-      <tr><td>Skin</td><td>Petechiae and splinter hemorrhages</td></tr>
-      <tr><td>Echocardiogram</td><td>Vegetations on prosthetic aortic valve</td></tr>
-      <tr><td>WBC</td><td>15,600/µL</td></tr>
-    </table>
+        <h3>Patient Background</h3>
 
-    <h3>Sample Collected</h3>
-    <div class="sample-box">Blood culture</div>
-  </section>
+        <p>
+            William Osler underwent placement of a prosthetic
+            aortic valve six months ago.
+            He presents with fatigue, fever,
+            night sweats, mild shortness of breath,
+            and swelling in his ankles.
+        </p>
 
-  <section class="testing-panel">
-    <h2>Order Diagnostic Tests</h2>
-    <p class="small-text">Use the workflow guide to decide which test to order next.</p>
+        <h3>Clinical Findings</h3>
 
-    <div class="test-counter">
-      Tests ordered: <span id="test-count">0</span>
-    </div>
+        <table>
+            <tr>
+                <th>Finding</th>
+                <th>Result</th>
+            </tr>
 
-    <div class="test-buttons">
-      <button onclick="orderTest('gram')">Gram Stain</button>
-      <button onclick="orderTest('bloodAgar')">Blood Agar</button>
-      <button onclick="orderTest('msa')">Mannitol Salt Agar</button>
-      <button onclick="orderTest('catalase')">Catalase Test</button>
-      <button onclick="orderTest('coagulase')">Coagulase Test</button>
-      <button onclick="orderTest('oxidase')">Oxidase Test</button>
-      <button onclick="orderTest('macconkey')">MacConkey Agar</button>
-      <button onclick="orderTest('kirby')">Kirby-Bauer Test</button>
-    </div>
+            <tr>
+                <td>Temperature</td>
+                <td>101.9°F</td>
+            </tr>
 
-    <h3>Test Results</h3>
-    <div id="results-box" class="results-box">
-      No tests ordered yet.
-    </div>
-  </section>
+            <tr>
+                <td>Heart Rate</td>
+                <td>110 bpm</td>
+            </tr>
 
-  <section class="workflow-panel">
-    <h2>Clinical Microbiology Workflow</h2>
+            <tr>
+                <td>Blood Pressure</td>
+                <td>118/72 mmHg</td>
+            </tr>
 
-    <div class="workflow">
-      <div class="flow-step">Start with patient sample</div>
-      <div class="arrow">↓</div>
-      <div class="flow-step important">Gram Stain</div>
-      <div class="arrow">↓</div>
-      <div class="flow-split">
-        <div>Gram-positive?</div>
-        <div>Gram-negative?</div>
-      </div>
-      <div class="arrow">↓</div>
-      <div class="flow-step">If Gram-positive cocci → Catalase</div>
-      <div class="arrow">↓</div>
-      <div class="flow-step">Catalase positive → Staphylococcus</div>
-      <div class="arrow">↓</div>
-      <div class="flow-step">Coagulase test</div>
-      <div class="arrow">↓</div>
-      <div class="flow-step">Coagulase negative → likely S. epidermidis</div>
-    </div>
+            <tr>
+                <td>Cardiac Exam</td>
+                <td>New holosystolic murmur</td>
+            </tr>
 
-    <div class="diagnosis-box">
-      <h3>Final Diagnosis</h3>
-      <label for="diagnosis">Most likely organism:</label>
-      <input type="text" id="diagnosis" placeholder="Enter organism name" />
+            <tr>
+                <td>Skin</td>
+                <td>Petechiae and splinter hemorrhages</td>
+            </tr>
 
-      <label for="treatment">Antibiotic recommendation:</label>
-      <input type="text" id="treatment" placeholder="Enter antibiotic choice" />
+            <tr>
+                <td>Echocardiogram</td>
+                <td>Vegetations on prosthetic valve</td>
+            </tr>
 
-      <button onclick="checkDiagnosis()">Submit Diagnosis</button>
+            <tr>
+                <td>WBC Count</td>
+                <td>15,600 / µL</td>
+            </tr>
+        </table>
 
-      <div id="feedback"></div>
-    </div>
-  </section>
+        <h3>Available Sample</h3>
+
+        <div class="sample-box">
+            Blood Culture
+        </div>
+
+    </section>
+
+    <section class="card">
+
+        <button id="guideBtn" class="guide-btn">
+            🔬 Open Diagnostic Guide
+        </button>
+
+        <h2>Order Diagnostic Tests</h2>
+
+        <div class="counter">
+            Tests Ordered:
+            <span id="test-count">0</span>
+        </div>
+
+        <div class="test-grid">
+
+            <button onclick="orderTest('gram')">
+                Gram Stain
+            </button>
+
+            <button onclick="orderTest('bloodAgar')">
+                Blood Agar
+            </button>
+
+            <button onclick="orderTest('msa')">
+                Mannitol Salt Agar
+            </button>
+
+            <button onclick="orderTest('catalase')">
+                Catalase
+            </button>
+
+            <button onclick="orderTest('coagulase')">
+                Coagulase
+            </button>
+
+            <button onclick="orderTest('oxidase')">
+                Oxidase
+            </button>
+
+            <button onclick="orderTest('macconkey')">
+                MacConkey
+            </button>
+
+            <button onclick="orderTest('kirby')">
+                Kirby-Bauer
+            </button>
+
+        </div>
+
+    </section>
+
+    <section class="card">
+
+        <h2>Results</h2>
+
+        <div id="results-box">
+            No tests ordered yet.
+        </div>
+
+    </section>
+
+    <section class="card">
+
+        <h2>Final Diagnosis</h2>
+
+        <label>
+            Most likely organism
+        </label>
+
+        <input
+            type="text"
+            id="diagnosis"
+            placeholder="Enter organism name"
+        >
+
+        <label>
+            Antibiotic recommendation
+        </label>
+
+        <input
+            type="text"
+            id="treatment"
+            placeholder="Enter antibiotic"
+        >
+
+        <button onclick="checkDiagnosis()">
+            Submit Diagnosis
+        </button>
+
+        <div id="feedback"></div>
+
+    </section>
 
 </main>
 
+<div id="guideModal" class="modal">
+
+<div class="modal-content">
+
+<span class="close">&times;</span>
+
+<h2>BIOL 334 Unknown Identification Guide</h2>
+
+<ol>
+
+<li>
+Perform a Gram Stain
+
+<ul>
+<li>Gram-positive cocci → Step 2</li>
+<li>Gram-positive rods → Step 5</li>
+<li>Gram-negative rods → Step 6</li>
+</ul>
+</li>
+
+<li>
+Catalase Test
+
+<ul>
+<li>Catalase positive → Step 3</li>
+<li>Catalase negative → Step 4</li>
+</ul>
+</li>
+
+<li>
+Coagulase Test
+
+<ul>
+<li>Positive → Staphylococcus aureus</li>
+<li>Negative → Staphylococcus epidermidis</li>
+</ul>
+</li>
+
+<li>
+Blood Agar
+
+<ul>
+<li>Alpha hemolytic → Viridans streptococci</li>
+</ul>
+</li>
+
+<li>
+Gram-positive rods
+
+<ul>
+<li>Endospore positive → Bacillus cereus</li>
+</ul>
+</li>
+
+<li>
+MacConkey Agar
+
+<ul>
+<li>Pink colonies → Step 7</li>
+<li>Colorless colonies → Step 8</li>
+</ul>
+</li>
+
+<li>
+Lactose Fermenters
+
+<ul>
+<li>Indole positive → E. coli</li>
+<li>Sorbitol negative → E. coli O157:H7</li>
+<li>Citrate positive → Klebsiella aerogenes</li>
+</ul>
+</li>
+
+<li>
+Non-Lactose Fermenters
+
+<ul>
+<li>Oxidase positive → Pseudomonas aeruginosa</li>
+<li>Urease positive → Proteus mirabilis</li>
+</ul>
+</li>
+
+</ol>
+
+</div>
+</div>
+
 <script src="../js/case.js"></script>
+
 </body>
 </html>
