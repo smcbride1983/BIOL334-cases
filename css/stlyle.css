@@ -1,0 +1,177 @@
+.case-layout {
+  max-width: 1400px;
+  margin: 2rem auto;
+  padding: 0 1rem;
+  display: grid;
+  grid-template-columns: 1.2fr 1fr 1fr;
+  gap: 1.5rem;
+}
+
+.patient-chart,
+.testing-panel,
+.workflow-panel {
+  background: white;
+  border-radius: 14px;
+  padding: 1.5rem;
+  box-shadow: 0 6px 18px rgba(0,0,0,0.08);
+}
+
+.back-link {
+  display: inline-block;
+  margin-bottom: 1rem;
+  color: #1d4ed8;
+  font-weight: bold;
+  text-decoration: none;
+}
+
+.case-banner {
+  background: #eff6ff;
+  border-left: 6px solid #2563eb;
+  padding: 1rem;
+  border-radius: 10px;
+  margin-bottom: 1.25rem;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 1rem 0;
+}
+
+th, td {
+  border-bottom: 1px solid #e5e7eb;
+  padding: 0.6rem;
+  text-align: left;
+}
+
+th {
+  background: #f1f5f9;
+}
+
+.sample-box {
+  background: #f8fafc;
+  border: 2px dashed #2563eb;
+  padding: 1rem;
+  border-radius: 10px;
+  font-weight: bold;
+}
+
+.test-counter {
+  background: #0f172a;
+  color: white;
+  padding: 0.75rem;
+  border-radius: 10px;
+  margin: 1rem 0;
+  font-weight: bold;
+}
+
+.test-buttons {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 0.75rem;
+}
+
+button {
+  background: #2563eb;
+  color: white;
+  border: none;
+  border-radius: 10px;
+  padding: 0.85rem;
+  font-size: 1rem;
+  cursor: pointer;
+  font-weight: bold;
+}
+
+button:hover {
+  background: #1d4ed8;
+}
+
+.results-box {
+  background: #f8fafc;
+  border-radius: 10px;
+  padding: 1rem;
+  min-height: 150px;
+  border: 1px solid #e5e7eb;
+}
+
+.result-card {
+  border-left: 5px solid #2563eb;
+  background: white;
+  padding: 0.75rem;
+  margin-bottom: 0.75rem;
+  border-radius: 8px;
+}
+
+.result-card h4 {
+  margin: 0 0 0.4rem;
+}
+
+.workflow {
+  background: #f8fafc;
+  border-radius: 10px;
+  padding: 1rem;
+  text-align: center;
+}
+
+.flow-step {
+  background: white;
+  border: 2px solid #cbd5e1;
+  padding: 0.75rem;
+  border-radius: 10px;
+  margin: 0.4rem 0;
+  font-weight: bold;
+}
+
+.flow-step.important {
+  border-color: #2563eb;
+  background: #eff6ff;
+}
+
+.arrow {
+  font-size: 1.4rem;
+  color: #2563eb;
+}
+
+.flow-split {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0.5rem;
+}
+
+.flow-split div {
+  background: white;
+  border: 1px solid #cbd5e1;
+  padding: 0.6rem;
+  border-radius: 8px;
+}
+
+.diagnosis-box {
+  margin-top: 1.5rem;
+  background: #f8fafc;
+  padding: 1rem;
+  border-radius: 10px;
+}
+
+.diagnosis-box input {
+  width: 100%;
+  padding: 0.75rem;
+  margin: 0.5rem 0 1rem;
+  border: 1px solid #cbd5e1;
+  border-radius: 8px;
+}
+
+.small-text {
+  color: #6b7280;
+  font-size: 0.95rem;
+}
+
+#feedback {
+  margin-top: 1rem;
+  font-weight: bold;
+}
+
+@media (max-width: 1000px) {
+  .case-layout {
+    grid-template-columns: 1fr;
+  }
+}
