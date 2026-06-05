@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Case 1: Prosthetic Valve Endocarditis</title>
+  <link rel="stylesheet" href="../css/style.css" />
+</head>
+
+<body>
+
+<header>
+  <h1>BIOL 334 Clinical Microbiology Case Studies</h1>
+  <p>Case 1: Prosthetic Aortic Valve Endocarditis</p>
+</header>
+
+<main class="case-layout">
+
+  <section class="patient-chart">
+    <a href="../index.html" class="back-link">← Return to Case Selection</a>
+
+    <h2>Patient Chart</h2>
+
+    <div class="case-banner">
+      <h3>William Osler</h3>
+      <p>67-year-old patient</p>
+      <p><strong>Chief concern:</strong> Fever, fatigue, and night sweats after prosthetic valve replacement.</p>
+    </div>
+
+    <h3>Patient Background</h3>
+    <p>
+      William Osler underwent placement of a prosthetic aortic valve six months ago.
+      He now presents with fatigue, fever, night sweats, mild shortness of breath,
+      and swelling in his ankles.
+    </p>
+
+    <h3>Clinical Findings</h3>
+    <table>
+      <tr><th>Finding</th><th>Result</th></tr>
+      <tr><td>Temperature</td><td>101.9°F</td></tr>
+      <tr><td>Heart rate</td><td>110 bpm</td></tr>
+      <tr><td>Blood pressure</td><td>118/72 mm Hg</td></tr>
+      <tr><td>Cardiac exam</td><td>New holosystolic murmur</td></tr>
+      <tr><td>Skin</td><td>Petechiae and splinter hemorrhages</td></tr>
+      <tr><td>Echocardiogram</td><td>Vegetations on prosthetic aortic valve</td></tr>
+      <tr><td>WBC</td><td>15,600/µL</td></tr>
+    </table>
+
+    <h3>Sample Collected</h3>
+    <div class="sample-box">Blood culture</div>
+  </section>
+
+  <section class="testing-panel">
+    <h2>Order Diagnostic Tests</h2>
+    <p class="small-text">Use the workflow guide to decide which test to order next.</p>
+
+    <div class="test-counter">
+      Tests ordered: <span id="test-count">0</span>
+    </div>
+
+    <div class="test-buttons">
+      <button onclick="orderTest('gram')">Gram Stain</button>
+      <button onclick="orderTest('bloodAgar')">Blood Agar</button>
+      <button onclick="orderTest('msa')">Mannitol Salt Agar</button>
+      <button onclick="orderTest('catalase')">Catalase Test</button>
+      <button onclick="orderTest('coagulase')">Coagulase Test</button>
+      <button onclick="orderTest('oxidase')">Oxidase Test</button>
+      <button onclick="orderTest('macconkey')">MacConkey Agar</button>
+      <button onclick="orderTest('kirby')">Kirby-Bauer Test</button>
+    </div>
+
+    <h3>Test Results</h3>
+    <div id="results-box" class="results-box">
+      No tests ordered yet.
+    </div>
+  </section>
+
+  <section class="workflow-panel">
+    <h2>Clinical Microbiology Workflow</h2>
+
+    <div class="workflow">
+      <div class="flow-step">Start with patient sample</div>
+      <div class="arrow">↓</div>
+      <div class="flow-step important">Gram Stain</div>
+      <div class="arrow">↓</div>
+      <div class="flow-split">
+        <div>Gram-positive?</div>
+        <div>Gram-negative?</div>
+      </div>
+      <div class="arrow">↓</div>
+      <div class="flow-step">If Gram-positive cocci → Catalase</div>
+      <div class="arrow">↓</div>
+      <div class="flow-step">Catalase positive → Staphylococcus</div>
+      <div class="arrow">↓</div>
+      <div class="flow-step">Coagulase test</div>
+      <div class="arrow">↓</div>
+      <div class="flow-step">Coagulase negative → likely S. epidermidis</div>
+    </div>
+
+    <div class="diagnosis-box">
+      <h3>Final Diagnosis</h3>
+      <label for="diagnosis">Most likely organism:</label>
+      <input type="text" id="diagnosis" placeholder="Enter organism name" />
+
+      <label for="treatment">Antibiotic recommendation:</label>
+      <input type="text" id="treatment" placeholder="Enter antibiotic choice" />
+
+      <button onclick="checkDiagnosis()">Submit Diagnosis</button>
+
+      <div id="feedback"></div>
+    </div>
+  </section>
+
+</main>
+
+<script src="../js/case.js"></script>
+</body>
+</html>
