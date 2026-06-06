@@ -1,177 +1,362 @@
-.case-layout {
-  max-width: 1400px;
-  margin: 2rem auto;
-  padding: 0 1rem;
-  display: grid;
-  grid-template-columns: 1.2fr 1fr 1fr;
-  gap: 1.5rem;
+/* =====================================
+BIOL 334 Clinical Microbiology Cases
+style.css
+===================================== */
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  }
+
+body {
+font-family: Arial, Helvetica, sans-serif;
+background: #f4f7fb;
+color: #1f2937;
+line-height: 1.6;
 }
 
-.patient-chart,
-.testing-panel,
-.workflow-panel {
-  background: white;
-  border-radius: 14px;
-  padding: 1.5rem;
-  box-shadow: 0 6px 18px rgba(0,0,0,0.08);
+/* =====================================
+HEADER
+===================================== */
+
+header {
+background: linear-gradient(135deg, #0f172a, #1e3a8a);
+color: white;
+text-align: center;
+padding: 2.5rem 1rem;
+}
+
+header h1 {
+font-size: 2.3rem;
+margin-bottom: 0.5rem;
+}
+
+header p {
+color: #dbeafe;
+font-size: 1.1rem;
+}
+
+/* =====================================
+HOMEPAGE GRID
+===================================== */
+
+main {
+max-width: 1400px;
+margin: 2rem auto;
+padding: 0 1rem;
+}
+
+.case-grid {
+display: grid;
+grid-template-columns: repeat(4, 1fr);
+gap: 1.25rem;
+}
+
+.case-card {
+background: white;
+border-radius: 14px;
+padding: 1.5rem;
+text-decoration: none;
+color: inherit;
+border-top: 6px solid #2563eb;
+box-shadow: 0 6px 18px rgba(0,0,0,0.08);
+transition: 0.2s;
+}
+
+.case-card:hover {
+transform: translateY(-4px);
+box-shadow: 0 10px 24px rgba(0,0,0,0.15);
+}
+
+.case-number {
+color: #2563eb;
+font-size: 0.85rem;
+font-weight: bold;
+text-transform: uppercase;
+}
+
+.case-card h2 {
+margin: 0.75rem 0 0.25rem;
+}
+
+.age {
+color: #6b7280;
+margin-bottom: 1rem;
+}
+
+.symptom {
+margin-bottom: 1rem;
+}
+
+.open-case {
+color: #1d4ed8;
+font-weight: bold;
+}
+
+/* =====================================
+CASE PAGE
+===================================== */
+
+.case-container {
+max-width: 1200px;
+margin: 2rem auto;
+padding: 0 1rem;
+
+```
+display: flex;
+flex-direction: column;
+gap: 1.5rem;
+```
+
+}
+
+.card {
+background: white;
+border-radius: 14px;
+padding: 1.5rem;
+box-shadow: 0 6px 18px rgba(0,0,0,0.08);
+}
+
+.card h2 {
+margin-bottom: 1rem;
+}
+
+.card h3 {
+margin-top: 1rem;
+margin-bottom: 0.5rem;
+}
+
+/* =====================================
+PATIENT CHART
+===================================== */
+
+.patient-banner {
+background: #eff6ff;
+border-left: 6px solid #2563eb;
+padding: 1rem;
+border-radius: 10px;
+margin-bottom: 1rem;
+}
+
+.patient-banner h3 {
+margin-top: 0;
 }
 
 .back-link {
-  display: inline-block;
-  margin-bottom: 1rem;
-  color: #1d4ed8;
-  font-weight: bold;
-  text-decoration: none;
-}
-
-.case-banner {
-  background: #eff6ff;
-  border-left: 6px solid #2563eb;
-  padding: 1rem;
-  border-radius: 10px;
-  margin-bottom: 1.25rem;
-}
-
-table {
-  width: 100%;
-  border-collapse: collapse;
-  margin: 1rem 0;
-}
-
-th, td {
-  border-bottom: 1px solid #e5e7eb;
-  padding: 0.6rem;
-  text-align: left;
-}
-
-th {
-  background: #f1f5f9;
+display: inline-block;
+margin-bottom: 1rem;
+text-decoration: none;
+color: #1d4ed8;
+font-weight: bold;
 }
 
 .sample-box {
-  background: #f8fafc;
-  border: 2px dashed #2563eb;
-  padding: 1rem;
-  border-radius: 10px;
-  font-weight: bold;
+background: #f8fafc;
+border: 2px dashed #2563eb;
+border-radius: 10px;
+padding: 1rem;
+font-weight: bold;
 }
 
-.test-counter {
-  background: #0f172a;
-  color: white;
-  padding: 0.75rem;
-  border-radius: 10px;
-  margin: 1rem 0;
-  font-weight: bold;
+/* =====================================
+TABLES
+===================================== */
+
+table {
+width: 100%;
+border-collapse: collapse;
+margin-top: 1rem;
 }
 
-.test-buttons {
-  display: grid;
-  grid-template-columns: 1fr;
-  gap: 0.75rem;
+th {
+background: #e2e8f0;
+text-align: left;
+}
+
+th,
+td {
+padding: 0.75rem;
+border-bottom: 1px solid #cbd5e1;
+}
+
+/* =====================================
+TEST BUTTONS
+===================================== */
+
+.counter {
+background: #0f172a;
+color: white;
+padding: 0.75rem;
+border-radius: 10px;
+margin-bottom: 1rem;
+font-weight: bold;
+}
+
+.test-grid {
+display: grid;
+grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+gap: 0.75rem;
 }
 
 button {
-  background: #2563eb;
-  color: white;
-  border: none;
-  border-radius: 10px;
-  padding: 0.85rem;
-  font-size: 1rem;
-  cursor: pointer;
-  font-weight: bold;
+background: #2563eb;
+color: white;
+border: none;
+padding: 0.85rem;
+border-radius: 10px;
+cursor: pointer;
+font-size: 0.95rem;
+font-weight: bold;
+transition: 0.2s;
 }
 
 button:hover {
-  background: #1d4ed8;
+background: #1d4ed8;
 }
 
-.results-box {
-  background: #f8fafc;
-  border-radius: 10px;
-  padding: 1rem;
-  min-height: 150px;
-  border: 1px solid #e5e7eb;
+.guide-btn {
+width: 100%;
+margin-bottom: 1rem;
+font-size: 1rem;
+}
+
+/* =====================================
+RESULTS
+===================================== */
+
+#results-box {
+min-height: 150px;
 }
 
 .result-card {
-  border-left: 5px solid #2563eb;
-  background: white;
-  padding: 0.75rem;
-  margin-bottom: 0.75rem;
-  border-radius: 8px;
+background: #f8fafc;
+border-left: 5px solid #2563eb;
+border-radius: 10px;
+padding: 1rem;
+margin-bottom: 1rem;
 }
 
 .result-card h4 {
-  margin: 0 0 0.4rem;
+margin-bottom: 0.5rem;
 }
 
-.workflow {
-  background: #f8fafc;
-  border-radius: 10px;
-  padding: 1rem;
-  text-align: center;
+.result-card img {
+width: 100%;
+max-width: 500px;
+border-radius: 8px;
+border: 1px solid #cbd5e1;
+margin-top: 0.5rem;
 }
 
-.flow-step {
-  background: white;
-  border: 2px solid #cbd5e1;
-  padding: 0.75rem;
-  border-radius: 10px;
-  margin: 0.4rem 0;
-  font-weight: bold;
-}
+/* =====================================
+DIAGNOSIS
+===================================== */
 
-.flow-step.important {
-  border-color: #2563eb;
-  background: #eff6ff;
-}
-
-.arrow {
-  font-size: 1.4rem;
-  color: #2563eb;
-}
-
-.flow-split {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 0.5rem;
-}
-
-.flow-split div {
-  background: white;
-  border: 1px solid #cbd5e1;
-  padding: 0.6rem;
-  border-radius: 8px;
-}
-
-.diagnosis-box {
-  margin-top: 1.5rem;
-  background: #f8fafc;
-  padding: 1rem;
-  border-radius: 10px;
-}
-
-.diagnosis-box input {
-  width: 100%;
-  padding: 0.75rem;
-  margin: 0.5rem 0 1rem;
-  border: 1px solid #cbd5e1;
-  border-radius: 8px;
-}
-
-.small-text {
-  color: #6b7280;
-  font-size: 0.95rem;
+input[type="text"] {
+width: 100%;
+padding: 0.75rem;
+margin-top: 0.5rem;
+margin-bottom: 1rem;
+border: 1px solid #cbd5e1;
+border-radius: 8px;
 }
 
 #feedback {
-  margin-top: 1rem;
-  font-weight: bold;
+margin-top: 1rem;
+font-weight: bold;
 }
 
+/* =====================================
+MODAL
+===================================== */
+
+.modal {
+display: none;
+
+```
+position: fixed;
+z-index: 1000;
+
+left: 0;
+top: 0;
+
+width: 100%;
+height: 100%;
+
+background: rgba(0,0,0,0.65);
+```
+
+}
+
+.modal-content {
+background: white;
+
+```
+width: 85%;
+max-width: 900px;
+
+margin: 50px auto;
+
+padding: 2rem;
+
+border-radius: 12px;
+
+max-height: 85vh;
+overflow-y: auto;
+```
+
+}
+
+.modal-content h2 {
+margin-bottom: 1rem;
+}
+
+.modal-content li {
+margin-bottom: 1rem;
+}
+
+.close {
+float: right;
+font-size: 2rem;
+cursor: pointer;
+font-weight: bold;
+}
+
+/* =====================================
+FOOTER
+===================================== */
+
+footer {
+text-align: center;
+padding: 2rem;
+color: #6b7280;
+}
+
+/* =====================================
+MOBILE
+===================================== */
+
 @media (max-width: 1000px) {
-  .case-layout {
+
+```
+.case-grid {
+    grid-template-columns: repeat(2, 1fr);
+}
+```
+
+}
+
+@media (max-width: 600px) {
+
+```
+.case-grid {
     grid-template-columns: 1fr;
-  }
+}
+
+header h1 {
+    font-size: 1.8rem;
+}
+```
+
 }
