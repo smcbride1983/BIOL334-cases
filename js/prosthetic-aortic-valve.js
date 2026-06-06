@@ -13,7 +13,7 @@ const testResults = {
 ```
 gram: {
     title: "Gram Stain",
-    image: "../images/gram/gram_positive_cocci_clusters.jpg",
+    image: "../images/gram/gram_positive_cocci_clusters.png",
     prompt: "Determine the Gram reaction, morphology, and cellular arrangement."
 },
 
