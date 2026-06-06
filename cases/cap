@@ -32,61 +32,36 @@
 <!-- START REPLACE PATIENT INFORMATION                     -->
 <!-- ===================================================== -->
 
-<section class="card">
-
-    <div class="patient-banner">
-        <h3>PATIENT NAME</h3>
-
-        <p>AGE-year-old patient</p>
-
-        <p>
-            <strong>Chief Concern:</strong>
-            Chief complaint goes here.
-        </p>
-    </div>
-
-    <h3>Patient Background</h3>
+<div class="patient-banner">
+    <h3>Bart Bizio</h3>
+    <p>58-year-old patient</p>
 
     <p>
-        Patient history goes here.
+        <strong>Chief Concern:</strong>
+        Productive cough and shortness of breath.
     </p>
+</div>
 
-    <h3>Clinical Findings</h3>
+<h3>Patient Background</h3>
 
-    <table>
-        <tr>
-            <th>Finding</th>
-            <th>Result</th>
-        </tr>
+<p>
+Bart Bizio has diabetes and mild COPD. He presents with fever, productive cough,
+and pleuritic chest pain.
+</p>
 
-        <tr>
-            <td>Temperature</td>
-            <td>---</td>
-        </tr>
+<h3>Clinical Findings</h3>
 
-        <tr>
-            <td>Heart Rate</td>
-            <td>---</td>
-        </tr>
+<table>
+<tr><th>Finding</th><th>Result</th></tr>
+<tr><td>Temperature</td><td>102.3°F</td></tr>
+<tr><td>Respiratory Rate</td><td>26 breaths/min</td></tr>
+<tr><td>O₂ Saturation</td><td>89%</td></tr>
+<tr><td>Chest X-ray</td><td>Right lower lobe consolidation</td></tr>
+<tr><td>WBC Count</td><td>15,200 /µL</td></tr>
+</table>
 
-        <tr>
-            <td>Blood Pressure</td>
-            <td>---</td>
-        </tr>
-
-        <tr>
-            <td>Additional Finding</td>
-            <td>---</td>
-        </tr>
-    </table>
-
-    <h3>Available Sample</h3>
-
-    <div class="sample-box">
-        SAMPLE TYPE
-    </div>
-
-</section>
+<h3>Available Sample</h3>
+<div class="sample-box">Sputum Culture</div>
 
 <!-- ===================================================== -->
 <!-- STOP REPLACE PATIENT INFORMATION                      -->
