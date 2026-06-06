@@ -10,7 +10,7 @@ const acceptedDiagnoses = [
 
 const testResults = {
 
-```
+
 gram: {
     title: "Gram Stain",
     image: "../images/gram/gram_positive_cocci_clusters.jpg",
