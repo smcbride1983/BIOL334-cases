@@ -43,7 +43,7 @@ endospore: {
 
 macconkey: {
     title: "MacConkey Agar",
-    image: "../images/macconkey/no_growth.jpg",
+    image: "../images/Maconkey/maconkey_nogrowth.jpg",
     prompt: "Evaluate growth and lactose fermentation."
 },
 
