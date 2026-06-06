@@ -32,62 +32,39 @@
 <!-- START REPLACE PATIENT INFORMATION                     -->
 <!-- ===================================================== -->
 
-<section class="card">
-
-    <div class="patient-banner">
-        <h3>PATIENT NAME</h3>
-
-        <p>AGE-year-old patient</p>
-
-        <p>
-            <strong>Chief Concern:</strong>
-            Chief complaint goes here.
-        </p>
-    </div>
-
-    <h3>Patient Background</h3>
+<div class="patient-banner">
+    <h3>Ricarda Wright</h3>
+    <p>63-year-old patient</p>
 
     <p>
-        Patient history goes here.
+        <strong>Chief Concern:</strong>
+        Fatigue, weight loss, and shortness of breath following mitral valve repair.
     </p>
+</div>
 
-    <h3>Clinical Findings</h3>
+<h3>Patient Background</h3>
 
-    <table>
-        <tr>
-            <th>Finding</th>
-            <th>Result</th>
-        </tr>
+<p>
+Ricarda Wright has a history of rheumatic heart disease and underwent mitral
+valve repair eight months ago. Over several weeks she has developed fatigue,
+joint pain, intermittent fever, weight loss, and increasing shortness of breath.
+</p>
 
-        <tr>
-            <td>Temperature</td>
-            <td>---</td>
-        </tr>
+<h3>Clinical Findings</h3>
 
-        <tr>
-            <td>Heart Rate</td>
-            <td>---</td>
-        </tr>
+<table>
+<tr><th>Finding</th><th>Result</th></tr>
+<tr><td>Temperature</td><td>100.9°F</td></tr>
+<tr><td>Heart Rate</td><td>102 bpm</td></tr>
+<tr><td>Blood Pressure</td><td>116/70 mm Hg</td></tr>
+<tr><td>Cardiac Exam</td><td>New systolic murmur</td></tr>
+<tr><td>Skin</td><td>Osler's nodes and conjunctival petechiae</td></tr>
+<tr><td>Echocardiogram</td><td>Vegetations on mitral valve</td></tr>
+<tr><td>WBC Count</td><td>14,200 /µL</td></tr>
+</table>
 
-        <tr>
-            <td>Blood Pressure</td>
-            <td>---</td>
-        </tr>
-
-        <tr>
-            <td>Additional Finding</td>
-            <td>---</td>
-        </tr>
-    </table>
-
-    <h3>Available Sample</h3>
-
-    <div class="sample-box">
-        SAMPLE TYPE
-    </div>
-
-</section>
-
+<h3>Available Sample</h3>
+<div class="sample-box">Blood Culture</div>
 <!-- ===================================================== -->
 <!-- STOP REPLACE PATIENT INFORMATION                      -->
 <!-- ===================================================== -->
