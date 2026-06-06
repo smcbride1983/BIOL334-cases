@@ -32,61 +32,36 @@
 <!-- START REPLACE PATIENT INFORMATION                     -->
 <!-- ===================================================== -->
 
-<section class="card">
-
-    <div class="patient-banner">
-        <h3>PATIENT NAME</h3>
-
-        <p>AGE-year-old patient</p>
-
-        <p>
-            <strong>Chief Concern:</strong>
-            Chief complaint goes here.
-        </p>
-    </div>
-
-    <h3>Patient Background</h3>
+<div class="patient-banner">
+    <h3>Barbara Iglewski</h3>
+    <p>56-year-old patient</p>
 
     <p>
-        Patient history goes here.
+        <strong>Chief Concern:</strong>
+        Fever and worsening respiratory status while on a ventilator.
     </p>
+</div>
 
-    <h3>Clinical Findings</h3>
+<h3>Patient Background</h3>
 
-    <table>
-        <tr>
-            <th>Finding</th>
-            <th>Result</th>
-        </tr>
+<p>
+Barbara remains intubated following abdominal surgery and develops pneumonia
+after seven days in the ICU.
+</p>
 
-        <tr>
-            <td>Temperature</td>
-            <td>---</td>
-        </tr>
+<h3>Clinical Findings</h3>
 
-        <tr>
-            <td>Heart Rate</td>
-            <td>---</td>
-        </tr>
+<table>
+<tr><th>Finding</th><th>Result</th></tr>
+<tr><td>Temperature</td><td>102.4°F</td></tr>
+<tr><td>Respiratory Rate</td><td>30 breaths/min</td></tr>
+<tr><td>O₂ Saturation</td><td>84%</td></tr>
+<tr><td>Chest X-ray</td><td>Diffuse infiltrates</td></tr>
+<tr><td>WBC Count</td><td>17,800 /µL</td></tr>
+</table>
 
-        <tr>
-            <td>Blood Pressure</td>
-            <td>---</td>
-        </tr>
-
-        <tr>
-            <td>Additional Finding</td>
-            <td>---</td>
-        </tr>
-    </table>
-
-    <h3>Available Sample</h3>
-
-    <div class="sample-box">
-        SAMPLE TYPE
-    </div>
-
-</section>
+<h3>Available Sample</h3>
+<div class="sample-box">Endotracheal Aspirate</div>
 
 <!-- ===================================================== -->
 <!-- STOP REPLACE PATIENT INFORMATION                      -->
