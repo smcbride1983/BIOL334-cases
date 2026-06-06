@@ -28,7 +28,7 @@ const testResults = {
     bloodAgar: {
         title: "Blood Agar",
         image: "../images/blood/gamma.jpg",
-        prompt: "Evaluate colony morphology and hemolysis pattern."
+        prompt: "Evaluate hemolysis pattern."
     },
 
     catalase: {
@@ -40,7 +40,7 @@ const testResults = {
     coagulase: {
         title: "Coagulase Test",
         image: "../images/coagulase/coagulase_negative.jpg",
-        prompt: "Determine whether clot formation is present."
+        prompt: "Determine whether agglutination has occurred formation is present."
     },
 
     endospore: {
