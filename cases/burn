@@ -32,61 +32,36 @@
 <!-- START REPLACE PATIENT INFORMATION                     -->
 <!-- ===================================================== -->
 
-<section class="card">
-
-    <div class="patient-banner">
-        <h3>PATIENT NAME</h3>
-
-        <p>AGE-year-old patient</p>
-
-        <p>
-            <strong>Chief Concern:</strong>
-            Chief complaint goes here.
-        </p>
-    </div>
-
-    <h3>Patient Background</h3>
+<div class="patient-banner">
+    <h3>John Govan</h3>
+    <p>32-year-old patient</p>
 
     <p>
-        Patient history goes here.
+        <strong>Chief Concern:</strong>
+        Increasing pain and foul-smelling drainage from burn wound.
     </p>
+</div>
 
-    <h3>Clinical Findings</h3>
+<h3>Patient Background</h3>
 
-    <table>
-        <tr>
-            <th>Finding</th>
-            <th>Result</th>
-        </tr>
+<p>
+John Govan sustained second-degree burns five days ago. He now reports increased
+pain, swelling, fever, and greenish drainage from the wound.
+</p>
 
-        <tr>
-            <td>Temperature</td>
-            <td>---</td>
-        </tr>
+<h3>Clinical Findings</h3>
 
-        <tr>
-            <td>Heart Rate</td>
-            <td>---</td>
-        </tr>
+<table>
+<tr><th>Finding</th><th>Result</th></tr>
+<tr><td>Temperature</td><td>101.8°F</td></tr>
+<tr><td>Heart Rate</td><td>110 bpm</td></tr>
+<tr><td>Burn Site</td><td>Greenish-blue exudate</td></tr>
+<tr><td>Odor</td><td>Sweet grape-like smell</td></tr>
+<tr><td>WBC Count</td><td>17,200 /µL</td></tr>
+</table>
 
-        <tr>
-            <td>Blood Pressure</td>
-            <td>---</td>
-        </tr>
-
-        <tr>
-            <td>Additional Finding</td>
-            <td>---</td>
-        </tr>
-    </table>
-
-    <h3>Available Sample</h3>
-
-    <div class="sample-box">
-        SAMPLE TYPE
-    </div>
-
-</section>
+<h3>Available Sample</h3>
+<div class="sample-box">Wound Swab</div>
 
 <!-- ===================================================== -->
 <!-- STOP REPLACE PATIENT INFORMATION                      -->
@@ -278,7 +253,7 @@
 
 <script src="../js/case-template.js"></script>
 
-<script src="../js/prosthetic-aortic-valve.js"></script>
+<script src="../js/burn.js"></script>
 
 <!-- ===================================================== -->
 
