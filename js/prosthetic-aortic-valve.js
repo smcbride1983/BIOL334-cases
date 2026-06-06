@@ -4,7 +4,7 @@ const acceptedDiagnoses = [
 "staphylococcus epidermidis",
 "s epidermidis",
 "s. epidermidis",
-"staph epidermidis"
+"staph epidermidis",
 "staph epi",
 "s epi" ];
 
