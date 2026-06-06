@@ -19,7 +19,7 @@ gram: {
 
 bloodAgar: {
     title: "Blood Agar",
-    image: "../images/blood_agar/gamma_hemolysis.jpg",
+    image: "../images/blood_agar/gamma.png",
     prompt: "Evaluate colony morphology and hemolysis pattern."
 },
 
