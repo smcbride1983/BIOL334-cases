@@ -82,6 +82,6 @@ kirby: {
     image: "../images/kirby/staph_epidermidis.jpg",
     prompt: "Determine antibiotic susceptibility from the zone sizes."
 }
-```
+
 
 };
