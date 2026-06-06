@@ -32,61 +32,36 @@
 <!-- START REPLACE PATIENT INFORMATION                     -->
 <!-- ===================================================== -->
 
-<section class="card">
-
-    <div class="patient-banner">
-        <h3>PATIENT NAME</h3>
-
-        <p>AGE-year-old patient</p>
-
-        <p>
-            <strong>Chief Concern:</strong>
-            Chief complaint goes here.
-        </p>
-    </div>
-
-    <h3>Patient Background</h3>
+<div class="patient-banner">
+    <h3>Alex Ogston</h3>
+    <p>45-year-old patient</p>
 
     <p>
-        Patient history goes here.
+        <strong>Chief Concern:</strong>
+        Redness and drainage from a surgical incision.
     </p>
+</div>
 
-    <h3>Clinical Findings</h3>
+<h3>Patient Background</h3>
 
-    <table>
-        <tr>
-            <th>Finding</th>
-            <th>Result</th>
-        </tr>
+<p>
+Alex Ogston underwent arthroscopic knee surgery two weeks ago. Over the past
+three days he has noticed increasing redness, swelling, drainage, and stiffness.
+</p>
 
-        <tr>
-            <td>Temperature</td>
-            <td>---</td>
-        </tr>
+<h3>Clinical Findings</h3>
 
-        <tr>
-            <td>Heart Rate</td>
-            <td>---</td>
-        </tr>
+<table>
+<tr><th>Finding</th><th>Result</th></tr>
+<tr><td>Temperature</td><td>100.6°F</td></tr>
+<tr><td>Heart Rate</td><td>96 bpm</td></tr>
+<tr><td>Surgical Site</td><td>Erythematous with serous drainage</td></tr>
+<tr><td>Abscess</td><td>None observed</td></tr>
+<tr><td>WBC Count</td><td>11,800 /µL</td></tr>
+</table>
 
-        <tr>
-            <td>Blood Pressure</td>
-            <td>---</td>
-        </tr>
-
-        <tr>
-            <td>Additional Finding</td>
-            <td>---</td>
-        </tr>
-    </table>
-
-    <h3>Available Sample</h3>
-
-    <div class="sample-box">
-        SAMPLE TYPE
-    </div>
-
-</section>
+<h3>Available Sample</h3>
+<div class="sample-box">Wound Swab</div>
 
 <!-- ===================================================== -->
 <!-- STOP REPLACE PATIENT INFORMATION                      -->
