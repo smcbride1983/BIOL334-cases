@@ -27,7 +27,7 @@ const testResults = {
 
     bloodAgar: {
         title: "Blood Agar",
-        image: "../images/blood_agar/gamma.jpg",
+        image: "../images/blood/gamma.jpg",
         prompt: "Evaluate colony morphology and hemolysis pattern."
     },
 
