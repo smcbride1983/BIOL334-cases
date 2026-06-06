@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+```
+<title>Case X: Disease Name</title>
+
+<link rel="stylesheet" href="../css/style.css">
+```
+
+</head>
+
+<body>
+
+<header>
+    <h1>BIOL 334 Clinical Microbiology Case Studies</h1>
+    <p>Case X: Disease Name</p>
+</header>
+
+<main class="case-container">
+
+```
+<a href="../index.html" class="back-link">
+    ← Return to Case Selection
+</a>
+
+<!-- ===================================================== -->
+<!-- START REPLACE PATIENT INFORMATION                     -->
+<!-- ===================================================== -->
+<div class="patient-banner">
+    <h3>Gustava Hauser</h3>
+    <p>72-year-old patient</p>
+
+    <p>
+        <strong>Chief Concern:</strong>
+        Fever and confusion with urinary catheter.
+    </p>
+</div>
+
+<h3>Patient Background</h3>
+
+<p>
+Gustava has had a urinary catheter in place for ten days following surgery.
+</p>
+
+<h3>Clinical Findings</h3>
+
+<table>
+<tr><th>Finding</th><th>Result</th></tr>
+<tr><td>Temperature</td><td>102.1°F</td></tr>
+<tr><td>Heart Rate</td><td>112 bpm</td></tr>
+<tr><td>Urine</td><td>Cloudy with ammonia odor</td></tr>
+<tr><td>Suprapubic Tenderness</td><td>Present</td></tr>
+<tr><td>WBC Count</td><td>14,900 /µL</td></tr>
+</table>
+
+<h3>Available Sample</h3>
+<div class="sample-box">Urine Culture</div>
+
+<!-- ===================================================== -->
+<!-- STOP REPLACE PATIENT INFORMATION                      -->
+<!-- ===================================================== -->
+
+<section class="card">
+
+    <button id="guideBtn" class="guide-btn">
+        🔬 Open Diagnostic Guide
+    </button>
+
+</section>
+
+<section class="card">
+
+    <h2>Order Diagnostic Tests</h2>
+
+    <div class="counter">
+        Tests Ordered:
+        <span id="test-count">0</span>
+    </div>
+
+    <div class="test-grid">
+
+        <button onclick="orderTest('gram')">Gram Stain</button>
+
+        <button onclick="orderTest('bloodAgar')">Blood Agar</button>
+
+        <button onclick="orderTest('catalase')">Catalase</button>
+
+        <button onclick="orderTest('coagulase')">Coagulase</button>
+
+        <button onclick="orderTest('endospore')">Endospore Stain</button>
+
+        <button onclick="orderTest('macconkey')">MacConkey Agar</button>
+
+        <button onclick="orderTest('indole')">Indole Test</button>
+
+        <button onclick="orderTest('citrate')">Citrate Test</button>
+
+        <button onclick="orderTest('oxidase')">Oxidase Test</button>
+
+        <button onclick="orderTest('urease')">Urease Test</button>
+
+        <button onclick="orderTest('smac')">Sorbitol MacConkey</button>
+
+        <button onclick="orderTest('kirby')">Kirby-Bauer</button>
+
+    </div>
+
+</section>
+
+<section class="card">
+
+    <h2>Results</h2>
+
+    <div id="results-box">
+        No tests ordered yet.
+    </div>
+
+</section>
+
+<section class="card">
+
+    <h2>Final Diagnosis</h2>
+
+    <label>
+        Most Likely Organism
+    </label>
+
+    <input
+        type="text"
+        id="diagnosis"
+        placeholder="Enter organism name">
+
+    <label>
+        Antibiotic Recommendation
+    </label>
+
+    <input
+        type="text"
+        id="treatment"
+        placeholder="Enter antibiotic">
+
+    <button onclick="checkDiagnosis()">
+        Submit Diagnosis
+    </button>
+
+    <div id="feedback"></div>
+
+</section>
+```
+
+</main>
+
+<!-- ===================================================== -->
+
+<!-- DIAGNOSTIC GUIDE MODAL                                -->
+
+<!-- ===================================================== -->
+
+<div id="guideModal" class="modal">
+
+```
+<div class="modal-content">
+
+    <span class="close">&times;</span>
+
+    <h2>BIOL 334 Unknown Identification Guide</h2>
+
+    <ol>
+
+        <li>
+            Perform a Gram Stain
+            <ul>
+                <li>Gram-positive cocci → Step 2</li>
+                <li>Gram-positive rods → Step 5</li>
+                <li>Gram-negative rods → Step 6</li>
+            </ul>
+        </li>
+
+        <li>
+            Catalase Test
+            <ul>
+                <li>Catalase positive → Step 3</li>
+                <li>Catalase negative → Step 4</li>
+            </ul>
+        </li>
+
+        <li>
+            Coagulase Test
+            <ul>
+                <li>Positive → Staphylococcus aureus</li>
+                <li>Negative → Staphylococcus epidermidis</li>
+            </ul>
+        </li>
+
+        <li>
+            Blood Agar
+            <ul>
+                <li>Alpha hemolytic → Viridans streptococci</li>
+            </ul>
+        </li>
+
+        <li>
+            Endospore Stain
+            <ul>
+                <li>Positive → Bacillus cereus</li>
+            </ul>
+        </li>
+
+        <li>
+            MacConkey Agar
+            <ul>
+                <li>Pink colonies → Step 7</li>
+                <li>Colorless colonies → Step 8</li>
+            </ul>
+        </li>
+
+        <li>
+            Lactose Fermenters
+            <ul>
+                <li>Indole positive → Escherichia coli</li>
+                <li>Sorbitol negative → E. coli O157:H7</li>
+                <li>Citrate positive → Klebsiella aerogenes</li>
+            </ul>
+        </li>
+
+        <li>
+            Non-Lactose Fermenters
+            <ul>
+                <li>Oxidase positive → Pseudomonas aeruginosa</li>
+                <li>Urease positive → Proteus mirabilis</li>
+            </ul>
+        </li>
+
+    </ol>
+
+</div>
+```
+
+</div>
+
+<!-- ===================================================== -->
+
+<!-- START REPLACE CASE JS FILE                            -->
+
+<!-- ===================================================== -->
+
+<script src="../js/case-template.js"></script>
+
+<script src="../js/cauti.js"></script>
+
+<!-- ===================================================== -->
+
+<!-- STOP REPLACE CASE JS FILE                             -->
+
+<!-- ===================================================== -->
+
+</body>
+</html>
