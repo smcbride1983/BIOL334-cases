@@ -1,16 +1,17 @@
+```html
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Case 06 - Bloody Diarrhea</title>
+    <title>Case 04 - Burn Wound Infection</title>
 
     <link rel="stylesheet" href="../css/style.css">
 </head>
 <body>
 
 <header>
-    <h1>🩸 Case 06: Bloody Diarrhea</h1>
+    <h1>🔥 Case 04: Burn Wound Infection</h1>
     <p>BIOL 334 Clinical Microbiology Case Studies</p>
 </header>
 
@@ -23,54 +24,38 @@
         <h2>Patient Chart</h2>
 
         <div class="patient-banner">
-            <h3>Jacob Anderson</h3>
-            <p>19-year-old male</p>
+            <h3>John Govan</h3>
+            <p>32-year-old male</p>
         </div>
 
         <h3>History</h3>
 
         <p>
-            Jacob Anderson is a 19-year-old college student who presents
-            to the emergency department with severe abdominal cramping and
-            bloody diarrhea that began approximately 24 hours ago.
+            John Govan is a 32-year-old man who sustained second-degree burns
+            on his right forearm during a kitchen accident five days ago.
+            The burns were initially treated at home, but over the last two days
+            he has experienced worsening pain, swelling, and drainage from the wound.
         </p>
 
         <p>
-            Three days earlier he attended a community picnic where he
-            consumed hamburgers, potato salad, and other outdoor foods.
-            Several friends report mild gastrointestinal illness, but
-            Jacob's symptoms have become progressively worse.
-        </p>
-
-        <p>
-            He denies recent antibiotic use or international travel.
+            He reports increasing fatigue, fever, and tenderness around the burn site.
         </p>
 
         <h3>Clinical Findings</h3>
 
         <ul>
-            <li>Temperature: 99.1°F</li>
-            <li>Heart Rate: 102 bpm</li>
-            <li>Blood Pressure: 110/68 mmHg</li>
-            <li>Severe abdominal cramping</li>
-            <li>Frequent bloody diarrhea</li>
-            <li>No leukocytes observed in stool smear</li>
-            <li>Mild dehydration</li>
-            <li>Nausea without vomiting</li>
-        </ul>
-
-        <h3>Initial Laboratory Results</h3>
-
-        <ul>
-            <li>WBC Count: 10,400 /µL</li>
-            <li>Hemoglobin: Normal</li>
-            <li>Platelet Count: Normal</li>
-            <li>Serum Creatinine: Slightly elevated</li>
-            <li>Urinalysis: Trace protein and red blood cells</li>
+            <li>Temperature: 101.8°F</li>
+            <li>Heart Rate: 110 bpm</li>
+            <li>WBC Count: 17,200 /µL</li>
+            <li>Marked neutrophilia</li>
+            <li>Burn wound surrounded by erythema</li>
+            <li>Areas of necrotic tissue present</li>
+            <li>Greenish-blue wound exudate</li>
+            <li>Distinct sweet, grape-like odor</li>
         </ul>
 
         <div class="sample-box">
-            Sample Collected: Stool Specimen
+            Sample Collected: Wound Exudate Swab
         </div>
 
     </section>
@@ -108,10 +93,6 @@
 
             <button class="test-btn" onclick="showTest('macconkey')">
                 MacConkey Agar
-            </button>
-
-            <button class="test-btn" onclick="showTest('smac')">
-                Sorbitol MacConkey
             </button>
 
             <button class="test-btn" onclick="showTest('oxidase')">
@@ -174,7 +155,7 @@
         <input
             type="text"
             id="treatment-input"
-            placeholder="Enter treatment">
+            placeholder="Enter antibiotic">
 
         <button onclick="submitTreatment()">
             Submit Treatment
@@ -187,7 +168,8 @@
 </main>
 
 <script src="../js/case-template.js"></script>
-<script src="../js/bloody-diarrhea.js"></script>
+<script src="../js/burn.js"></script>
 
 </body>
 </html>
+```
