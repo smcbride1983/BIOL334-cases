@@ -45,7 +45,7 @@ const testResults = {
 
     macconkey: {
         title: "MacConkey Agar",
-        image: "../images/Maconkey/maconkey-positive.jpg",
+        image: "../images/Maconkey/maconkey_positive.jpg",
         prompt: "Growth present. Colonies appear pink indicating lactose fermentation."
     },
 
