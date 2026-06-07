@@ -1,265 +1,116 @@
 <!DOCTYPE html>
-
 <html lang="en">
-
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-```
-<title>Case X: Disease Name</title>
-
-<link rel="stylesheet" href="../css/style.css">
-```
-
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Case 6: Ventilator-Associated Pneumonia</title>
+  <link rel="stylesheet" href="../css/style.css" />
 </head>
 
 <body>
+  <header>
+    <h1>Case 6: Ventilator-Associated Pneumonia</h1>
+    <p>BIOL 334 Clinical Microbiology Case Study</p>
+  </header>
 
-<header>
-    <h1>BIOL 334 Clinical Microbiology Case Studies</h1>
-    <p>Case X: Disease Name</p>
-</header>
+  <main class="case-container">
 
-<main class="case-container">
+    <section class="card">
+      <h2>Patient Background</h2>
+      <p>
+        A 64-year-old man was admitted to the ICU after a severe motor vehicle accident.
+        He required intubation and mechanical ventilation. On hospital day 7, he develops
+        a new fever, increased oxygen requirement, and thick purulent respiratory secretions.
+      </p>
 
-```
-<a href="../index.html" class="back-link">
-    ← Return to Case Selection
-</a>
+      <p>
+        A chest radiograph shows a new right lower-lobe infiltrate. The ICU team collects
+        an endotracheal aspirate and sends it to the microbiology lab for culture and
+        identification.
+      </p>
+    </section>
 
-<!-- ===================================================== -->
-<!-- START REPLACE PATIENT INFORMATION                     -->
-<!-- ===================================================== -->
+    <section class="card">
+      <h2>Initial Clinical Data</h2>
 
-<div class="patient-banner">
-    <h3>Barbara Iglewski</h3>
-    <p>56-year-old patient</p>
+      <ul>
+        <li><strong>Temperature:</strong> 39.1°C</li>
+        <li><strong>WBC count:</strong> 18,400 cells/µL</li>
+        <li><strong>Respiratory secretions:</strong> Thick, greenish, purulent sputum</li>
+        <li><strong>Chest X-ray:</strong> New right lower-lobe infiltrate</li>
+        <li><strong>Specimen:</strong> Endotracheal aspirate</li>
+      </ul>
+    </section>
 
-    <p>
-        <strong>Chief Concern:</strong>
-        Fever and worsening respiratory status while on a ventilator.
-    </p>
-</div>
+    <section class="card">
+      <h2>Gram Stain</h2>
+      <p>
+        The Gram stain from the respiratory specimen shows many neutrophils and numerous
+        Gram-negative rods.
+      </p>
 
-<h3>Patient Background</h3>
+      <div class="image-box">
+        <img src="../images/gram-negative-rods.jpg" alt="Gram-negative rods" />
+      </div>
+    </section>
 
-<p>
-Barbara remains intubated following abdominal surgery and develops pneumonia
-after seven days in the ICU.
-</p>
+    <section class="card">
+      <h2>Culture Results</h2>
+      <p>
+        After incubation, the organism grows well on blood agar and MacConkey agar.
+        Colonies are large, flat, and spreading with a faint greenish pigment and a
+        grape-like odor.
+      </p>
+    </section>
 
-<h3>Clinical Findings</h3>
+    <section class="card">
+      <h2>Interactive Diagnostic Testing</h2>
+      <p>
+        Select tests below to identify the unknown organism.
+      </p>
 
-<table>
-<tr><th>Finding</th><th>Result</th></tr>
-<tr><td>Temperature</td><td>102.4°F</td></tr>
-<tr><td>Respiratory Rate</td><td>30 breaths/min</td></tr>
-<tr><td>O₂ Saturation</td><td>84%</td></tr>
-<tr><td>Chest X-ray</td><td>Diffuse infiltrates</td></tr>
-<tr><td>WBC Count</td><td>17,800 /µL</td></tr>
-</table>
+      <div id="test-buttons" class="button-grid"></div>
+    </section>
 
-<h3>Available Sample</h3>
-<div class="sample-box">Endotracheal Aspirate</div>
+    <section class="card">
+      <h2>Test Results</h2>
+      <div id="test-results">
+        <p>No tests selected yet.</p>
+      </div>
+    </section>
 
-<!-- ===================================================== -->
-<!-- STOP REPLACE PATIENT INFORMATION                      -->
-<!-- ===================================================== -->
+    <section class="card">
+      <h2>Identify the Unknown</h2>
 
-<section class="card">
-
-    <button id="guideBtn" class="guide-btn">
-        🔬 Open Diagnostic Guide
-    </button>
-
-</section>
-
-<section class="card">
-
-    <h2>Order Diagnostic Tests</h2>
-
-    <div class="counter">
-        Tests Ordered:
-        <span id="test-count">0</span>
-    </div>
-
-    <div class="test-grid">
-
-        <button onclick="orderTest('gram')">Gram Stain</button>
-
-        <button onclick="orderTest('bloodAgar')">Blood Agar</button>
-
-        <button onclick="orderTest('catalase')">Catalase</button>
-
-        <button onclick="orderTest('coagulase')">Coagulase</button>
-
-        <button onclick="orderTest('endospore')">Endospore Stain</button>
-
-        <button onclick="orderTest('macconkey')">MacConkey Agar</button>
-
-        <button onclick="orderTest('indole')">Indole Test</button>
-
-        <button onclick="orderTest('citrate')">Citrate Test</button>
-
-        <button onclick="orderTest('oxidase')">Oxidase Test</button>
-
-        <button onclick="orderTest('urease')">Urease Test</button>
-
-        <button onclick="orderTest('smac')">Sorbitol MacConkey</button>
-
-        <button onclick="orderTest('kirby')">Kirby-Bauer</button>
-
-    </div>
-
-</section>
-
-<section class="card">
-
-    <h2>Results</h2>
-
-    <div id="results-box">
-        No tests ordered yet.
-    </div>
-
-</section>
-
-<section class="card">
-
-    <h2>Final Diagnosis</h2>
-
-    <label>
-        Most Likely Organism
-    </label>
-
-    <input
+      <label for="diagnosis"><strong>Final identification:</strong></label>
+      <input
         type="text"
         id="diagnosis"
-        placeholder="Enter organism name">
+        placeholder="Enter organism name"
+      />
 
-    <label>
-        Antibiotic Recommendation
-    </label>
+      <button id="submit-diagnosis">Submit Identification</button>
 
-    <input
-        type="text"
-        id="treatment"
-        placeholder="Enter antibiotic">
+      <div id="diagnosis-feedback"></div>
+    </section>
 
-    <button onclick="checkDiagnosis()">
-        Submit Diagnosis
-    </button>
+    <section class="card">
+      <h2>Clinical Explanation</h2>
+      <p>
+        This patient likely has ventilator-associated pneumonia, a hospital-acquired
+        infection that develops after prolonged mechanical ventilation. The clinical
+        setting, Gram-negative rods, growth on MacConkey agar, oxidase positivity,
+        non-fermenting metabolism, pigment production, and characteristic odor are all
+        important clues.
+      </p>
+    </section>
 
-    <div id="feedback"></div>
+    <nav class="case-nav">
+      <a href="../index.html">Back to Cases</a>
+    </nav>
 
-</section>
-```
+  </main>
 
-</main>
-
-<!-- ===================================================== -->
-
-<!-- DIAGNOSTIC GUIDE MODAL                                -->
-
-<!-- ===================================================== -->
-
-<div id="guideModal" class="modal">
-
-```
-<div class="modal-content">
-
-    <span class="close">&times;</span>
-
-    <h2>BIOL 334 Unknown Identification Guide</h2>
-
-    <ol>
-
-        <li>
-            Perform a Gram Stain
-            <ul>
-                <li>Gram-positive cocci → Step 2</li>
-                <li>Gram-positive rods → Step 5</li>
-                <li>Gram-negative rods → Step 6</li>
-            </ul>
-        </li>
-
-        <li>
-            Catalase Test
-            <ul>
-                <li>Catalase positive → Step 3</li>
-                <li>Catalase negative → Step 4</li>
-            </ul>
-        </li>
-
-        <li>
-            Coagulase Test
-            <ul>
-                <li>Positive → Staphylococcus aureus</li>
-                <li>Negative → Staphylococcus epidermidis</li>
-            </ul>
-        </li>
-
-        <li>
-            Blood Agar
-            <ul>
-                <li>Alpha hemolytic → Viridans streptococci</li>
-            </ul>
-        </li>
-
-        <li>
-            Endospore Stain
-            <ul>
-                <li>Positive → Bacillus cereus</li>
-            </ul>
-        </li>
-
-        <li>
-            MacConkey Agar
-            <ul>
-                <li>Pink colonies → Step 7</li>
-                <li>Colorless colonies → Step 8</li>
-            </ul>
-        </li>
-
-        <li>
-            Lactose Fermenters
-            <ul>
-                <li>Indole positive → Escherichia coli</li>
-                <li>Sorbitol negative → E. coli O157:H7</li>
-                <li>Citrate positive → Klebsiella aerogenes</li>
-            </ul>
-        </li>
-
-        <li>
-            Non-Lactose Fermenters
-            <ul>
-                <li>Oxidase positive → Pseudomonas aeruginosa</li>
-                <li>Urease positive → Proteus mirabilis</li>
-            </ul>
-        </li>
-
-    </ol>
-
-</div>
-```
-
-</div>
-
-<!-- ===================================================== -->
-
-<!-- START REPLACE CASE JS FILE                            -->
-
-<!-- ===================================================== -->
-
-<script src="../js/case-template.js"></script>
-
-<script src="../js/vap.js"></script>
-
-<!-- ===================================================== -->
-
-<!-- STOP REPLACE CASE JS FILE                             -->
-
-<!-- ===================================================== -->
-
+  <script src="../js/vap.js"></script>
 </body>
 </html>
