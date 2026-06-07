@@ -49,21 +49,19 @@ function orderTest(testName) {
     const card = document.createElement("div");
     card.className = "result-card";
 
-    card.innerHTML = `
-        <h4>${test.title}</h4>
+card.innerHTML = `
+    <h3>${test.title}</h3>
 
-        ${test.image ? `
-            <img src="${test.image}" alt="${test.title}">
-        ` : ""}
+    <p>${test.prompt}</p>
 
-        ${test.prompt ? `
-            <p><strong>Interpret this result:</strong> ${test.prompt}</p>
-        ` : ""}
-
-        ${test.note ? `
-            <p class="result-note">${test.note}</p>
-        ` : ""}
-    `;
+    <div class="image-container">
+        <img
+            src="${test.image}"
+            alt="${test.title}"
+            class="test-image"
+        >
+    </div>
+`;
 
     resultsBox.prepend(card);
 }
