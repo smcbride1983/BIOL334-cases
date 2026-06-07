@@ -44,7 +44,7 @@ const testResults = {
 
     macconkey: {
         title: "MacConkey Agar",
-        image: "../images/Maconkey/maconkey_nlf.jpg",
+        image: "../images/Maconkey/maconkey_negative.jpg",
         prompt: "Evaluate growth and lactose fermentation."
     },
 
