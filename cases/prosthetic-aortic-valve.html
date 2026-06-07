@@ -32,39 +32,79 @@
 <!-- START REPLACE PATIENT INFORMATION                     -->
 <!-- ===================================================== -->
 
-<div class="patient-banner">
-    <h3>William Osler</h3>
-    <p>67-year-old patient</p>
+<section class="card">
+
+    <div class="patient-banner">
+        <h3>William Osler</h3>
+
+        <p>67-year-old patient</p>
+
+        <p>
+            <strong>Chief Concern:</strong>
+            Fever, fatigue, and night sweats following prosthetic valve replacement.
+        </p>
+    </div>
+
+    <h3>Patient Background</h3>
 
     <p>
-        <strong>Chief Concern:</strong>
-        Fever, fatigue, and night sweats following prosthetic valve replacement.
+        William Osler underwent placement of a prosthetic aortic valve six months ago.
+        He presents with fatigue, fever, night sweats, mild shortness of breath,
+        and swelling in his ankles.
     </p>
-</div>
 
-<h3>Patient Background</h3>
+    <h3>Clinical Findings</h3>
 
-<p>
-William Osler underwent placement of a prosthetic aortic valve six months ago.
-He presents with fatigue, fever, night sweats, mild shortness of breath, and
-swelling in his ankles.
-</p>
+    <table>
+        <tr>
+            <th>Finding</th>
+            <th>Result</th>
+        </tr>
 
-<h3>Clinical Findings</h3>
+        <tr>
+            <td>Temperature</td>
+            <td>101.9°F</td>
+        </tr>
 
-<table>
-<tr><th>Finding</th><th>Result</th></tr>
-<tr><td>Temperature</td><td>101.9°F</td></tr>
-<tr><td>Heart Rate</td><td>110 bpm</td></tr>
-<tr><td>Blood Pressure</td><td>118/72 mm Hg</td></tr>
-<tr><td>Cardiac Exam</td><td>New holosystolic murmur</td></tr>
-<tr><td>Skin</td><td>Petechiae and splinter hemorrhages</td></tr>
-<tr><td>Echocardiogram</td><td>Vegetations on prosthetic valve</td></tr>
-<tr><td>WBC Count</td><td>15,600 /µL</td></tr>
-</table>
+        <tr>
+            <td>Heart Rate</td>
+            <td>110 bpm</td>
+        </tr>
 
-<h3>Available Sample</h3>
-<div class="sample-box">Blood Culture</div>
+        <tr>
+            <td>Blood Pressure</td>
+            <td>118/72 mm Hg</td>
+        </tr>
+
+        <tr>
+            <td>Cardiac Exam</td>
+            <td>New holosystolic murmur</td>
+        </tr>
+
+        <tr>
+            <td>Skin</td>
+            <td>Petechiae and splinter hemorrhages</td>
+        </tr>
+
+        <tr>
+            <td>Echocardiogram</td>
+            <td>Vegetations on prosthetic valve</td>
+        </tr>
+
+        <tr>
+            <td>WBC Count</td>
+            <td>15,600 /µL</td>
+        </tr>
+    </table>
+
+    <h3>Available Sample</h3>
+
+    <div class="sample-box">
+        Blood Culture
+    </div>
+
+</section>
+
 <!-- ===================================================== -->
 <!-- STOP REPLACE PATIENT INFORMATION                      -->
 <!-- ===================================================== -->
@@ -88,29 +128,18 @@ swelling in his ankles.
 
     <div class="test-grid">
 
-        <button onclick="orderTest('gram')">Gram Stain</button>
-
-        <button onclick="orderTest('bloodAgar')">Blood Agar</button>
-
-        <button onclick="orderTest('catalase')">Catalase</button>
-
-        <button onclick="orderTest('coagulase')">Coagulase</button>
-
-        <button onclick="orderTest('endospore')">Endospore Stain</button>
-
-        <button onclick="orderTest('macconkey')">MacConkey Agar</button>
-
-        <button onclick="orderTest('indole')">Indole Test</button>
-
-        <button onclick="orderTest('citrate')">Citrate Test</button>
-
-        <button onclick="orderTest('oxidase')">Oxidase Test</button>
-
-        <button onclick="orderTest('urease')">Urease Test</button>
-
-        <button onclick="orderTest('smac')">Sorbitol MacConkey</button>
-
-        <button onclick="orderTest('kirby')">Kirby-Bauer</button>
+        <button onclick="showTest('gram')">Gram Stain</button>
+        <button onclick="showTest('bloodAgar')">Blood Agar</button>
+        <button onclick="showTest('catalase')">Catalase</button>
+        <button onclick="showTest('coagulase')">Coagulase</button>
+        <button onclick="showTest('endospore')">Endospore Stain</button>
+        <button onclick="showTest('macconkey')">MacConkey Agar</button>
+        <button onclick="showTest('indole')">Indole Test</button>
+        <button onclick="showTest('citrate')">Citrate Test</button>
+        <button onclick="showTest('oxidase')">Oxidase Test</button>
+        <button onclick="showTest('urease')">Urease Test</button>
+        <button onclick="showTest('smac')">Sorbitol MacConkey</button>
+        <button onclick="showTest('kirby')">Kirby-Bauer</button>
 
     </div>
 
@@ -120,7 +149,7 @@ swelling in his ankles.
 
     <h2>Results</h2>
 
-    <div id="results-box">
+    <div id="test-results">
         No tests ordered yet.
     </div>
 
@@ -130,29 +159,16 @@ swelling in his ankles.
 
     <h2>Final Diagnosis</h2>
 
-    <label>
-        Most Likely Organism
-    </label>
-
     <input
         type="text"
-        id="diagnosis"
+        id="diagnosis-input"
         placeholder="Enter organism name">
 
-    <label>
-        Antibiotic Recommendation
-    </label>
-
-    <input
-        type="text"
-        id="treatment"
-        placeholder="Enter antibiotic">
-
-    <button onclick="checkDiagnosis()">
+    <button onclick="submitDiagnosis()">
         Submit Diagnosis
     </button>
 
-    <div id="feedback"></div>
+    <div id="diagnosis-feedback"></div>
 
 </section>
 ```
@@ -175,7 +191,6 @@ swelling in his ankles.
     <h2>BIOL 334 Unknown Identification Guide</h2>
 
     <ol>
-
         <li>
             Perform a Gram Stain
             <ul>
@@ -239,7 +254,6 @@ swelling in his ankles.
                 <li>Urease positive → Proteus mirabilis</li>
             </ul>
         </li>
-
     </ol>
 
 </div>
@@ -247,21 +261,9 @@ swelling in his ankles.
 
 </div>
 
-<!-- ===================================================== -->
-
-<!-- START REPLACE CASE JS FILE                            -->
-
-<!-- ===================================================== -->
-
 <script src="../js/case-template.js"></script>
 
 <script src="../js/prosthetic-aortic-valve.js"></script>
-
-<!-- ===================================================== -->
-
-<!-- STOP REPLACE CASE JS FILE                             -->
-
-<!-- ===================================================== -->
 
 </body>
 </html>
