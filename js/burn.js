@@ -1,200 +1,297 @@
+// ======================================================
+// CASE CONFIGURATION
+// ======================================================
+
 const correctDiagnosis = "Pseudomonas aeruginosa";
 
 const acceptedDiagnoses = [
-"pseudomonas aeruginosa",
-"p aeruginosa",
-"p. aeruginosa",
-"pseudomonas"
+    "pseudomonas aeruginosa",
+    "p aeruginosa",
+    "p. aeruginosa",
+    "pseudomonas",
+    "pseudo"
 ];
 
+// ======================================================
+// ACCEPTED TREATMENTS
+// ======================================================
+
 const acceptedTreatments = [
-"ciprofloxacin",
-"piperacillin-tazobactam",
-"cefepime"
+    "ciprofloxacin",
+    "ceftazidime",
+    "piperacillin",
+    "piperacillin-tazobactam",
+    "zosyn"
 ];
+
+// ======================================================
+// TEST DATABASE
+// ======================================================
 
 const testResults = {
 
-```
-gram: {
-    title: "Gram Stain",
-    image: "../images/gram/gram_negative_rods.jpg",
-    prompt: "Determine Gram reaction, morphology, and cellular arrangement."
-},
+    gram: {
+        title: "Gram Stain",
+        image: "../images/gram/gram_negative_rods.jpg",
+        prompt: "Determine the Gram reaction, morphology, and arrangement."
+    },
 
-bloodAgar: {
-    title: "Blood Agar",
-    image: "../images/blood/beta.jpg",
-    prompt: "Evaluate hemolysis pattern and colony morphology."
-},
+    bloodAgar: {
+        title: "Blood Agar",
+        image: "../images/blood/beta.jpg",
+        prompt: "Evaluate hemolysis pattern."
+    },
 
-catalase: {
-    title: "Catalase Test",
-    image: "../images/catalase/catalase_positive.jpg",
-    prompt: "Interpret the presence or absence of bubble formation."
-},
+    macconkey: {
+        title: "MacConkey Agar",
+        image: "../images/Maconkey/maconkey_non_lactose.jpg",
+        prompt: "Evaluate growth and lactose fermentation."
+    },
 
-coagulase: {
-    title: "Coagulase Test",
-    image: "../images/coagulase/coagulase_negative.jpg",
-    prompt: "Determine whether agglutination has occurred."
-},
+    oxidase: {
+        title: "Oxidase Test",
+        image: "../images/oxidase/oxidase_positive.jpg",
+        prompt: "Interpret the oxidase reaction."
+    },
 
-endospore: {
-    title: "Endospore Stain",
-    image: "../images/endospore/endospore_negative.jpg",
-    prompt: "Determine whether endospores are present."
-},
+    indole: {
+        title: "Indole Test",
+        image: "../images/indole/indole_negative.jpg",
+        prompt: "Interpret the color change following Kovac's reagent."
+    },
 
-macconkey: {
-    title: "MacConkey Agar",
-    image: "../images/maconkey/maconkey_colorless.jpg",
-    prompt: "Evaluate growth and lactose fermentation."
-},
+    citrate: {
+        title: "Citrate Test",
+        image: "../images/citrate/citrate_positive.jpg",
+        prompt: "Determine whether citrate is utilized."
+    },
 
-indole: {
-    title: "Indole Test",
-    image: "../images/indole/indole_negative.jpg",
-    prompt: "Interpret the color change following Kovac's reagent."
-},
+    urease: {
+        title: "Urease Test",
+        image: "../images/urease/urease_negative.jpg",
+        prompt: "Interpret the urease reaction."
+    },
 
-citrate: {
-    title: "Citrate Test",
-    image: "../images/citrate/citrate_positive.jpg",
-    prompt: "Determine whether citrate is utilized."
-},
+    kirby: {
+        type: "kirby",
 
-oxidase: {
-    title: "Oxidase Test",
-    image: "../images/oxidase/oxidase_positive.jpg",
-    prompt: "Interpret the oxidase reaction."
-},
+        title: "Kirby-Bauer Susceptibility Test",
 
-urease: {
-    title: "Urease Test",
-    image: "../images/urease/urease_negative.jpg",
-    prompt: "Interpret the urease reaction."
-},
+        prompt: "Use the measured zone diameter and interpretation chart to determine susceptibility.",
 
-smac: {
-    title: "Sorbitol MacConkey Agar",
-    image: "../images/smac/growth_positive.jpg",
-    prompt: "Evaluate growth and sorbitol fermentation."
-},
+        antibiotics: [
 
-kirby: {
-    type: "kirby",
-    title: "Kirby-Bauer Susceptibility Test",
-    prompt: "Determine which antibiotics are effective.",
+            {
+                antibiotic: "Penicillin",
+                zone: 6,
+                sensitive: "≥ 29 mm",
+                intermediate: "21–28 mm",
+                resistant: "≤ 20 mm"
+            },
 
-    antibiotics: [
-        {
-            antibiotic: "Ampicillin",
-            zone: 6,
-            sensitive: "≥17 mm",
-            intermediate: "14–16 mm",
-            resistant: "≤13 mm"
-        },
-        {
-            antibiotic: "Cefepime",
-            zone: 24,
-            sensitive: "≥18 mm",
-            intermediate: "15–17 mm",
-            resistant: "≤14 mm"
-        },
-        {
-            antibiotic: "Piperacillin-Tazobactam",
-            zone: 28,
-            sensitive: "≥21 mm",
-            intermediate: "18–20 mm",
-            resistant: "≤17 mm"
-        },
-        {
-            antibiotic: "Ciprofloxacin",
-            zone: 26,
-            sensitive: "≥21 mm",
-            intermediate: "16–20 mm",
-            resistant: "≤15 mm"
-        },
-        {
-            antibiotic: "Trimethoprim-Sulfamethoxazole",
-            zone: 8,
-            sensitive: "≥16 mm",
-            intermediate: "11–15 mm",
-            resistant: "≤10 mm"
-        }
-    ]
-}
-```
+            {
+                antibiotic: "Vancomycin",
+                zone: 6,
+                sensitive: "≥ 15 mm",
+                intermediate: "11–14 mm",
+                resistant: "≤ 10 mm"
+            },
+
+            {
+                antibiotic: "Ciprofloxacin",
+                zone: 28,
+                sensitive: "≥ 21 mm",
+                intermediate: "16–20 mm",
+                resistant: "≤ 15 mm"
+            },
+
+            {
+                antibiotic: "Ceftazidime",
+                zone: 24,
+                sensitive: "≥ 18 mm",
+                intermediate: "15–17 mm",
+                resistant: "≤ 14 mm"
+            },
+
+            {
+                antibiotic: "Piperacillin-Tazobactam",
+                zone: 26,
+                sensitive: "≥ 21 mm",
+                intermediate: "18–20 mm",
+                resistant: "≤ 17 mm"
+            }
+
+        ]
+    }
 
 };
+
+// ======================================================
+// TREATMENT CARDS
+// ======================================================
 
 const treatmentCards = {
 
-```
-ciprofloxacin: `
-<div class="result-card positive">
-    <h3>Treatment Card: Ciprofloxacin</h3>
-    <p><strong>Drug Class:</strong> Fluoroquinolone</p>
-    <p><strong>Mechanism:</strong> Inhibits DNA gyrase and topoisomerase IV.</p>
-    <p><strong>Clinical Pearl:</strong> One of the few oral antibiotics with reliable activity against Pseudomonas aeruginosa.</p>
-</div>
-`,
+    ciprofloxacin: `
+        <div class="result-card positive">
+            <h3>Treatment Card: Ciprofloxacin</h3>
 
-"piperacillin-tazobactam": `
-<div class="result-card positive">
-    <h3>Treatment Card: Piperacillin-Tazobactam</h3>
-    <p><strong>Drug Class:</strong> Extended-spectrum penicillin + β-lactamase inhibitor</p>
-    <p><strong>Mechanism:</strong> Inhibits bacterial cell wall synthesis.</p>
-    <p><strong>Clinical Pearl:</strong> Commonly used for serious hospital-acquired Pseudomonas infections.</p>
-</div>
-`,
+            <p><strong>Drug Class:</strong> Fluoroquinolone</p>
 
-cefepime: `
-<div class="result-card positive">
-    <h3>Treatment Card: Cefepime</h3>
-    <p><strong>Drug Class:</strong> Fourth-generation cephalosporin</p>
-    <p><strong>Mechanism:</strong> Inhibits bacterial cell wall synthesis.</p>
-    <p><strong>Clinical Pearl:</strong> Frequently used for severe burn wound and ventilator-associated Pseudomonas infections.</p>
-</div>
-`
-```
+            <p>
+                <strong>Mechanism of Action:</strong>
+                Inhibits bacterial DNA gyrase and topoisomerase IV,
+                preventing DNA replication.
+            </p>
 
+            <p>
+                <strong>Why It Works:</strong>
+                The isolate produced a 28 mm zone diameter,
+                indicating susceptibility.
+            </p>
+
+            <p>
+                <strong>Clinical Pearl:</strong>
+                Ciprofloxacin is one of the few oral antibiotics
+                with activity against Pseudomonas aeruginosa.
+            </p>
+        </div>
+    `,
+
+    ceftazidime: `
+        <div class="result-card positive">
+            <h3>Treatment Card: Ceftazidime</h3>
+
+            <p><strong>Drug Class:</strong> Third-generation cephalosporin</p>
+
+            <p>
+                <strong>Mechanism of Action:</strong>
+                Inhibits bacterial cell wall synthesis.
+            </p>
+
+            <p>
+                <strong>Why It Works:</strong>
+                The isolate produced a 24 mm zone diameter,
+                indicating susceptibility.
+            </p>
+
+            <p>
+                <strong>Clinical Pearl:</strong>
+                Ceftazidime is commonly used for serious
+                Pseudomonas infections in hospitalized patients.
+            </p>
+        </div>
+    `,
+
+    piperacillin: `
+        <div class="result-card positive">
+            <h3>Treatment Card: Piperacillin-Tazobactam</h3>
+
+            <p><strong>Drug Class:</strong> Extended-spectrum penicillin + β-lactamase inhibitor</p>
+
+            <p>
+                <strong>Mechanism of Action:</strong>
+                Inhibits bacterial cell wall synthesis while
+                tazobactam protects the antibiotic from degradation.
+            </p>
+
+            <p>
+                <strong>Why It Works:</strong>
+                The isolate produced a 26 mm zone diameter,
+                indicating susceptibility.
+            </p>
+
+            <p>
+                <strong>Clinical Pearl:</strong>
+                Piperacillin-tazobactam is frequently used
+                empirically for severe burn wound infections.
+            </p>
+        </div>
+    `,
+
+    "piperacillin-tazobactam": `
+        <div class="result-card positive">
+            <h3>Treatment Card: Piperacillin-Tazobactam</h3>
+
+            <p><strong>Drug Class:</strong> Extended-spectrum penicillin + β-lactamase inhibitor</p>
+
+            <p>
+                <strong>Mechanism of Action:</strong>
+                Inhibits bacterial cell wall synthesis while
+                tazobactam protects the antibiotic from degradation.
+            </p>
+
+            <p>
+                <strong>Why It Works:</strong>
+                The isolate produced a 26 mm zone diameter,
+                indicating susceptibility.
+            </p>
+
+            <p>
+                <strong>Clinical Pearl:</strong>
+                Piperacillin-tazobactam is frequently used
+                empirically for severe burn wound infections.
+            </p>
+        </div>
+    `,
+
+    zosyn: `
+        <div class="result-card positive">
+            <h3>Treatment Card: Piperacillin-Tazobactam (Zosyn)</h3>
+
+            <p>
+                Zosyn is the trade name for piperacillin-tazobactam
+                and is an appropriate treatment choice.
+            </p>
+        </div>
+    `
 };
 
-const caseReviewCard = `
+// ======================================================
+// CASE REVIEW CARD
+// ======================================================
 
+const caseReviewCard = `
 <div class="result-card">
 
-<h3>Case Review: Burn Wound Infection</h3>
+    <h3>Case Review: Burn Wound Infection</h3>
 
-<p>
-<strong>Green-Blue Exudate:</strong>
-Pseudomonas produces pigments including pyocyanin and pyoverdine that can
-give wound drainage a blue-green appearance.
-</p>
+    <p>
+        <strong>Burn Injury:</strong>
+        Burns damage the skin barrier, providing microorganisms
+        direct access to underlying tissue.
+    </p>
 
-<p>
-<strong>Sweet Grape-Like Odor:</strong>
-A characteristic feature often associated with Pseudomonas aeruginosa.
-</p>
+    <p>
+        <strong>Green-Blue Exudate:</strong>
+        Pseudomonas aeruginosa commonly produces pigments
+        such as pyocyanin and pyoverdine that can discolor wounds.
+    </p>
 
-<p>
-<strong>Burn Wounds:</strong>
-Burned tissue lacks normal protective barriers and provides an ideal
-environment for opportunistic pathogens.
-</p>
+    <p>
+        <strong>Sweet Grape-Like Odor:</strong>
+        A distinctive fruity odor is a classic clue
+        associated with Pseudomonas infections.
+    </p>
 
-<p>
-<strong>Elevated White Blood Cell Count:</strong>
-Reflects activation of the immune response against infection.
-</p>
+    <p>
+        <strong>Necrotic Tissue:</strong>
+        Pseudomonas produces enzymes and toxins that
+        contribute to tissue destruction.
+    </p>
 
-<p>
-<strong>Clinical Pearl:</strong>
-Pseudomonas aeruginosa is a major cause of burn wound infections and is
-notorious for antibiotic resistance.
-</p>
+    <p>
+        <strong>Elevated WBC Count:</strong>
+        The immune system is actively responding
+        to bacterial infection.
+    </p>
+
+    <p>
+        <strong>Clinical Pearl:</strong>
+        Burn patients are particularly vulnerable to
+        opportunistic pathogens because the protective
+        skin barrier has been disrupted.
+    </p>
 
 </div>
 `;
