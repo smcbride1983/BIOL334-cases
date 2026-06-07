@@ -3,15 +3,15 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Case 03 - Post-Surgical Wound Infection</title>
+    <title>Case 04 - Burn Wound Infection</title>
 
     <link rel="stylesheet" href="../css/style.css">
 </head>
 <body>
 
 <header>
-    <h1>Case 03: Post-Surgical Wound Infection</h1>
-    <p>BIOL 334 Clinical Microbiology Case Study</p>
+    <h1>🔥 Case 04: Burn Wound Infection</h1>
+    <p>BIOL 334 Clinical Microbiology Case Studies</p>
 </header>
 
 <main class="case-container">
@@ -20,51 +20,41 @@
 
     <section class="card">
 
-        <h2>Patient Background</h2>
+        <h2>Patient Chart</h2>
 
         <div class="patient-banner">
-            <h3>Alex Ogston</h3>
-            <p>45-year-old man</p>
+            <h3>John Govan</h3>
+            <p>32-year-old male</p>
         </div>
 
+        <h3>History</h3>
+
         <p>
-            Alex Ogston underwent arthroscopic knee surgery two weeks ago to repair
-            a torn meniscus. His recovery was initially uneventful, but over the last
-            four days he has noticed increasing redness, warmth, swelling, and pain
-            around the incision site.
+            John Govan is a 32-year-old man who sustained second-degree burns
+            on his right forearm during a kitchen accident five days ago.
+            The burns were initially treated at home, but over the last two days
+            he has experienced worsening pain, swelling, and drainage from the wound.
         </p>
 
         <p>
-            The wound now drains cloudy yellow fluid, and Alex reports a low-grade
-            fever and increasing stiffness in the affected knee. He has no signs of
-            deep abscess formation at this time, but the surgeon is concerned that a
-            bacterial surgical-site infection is developing.
+            He reports increasing fatigue, fever, and tenderness around the burn site.
         </p>
 
         <h3>Clinical Findings</h3>
 
         <ul>
-            <li>Temperature: 101.4°F</li>
-            <li>Heart rate: 102 bpm</li>
-            <li>Blood pressure: 122/76 mm Hg</li>
-            <li>Surgical site: erythematous, warm, swollen, and tender</li>
-            <li>Drainage: purulent yellow fluid from incision line</li>
-            <li>Joint: mild stiffness with movement</li>
-            <li>WBC: 14,600 /µL with neutrophil predominance</li>
+            <li>Temperature: 101.8°F</li>
+            <li>Heart Rate: 110 bpm</li>
+            <li>WBC Count: 17,200 /µL</li>
+            <li>Marked neutrophilia</li>
+            <li>Burn wound surrounded by erythema</li>
+            <li>Areas of necrotic tissue present</li>
+            <li>Greenish-blue wound exudate</li>
+            <li>Distinct sweet, grape-like odor</li>
         </ul>
 
-        <h3>Hospital Concern</h3>
-
-        <p>
-            The surgeon suspects a post-surgical wound infection caused by a
-            skin-associated bacterium introduced during or shortly after the
-            procedure. The purulent drainage and increased inflammation raise
-            concern for a more aggressive wound pathogen rather than a low-virulence
-            contaminant.
-        </p>
-
         <div class="sample-box">
-            Sample Collected: Wound swab from purulent drainage
+            Sample Collected: Wound Exudate Swab
         </div>
 
     </section>
@@ -83,7 +73,7 @@
 
     <section class="card">
 
-        <h2>Order Laboratory Tests</h2>
+        <h2>Laboratory Tests</h2>
 
         <div class="counter">
             Tests Ordered:
@@ -92,18 +82,37 @@
 
         <div class="test-grid">
 
-            <button onclick="showTest('gram')">Gram Stain</button>
-            <button onclick="showTest('bloodAgar')">Blood Agar</button>
-            <button onclick="showTest('catalase')">Catalase Test</button>
-            <button onclick="showTest('coagulase')">Coagulase Test</button>
-            <button onclick="showTest('macconkey')">MacConkey Agar</button>
-            <button onclick="showTest('endospore')">Endospore Stain</button>
-            <button onclick="showTest('oxidase')">Oxidase Test</button>
-            <button onclick="showTest('indole')">Indole Test</button>
-            <button onclick="showTest('citrate')">Citrate Test</button>
-            <button onclick="showTest('urease')">Urease Test</button>
-            <button onclick="showTest('smac')">Sorbitol MacConkey Agar</button>
-            <button onclick="showTest('kirby')">Kirby-Bauer Test</button>
+            <button class="test-btn" onclick="showTest('gram')">
+                Gram Stain
+            </button>
+
+            <button class="test-btn" onclick="showTest('bloodAgar')">
+                Blood Agar
+            </button>
+
+            <button class="test-btn" onclick="showTest('macconkey')">
+                MacConkey Agar
+            </button>
+
+            <button class="test-btn" onclick="showTest('oxidase')">
+                Oxidase
+            </button>
+
+            <button class="test-btn" onclick="showTest('indole')">
+                Indole
+            </button>
+
+            <button class="test-btn" onclick="showTest('citrate')">
+                Citrate
+            </button>
+
+            <button class="test-btn" onclick="showTest('urease')">
+                Urease
+            </button>
+
+            <button class="test-btn" onclick="showTest('kirby')">
+                Kirby-Bauer
+            </button>
 
         </div>
 
@@ -111,7 +120,7 @@
 
     <section class="card">
 
-        <h2>Laboratory Results</h2>
+        <h2>Test Results</h2>
 
         <div id="test-results">
             No tests ordered yet.
@@ -123,32 +132,24 @@
 
         <h2>Identify the Organism</h2>
 
-        <p>
-            Use the clinical information and laboratory results to identify the
-            most likely bacterial cause of this wound infection.
-        </p>
-
         <input
             type="text"
             id="diagnosis-input"
-            placeholder="Enter organism name">
+            placeholder="Enter organism">
 
         <button onclick="submitDiagnosis()">
-            Submit Diagnosis
+            Submit Identification
         </button>
 
         <div id="diagnosis-feedback"></div>
 
     </section>
 
-    <section id="treatment-section" class="card hidden">
+    <section
+        id="treatment-section"
+        class="card hidden">
 
-        <h2>Recommend Treatment</h2>
-
-        <p>
-            After identifying the organism, use the Kirby-Bauer susceptibility
-            results to recommend an appropriate antibiotic.
-        </p>
+        <h2>Select Treatment</h2>
 
         <input
             type="text"
@@ -165,12 +166,8 @@
 
 </main>
 
-<footer>
-    <p>BIOL 334 Clinical Microbiology</p>
-</footer>
-
 <script src="../js/case-template.js"></script>
-<script src="../js/wound.js"></script>
+<script src="../js/burn.js"></script>
 
 </body>
 </html>
