@@ -1,51 +1,193 @@
-const testResults = {
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Case 06 - Bloody Diarrhea</title>
 
-    gram: {
-        title: "Gram Stain",
-        image: "../images/gram/gram_negative_rods.jpg",
-        prompt: "Determine the Gram reaction, morphology, and arrangement."
-    },
+    <link rel="stylesheet" href="../css/style.css">
+</head>
+<body>
 
-    macconkey: {
-        title: "MacConkey Agar",
-        image: "../images/Maconkey/lactose_positive.jpg",
-        prompt: "Evaluate growth and lactose fermentation."
-    },
+<header>
+    <h1>🩸 Case 06: Bloody Diarrhea</h1>
+    <p>BIOL 334 Clinical Microbiology Case Studies</p>
+</header>
 
-    indole: {
-        title: "Indole Test",
-        image: "../images/indole/indole_positive.jpg",
-        prompt: "Interpret the color change following Kovac's reagent."
-    },
+<main class="case-container">
 
-    citrate: {
-        title: "Citrate Test",
-        image: "../images/citrate/citrate_negative.jpg",
-        prompt: "Determine whether citrate is utilized."
-    },
+    <a href="../index.html" class="back-link">← Back to Cases</a>
 
-    oxidase: {
-        title: "Oxidase Test",
-        image: "../images/oxidase/oxidase_negative.jpg",
-        prompt: "Interpret the oxidase reaction."
-    },
+    <section class="card">
 
-    urease: {
-        title: "Urease Test",
-        image: "../images/urease/urease_negative.jpg",
-        prompt: "Interpret the urease reaction."
-    },
+        <h2>Patient Chart</h2>
 
-    endospore: {
-        title: "Endospore Stain",
-        image: "../images/endospore/endospore_negative.jpg",
-        prompt: "Determine whether endospores are present."
-    },
+        <div class="patient-banner">
+            <h3>Jacob Anderson</h3>
+            <p>19-year-old male</p>
+        </div>
 
-    smac: {
-        title: "Sorbitol MacConkey Agar",
-        image: "../images/smac/sorbitol_negative.jpg",
-        prompt: "Evaluate growth and sorbitol fermentation."
-    }
+        <h3>History</h3>
 
-};
+        <p>
+            Jacob Anderson is a 19-year-old college student who presents
+            to the emergency department with severe abdominal cramping and
+            bloody diarrhea that began approximately 24 hours ago.
+        </p>
+
+        <p>
+            Three days earlier he attended a community picnic where he
+            consumed hamburgers, potato salad, and other outdoor foods.
+            Several friends report mild gastrointestinal illness, but
+            Jacob's symptoms have become progressively worse.
+        </p>
+
+        <p>
+            He denies recent antibiotic use or international travel.
+        </p>
+
+        <h3>Clinical Findings</h3>
+
+        <ul>
+            <li>Temperature: 99.1°F</li>
+            <li>Heart Rate: 102 bpm</li>
+            <li>Blood Pressure: 110/68 mmHg</li>
+            <li>Severe abdominal cramping</li>
+            <li>Frequent bloody diarrhea</li>
+            <li>No leukocytes observed in stool smear</li>
+            <li>Mild dehydration</li>
+            <li>Nausea without vomiting</li>
+        </ul>
+
+        <h3>Initial Laboratory Results</h3>
+
+        <ul>
+            <li>WBC Count: 10,400 /µL</li>
+            <li>Hemoglobin: Normal</li>
+            <li>Platelet Count: Normal</li>
+            <li>Serum Creatinine: Slightly elevated</li>
+            <li>Urinalysis: Trace protein and red blood cells</li>
+        </ul>
+
+        <div class="sample-box">
+            Sample Collected: Stool Specimen
+        </div>
+
+    </section>
+
+    <section class="card">
+
+        <button id="guideBtn" class="guide-btn">
+            Open Diagnostic Guide
+        </button>
+
+        <div id="diagnostic-guide" class="hidden">
+            <div id="guide-content"></div>
+        </div>
+
+    </section>
+
+    <section class="card">
+
+        <h2>Laboratory Tests</h2>
+
+        <div class="counter">
+            Tests Ordered:
+            <span id="test-count">0</span>
+        </div>
+
+        <div class="test-grid">
+
+            <button class="test-btn" onclick="showTest('gram')">
+                Gram Stain
+            </button>
+
+            <button class="test-btn" onclick="showTest('bloodAgar')">
+                Blood Agar
+            </button>
+
+            <button class="test-btn" onclick="showTest('macconkey')">
+                MacConkey Agar
+            </button>
+
+            <button class="test-btn" onclick="showTest('smac')">
+                Sorbitol MacConkey
+            </button>
+
+            <button class="test-btn" onclick="showTest('oxidase')">
+                Oxidase
+            </button>
+
+            <button class="test-btn" onclick="showTest('indole')">
+                Indole
+            </button>
+
+            <button class="test-btn" onclick="showTest('citrate')">
+                Citrate
+            </button>
+
+            <button class="test-btn" onclick="showTest('urease')">
+                Urease
+            </button>
+
+            <button class="test-btn" onclick="showTest('kirby')">
+                Kirby-Bauer
+            </button>
+
+        </div>
+
+    </section>
+
+    <section class="card">
+
+        <h2>Test Results</h2>
+
+        <div id="test-results">
+            No tests ordered yet.
+        </div>
+
+    </section>
+
+    <section class="card">
+
+        <h2>Identify the Organism</h2>
+
+        <input
+            type="text"
+            id="diagnosis-input"
+            placeholder="Enter organism">
+
+        <button onclick="submitDiagnosis()">
+            Submit Identification
+        </button>
+
+        <div id="diagnosis-feedback"></div>
+
+    </section>
+
+    <section
+        id="treatment-section"
+        class="card hidden">
+
+        <h2>Select Treatment</h2>
+
+        <input
+            type="text"
+            id="treatment-input"
+            placeholder="Enter treatment">
+
+        <button onclick="submitTreatment()">
+            Submit Treatment
+        </button>
+
+        <div id="treatment-feedback"></div>
+
+    </section>
+
+</main>
+
+<script src="../js/case-template.js"></script>
+<script src="../js/bloody-diarrhea.js"></script>
+
+</body>
+</html>
