@@ -1,265 +1,163 @@
 <!DOCTYPE html>
-
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Case 03 - Post-Surgical Wound Infection</title>
 
-```
-<title>Case X: Disease Name</title>
-
-<link rel="stylesheet" href="../css/style.css">
-```
-
+    <link rel="stylesheet" href="../css/style.css">
 </head>
-
 <body>
 
 <header>
-    <h1>BIOL 334 Clinical Microbiology Case Studies</h1>
-    <p>Case X: Disease Name</p>
+    <h1>Case 03: Post-Surgical Wound Infection</h1>
+    <p>BIOL 334 Clinical Microbiology Case Study</p>
 </header>
 
 <main class="case-container">
 
-```
-<a href="../index.html" class="back-link">
-    ← Return to Case Selection
-</a>
+    <a href="../index.html" class="back-link">← Back to Cases</a>
 
-<!-- ===================================================== -->
-<!-- START REPLACE PATIENT INFORMATION                     -->
-<!-- ===================================================== -->
+    <section class="card">
 
-<div class="patient-banner">
-    <h3>Alex Ogston</h3>
-    <p>45-year-old patient</p>
+        <h2>Patient History</h2>
 
-    <p>
-        <strong>Chief Concern:</strong>
-        Redness and drainage from a surgical incision.
-    </p>
-</div>
+        <div class="patient-banner">
+            <h3>Alex Ogston</h3>
+            <p>45-year-old male</p>
+        </div>
 
-<h3>Patient Background</h3>
+        <p>
+            Alex Ogston underwent arthroscopic knee surgery two weeks ago to repair
+            a torn meniscus. His recovery was initially uneventful, but over the
+            last four days he has developed increasing redness, warmth, and pain
+            around the surgical incision.
+        </p>
 
-<p>
-Alex Ogston underwent arthroscopic knee surgery two weeks ago. Over the past
-three days he has noticed increasing redness, swelling, drainage, and stiffness.
-</p>
+        <p>
+            He reports worsening tenderness, low-grade fever, and drainage from
+            the wound site. Walking has become increasingly uncomfortable.
+        </p>
 
-<h3>Clinical Findings</h3>
+        <h3>Clinical Findings</h3>
 
-<table>
-<tr><th>Finding</th><th>Result</th></tr>
-<tr><td>Temperature</td><td>100.6°F</td></tr>
-<tr><td>Heart Rate</td><td>96 bpm</td></tr>
-<tr><td>Surgical Site</td><td>Erythematous with serous drainage</td></tr>
-<tr><td>Abscess</td><td>None observed</td></tr>
-<tr><td>WBC Count</td><td>11,800 /µL</td></tr>
-</table>
+        <ul>
+            <li>Temperature: 101.4°F</li>
+            <li>Heart Rate: 102 bpm</li>
+            <li>Blood Pressure: 122/76 mm Hg</li>
+            <li>Surgical site erythematous and warm</li>
+            <li>Purulent yellow drainage present</li>
+            <li>Moderate swelling around incision</li>
+            <li>WBC: 14,600 /µL</li>
+        </ul>
 
-<h3>Available Sample</h3>
-<div class="sample-box">Wound Swab</div>
+        <div class="sample-box">
+            Sample Collected: Wound Swab
+        </div>
 
-<!-- ===================================================== -->
-<!-- STOP REPLACE PATIENT INFORMATION                      -->
-<!-- ===================================================== -->
+    </section>
 
-<section class="card">
+    <section class="card">
 
-    <button id="guideBtn" class="guide-btn">
-        🔬 Open Diagnostic Guide
-    </button>
+        <button id="guideBtn" class="guide-btn">
+            Open Diagnostic Guide
+        </button>
 
-</section>
+        <div id="diagnostic-guide" class="hidden">
+            <div id="guide-content"></div>
+        </div>
 
-<section class="card">
+    </section>
 
-    <h2>Order Diagnostic Tests</h2>
+    <section class="card">
 
-    <div class="counter">
-        Tests Ordered:
-        <span id="test-count">0</span>
-    </div>
+        <h2>Order Laboratory Tests</h2>
 
-    <div class="test-grid">
+        <div class="counter">
+            Tests Ordered:
+            <span id="test-count">0</span>
+        </div>
 
-        <button onclick="orderTest('gram')">Gram Stain</button>
+        <div class="test-grid">
 
-        <button onclick="orderTest('bloodAgar')">Blood Agar</button>
+            <button onclick="showTest('gram')">Gram Stain</button>
 
-        <button onclick="orderTest('catalase')">Catalase</button>
+            <button onclick="showTest('bloodAgar')">Blood Agar</button>
 
-        <button onclick="orderTest('coagulase')">Coagulase</button>
+            <button onclick="showTest('catalase')">Catalase</button>
 
-        <button onclick="orderTest('endospore')">Endospore Stain</button>
+            <button onclick="showTest('coagulase')">Coagulase</button>
 
-        <button onclick="orderTest('macconkey')">MacConkey Agar</button>
+            <button onclick="showTest('macconkey')">MacConkey Agar</button>
 
-        <button onclick="orderTest('indole')">Indole Test</button>
+            <button onclick="showTest('endospore')">Endospore Stain</button>
 
-        <button onclick="orderTest('citrate')">Citrate Test</button>
+            <button onclick="showTest('oxidase')">Oxidase</button>
 
-        <button onclick="orderTest('oxidase')">Oxidase Test</button>
+            <button onclick="showTest('indole')">Indole</button>
 
-        <button onclick="orderTest('urease')">Urease Test</button>
+            <button onclick="showTest('citrate')">Citrate</button>
 
-        <button onclick="orderTest('smac')">Sorbitol MacConkey</button>
+            <button onclick="showTest('urease')">Urease</button>
 
-        <button onclick="orderTest('kirby')">Kirby-Bauer</button>
+            <button onclick="showTest('kirby')">
+                Kirby-Bauer
+            </button>
 
-    </div>
+        </div>
 
-</section>
+    </section>
 
-<section class="card">
+    <section class="card">
 
-    <h2>Results</h2>
+        <h2>Laboratory Results</h2>
 
-    <div id="results-box">
-        No tests ordered yet.
-    </div>
+        <div id="test-results">
+            No tests ordered yet.
+        </div>
 
-</section>
+    </section>
 
-<section class="card">
+    <section class="card">
 
-    <h2>Final Diagnosis</h2>
+        <h2>Identify the Organism</h2>
 
-    <label>
-        Most Likely Organism
-    </label>
+        <input
+            type="text"
+            id="diagnosis-input"
+            placeholder="Enter organism name">
 
-    <input
-        type="text"
-        id="diagnosis"
-        placeholder="Enter organism name">
+        <button onclick="submitDiagnosis()">
+            Submit Diagnosis
+        </button>
 
-    <label>
-        Antibiotic Recommendation
-    </label>
+        <div id="diagnosis-feedback"></div>
 
-    <input
-        type="text"
-        id="treatment"
-        placeholder="Enter antibiotic">
+    </section>
 
-    <button onclick="checkDiagnosis()">
-        Submit Diagnosis
-    </button>
+    <section
+        id="treatment-section"
+        class="card hidden">
 
-    <div id="feedback"></div>
+        <h2>Recommend Treatment</h2>
 
-</section>
-```
+        <input
+            type="text"
+            id="treatment-input"
+            placeholder="Enter antibiotic">
+
+        <button onclick="submitTreatment()">
+            Submit Treatment
+        </button>
+
+        <div id="treatment-feedback"></div>
+
+    </section>
 
 </main>
 
-<!-- ===================================================== -->
-
-<!-- DIAGNOSTIC GUIDE MODAL                                -->
-
-<!-- ===================================================== -->
-
-<div id="guideModal" class="modal">
-
-```
-<div class="modal-content">
-
-    <span class="close">&times;</span>
-
-    <h2>BIOL 334 Unknown Identification Guide</h2>
-
-    <ol>
-
-        <li>
-            Perform a Gram Stain
-            <ul>
-                <li>Gram-positive cocci → Step 2</li>
-                <li>Gram-positive rods → Step 5</li>
-                <li>Gram-negative rods → Step 6</li>
-            </ul>
-        </li>
-
-        <li>
-            Catalase Test
-            <ul>
-                <li>Catalase positive → Step 3</li>
-                <li>Catalase negative → Step 4</li>
-            </ul>
-        </li>
-
-        <li>
-            Coagulase Test
-            <ul>
-                <li>Positive → Staphylococcus aureus</li>
-                <li>Negative → Staphylococcus epidermidis</li>
-            </ul>
-        </li>
-
-        <li>
-            Blood Agar
-            <ul>
-                <li>Alpha hemolytic → Viridans streptococci</li>
-            </ul>
-        </li>
-
-        <li>
-            Endospore Stain
-            <ul>
-                <li>Positive → Bacillus cereus</li>
-            </ul>
-        </li>
-
-        <li>
-            MacConkey Agar
-            <ul>
-                <li>Pink colonies → Step 7</li>
-                <li>Colorless colonies → Step 8</li>
-            </ul>
-        </li>
-
-        <li>
-            Lactose Fermenters
-            <ul>
-                <li>Indole positive → Escherichia coli</li>
-                <li>Sorbitol negative → E. coli O157:H7</li>
-                <li>Citrate positive → Klebsiella aerogenes</li>
-            </ul>
-        </li>
-
-        <li>
-            Non-Lactose Fermenters
-            <ul>
-                <li>Oxidase positive → Pseudomonas aeruginosa</li>
-                <li>Urease positive → Proteus mirabilis</li>
-            </ul>
-        </li>
-
-    </ol>
-
-</div>
-```
-
-</div>
-
-<!-- ===================================================== -->
-
-<!-- START REPLACE CASE JS FILE                            -->
-
-<!-- ===================================================== -->
-
 <script src="../js/case-template.js"></script>
-
 <script src="../js/wound.js"></script>
-
-<!-- ===================================================== -->
-
-<!-- STOP REPLACE CASE JS FILE                             -->
-
-<!-- ===================================================== -->
 
 </body>
 </html>
