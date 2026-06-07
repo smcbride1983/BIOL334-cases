@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Case Study: Neonatal Meningitis</title>
+    <link rel="stylesheet" href="../css/style.css">
+</head>
+
+<body>
+
+<header>
+    <h1>🧠 Case Study: Neonatal Meningitis</h1>
+    <p>BIOL 334 Clinical Microbiology Case Study</p>
+</header>
+
+<main class="case-container">
+
+    <a href="../index.html" class="back-link">← Back to Case List</a>
+
+    <section class="card">
+        <span class="badge">Case 6</span>
+        <h2>Patient Chart</h2>
+
+        <div class="patient-banner">
+            <h3>Abigail Salyers</h3>
+            <p><strong>Age:</strong> 5 days old</p>
+            <p><strong>Setting:</strong> Neonatal Intensive Care Unit</p>
+            <p><strong>Chief Concern:</strong> Lethargy, poor feeding, fever, apnea, and high-pitched cry</p>
+        </div>
+
+        <h3>Patient Background</h3>
+        <p>
+            Abigail Salyers, a 5-day-old premature infant born at 33 weeks gestation,
+            was admitted to the neonatal intensive care unit after delivery due to mild
+            respiratory distress. She initially improved with oxygen therapy and feeding
+            support.
+        </p>
+
+        <p>
+            On day 5, nurses note that she has become lethargic, is feeding poorly,
+            and has intermittent episodes of apnea. Her temperature is elevated and
+            she exhibits a high-pitched cry when handled.
+        </p>
+
+        <h3>Clinical Findings</h3>
+        <ul>
+            <li><strong>Temperature:</strong> 101.5 °F</li>
+            <li><strong>Heart rate:</strong> 180 bpm</li>
+            <li><strong>Respiratory rate:</strong> 42 breaths/min</li>
+            <li><strong>Blood pressure:</strong> 68/40 mm Hg</li>
+            <li><strong>Neurologic exam:</strong> bulging fontanelle, mild neck rigidity</li>
+            <li><strong>CBC:</strong> WBC 19,600/µL with neutrophil predominance</li>
+            <li><strong>Blood glucose:</strong> low</li>
+        </ul>
+
+        <div class="sample-box">
+            Sample Collected: Cerebrospinal fluid CSF
+        </div>
+
+        <h3>Hospital Concern</h3>
+        <p>
+            The medical team suspects bacterial meningitis in a neonate. Premature
+            infants have immature immune systems and are vulnerable to invasive
+            infections acquired before birth, during delivery, or in the hospital
+            environment.
+        </p>
+    </section>
+
+    <section class="card">
+        <h2>Diagnostic Tests</h2>
+
+        <div class="counter">
+            Tests Ordered: <span id="test-count">0</span>
+        </div>
+
+        <button id="guideBtn" class="guide-btn">
+            Open Diagnostic Guide
+        </button>
+
+        <div id="diagnostic-guide" class="guide-box hidden">
+            <div id="guide-content"></div>
+        </div>
+
+        <div class="test-grid">
+            <button class="test-btn" onclick="showTest('gram')">Gram Stain</button>
+            <button class="test-btn" onclick="showTest('bloodAgar')">Blood Agar</button>
+            <button class="test-btn" onclick="showTest('catalase')">Catalase Test</button>
+            <button class="test-btn" onclick="showTest('coagulase')">Coagulase Test</button>
+            <button class="test-btn" onclick="showTest('endospore')">Endospore Stain</button>
+            <button class="test-btn" onclick="showTest('macconkey')">MacConkey Agar</button>
+            <button class="test-btn" onclick="showTest('indole')">Indole Test</button>
+            <button class="test-btn" onclick="showTest('citrate')">Citrate Test</button>
+            <button class="test-btn" onclick="showTest('oxidase')">Oxidase Test</button>
+            <button class="test-btn" onclick="showTest('urease')">Urease Test</button>
+            <button class="test-btn" onclick="showTest('smac')">Sorbitol MacConkey Agar</button>
+            <button class="test-btn" onclick="showTest('kirby')">Kirby-Bauer Test</button>
+        </div>
+    </section>
+
+    <section class="card">
+        <h2>Test Results</h2>
+        <div id="test-results">No tests ordered yet.</div>
+    </section>
+
+    <section class="card">
+        <h2>Organism Identification</h2>
+
+        <p>
+            Based on the patient presentation and laboratory results, identify the most
+            likely causative organism.
+        </p>
+
+        <input
+            type="text"
+            id="diagnosis-input"
+            placeholder="Enter organism name">
+
+        <button onclick="submitDiagnosis()">Submit Diagnosis</button>
+
+        <div id="diagnosis-feedback"></div>
+    </section>
+
+    <section id="treatment-section" class="card hidden">
+        <h2>Treatment Recommendation</h2>
+
+        <p>
+            Use the Kirby-Bauer susceptibility results to recommend an appropriate
+            antibiotic.
+        </p>
+
+        <input
+            type="text"
+            id="treatment-input"
+            placeholder="Enter antibiotic">
+
+        <button onclick="submitTreatment()">Submit Treatment</button>
+
+        <div id="treatment-feedback"></div>
+    </section>
+
+</main>
+
+<footer>
+    <p>BIOL 334 Clinical Microbiology</p>
+</footer>
+
+<script src="../js/meningitis.js"></script>
+
+</body>
+</html>
