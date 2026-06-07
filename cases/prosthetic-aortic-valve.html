@@ -48,37 +48,30 @@
                 <th>Finding</th>
                 <th>Result</th>
             </tr>
-
             <tr>
                 <td>Temperature</td>
                 <td>101.9°F</td>
             </tr>
-
             <tr>
                 <td>Heart Rate</td>
                 <td>110 bpm</td>
             </tr>
-
             <tr>
                 <td>Blood Pressure</td>
                 <td>118/72 mm Hg</td>
             </tr>
-
             <tr>
                 <td>Cardiac Exam</td>
                 <td>New holosystolic murmur</td>
             </tr>
-
             <tr>
                 <td>Skin</td>
                 <td>Petechiae and splinter hemorrhages</td>
             </tr>
-
             <tr>
                 <td>Echocardiogram</td>
                 <td>Vegetations on prosthetic valve</td>
             </tr>
-
             <tr>
                 <td>WBC Count</td>
                 <td>15,600 /µL</td>
@@ -109,9 +102,7 @@
                 </button>
             </div>
 
-            <div id="guide-content">
-                <!-- filled by case-template.js -->
-            </div>
+            <div id="guide-content"></div>
 
             <details class="flowchart-box">
 
@@ -207,7 +198,6 @@
         </div>
 
         <div class="test-grid">
-
             <button onclick="showTest('gram')">Gram Stain</button>
             <button onclick="showTest('bloodAgar')">Blood Agar</button>
             <button onclick="showTest('catalase')">Catalase</button>
@@ -220,7 +210,6 @@
             <button onclick="showTest('urease')">Urease Test</button>
             <button onclick="showTest('smac')">Sorbitol MacConkey</button>
             <button onclick="showTest('kirby')">Kirby-Bauer</button>
-
         </div>
 
     </section>
@@ -252,10 +241,32 @@
 
     </section>
 
+    <section id="treatment-section" class="card hidden">
+
+        <h2>Treatment Recommendation</h2>
+
+        <p>
+            Based on the Kirby-Bauer susceptibility results, enter an appropriate
+            antibiotic treatment for this patient.
+        </p>
+
+        <input
+            type="text"
+            id="treatment-input"
+            placeholder="Enter antibiotic treatment">
+
+        <button onclick="submitTreatment()">
+            Submit Treatment
+        </button>
+
+        <div id="treatment-feedback"></div>
+
+    </section>
+
 </main>
 
-<script src="../js/case-template.js"></script>
 <script src="../js/prosthetic-aortic-valve.js"></script>
+<script src="../js/case-template.js"></script>
 
 </body>
 </html>
