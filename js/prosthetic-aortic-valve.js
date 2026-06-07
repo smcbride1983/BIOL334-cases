@@ -14,6 +14,17 @@ const acceptedDiagnoses = [
 ];
 
 // ======================================================
+// ACCEPTED TREATMENTS
+// lowercase only
+// ======================================================
+
+const acceptedTreatments = [
+    "vancomycin",
+    "linezolid",
+    "daptomycin"
+];
+
+// ======================================================
 // TEST DATABASE
 // ======================================================
 
@@ -86,168 +97,192 @@ const testResults = {
     },
 
     kirby: {
+        type: "kirby",
         title: "Kirby-Bauer Susceptibility Test",
-        image: "../images/kirby/staph_epidermidis.jpg",
-        prompt: "Determine antibiotic susceptibility from the zone sizes."
+        prompt: "Use the measured zone diameter and the interpretation chart to determine which antibiotics are sensitive, intermediate, or resistant.",
+        antibiotics: [
+            {
+                antibiotic: "Penicillin",
+                zone: 8,
+                sensitive: "≥ 29 mm",
+                intermediate: "21–28 mm",
+                resistant: "≤ 20 mm"
+            },
+            {
+                antibiotic: "Oxacillin",
+                zone: 10,
+                sensitive: "≥ 13 mm",
+                intermediate: "11–12 mm",
+                resistant: "≤ 10 mm"
+            },
+            {
+                antibiotic: "Ciprofloxacin",
+                zone: 12,
+                sensitive: "≥ 21 mm",
+                intermediate: "16–20 mm",
+                resistant: "≤ 15 mm"
+            },
+            {
+                antibiotic: "Vancomycin",
+                zone: 18,
+                sensitive: "≥ 15 mm",
+                intermediate: "11–14 mm",
+                resistant: "≤ 10 mm"
+            },
+            {
+                antibiotic: "Linezolid",
+                zone: 24,
+                sensitive: "≥ 21 mm",
+                intermediate: "19–20 mm",
+                resistant: "≤ 18 mm"
+            },
+            {
+                antibiotic: "Daptomycin",
+                zone: 20,
+                sensitive: "≥ 16 mm",
+                intermediate: "11–15 mm",
+                resistant: "≤ 10 mm"
+            }
+        ]
     }
 
 };
 
 // ======================================================
-// TRACK ORDERED TESTS
+// TREATMENT CARDS
+// Keys must match acceptedTreatments
 // ======================================================
 
-let orderedTests = new Set();
+const treatmentCards = {
 
-// ======================================================
-// DISPLAY TEST RESULTS
-// ======================================================
+    vancomycin: `
+        <div class="result-card positive">
+            <h3>Treatment Card: Vancomycin</h3>
 
-function showTest(testKey) {
+            <p><strong>Drug Class:</strong> Glycopeptide antibiotic</p>
 
-    const resultContainer = document.getElementById("test-results");
-    const counter = document.getElementById("test-count");
+            <p>
+                <strong>Mechanism of Action:</strong>
+                Vancomycin inhibits bacterial cell wall synthesis by binding
+                to peptidoglycan precursors and preventing proper cell wall formation.
+            </p>
 
-    if (!resultContainer) {
-        return;
-    }
+            <p>
+                <strong>Why It Works:</strong>
+                This isolate has an 18 mm zone diameter for vancomycin,
+                which falls in the sensitive range.
+            </p>
 
-    if (document.getElementById(`result-${testKey}`)) {
-        return;
-    }
-
-    const test = testResults[testKey];
-
-    if (!test) {
-        console.error(`Test "${testKey}" not found.`);
-        return;
-    }
-
-    if (resultContainer.textContent.trim() === "No tests ordered yet.") {
-        resultContainer.innerHTML = "";
-    }
-
-    orderedTests.add(testKey);
-
-    if (counter) {
-        counter.textContent = orderedTests.size;
-    }
-
-    const card = document.createElement("section");
-    card.className = "result-card";
-    card.id = `result-${testKey}`;
-
-    card.innerHTML = `
-        <h3>${test.title}</h3>
-
-        <p>${test.prompt}</p>
-
-        <div class="image-container">
-            <img
-                src="${test.image}"
-                alt="${test.title}"
-                class="test-image"
-            >
+            <p>
+                <strong>Clinical Pearl:</strong>
+                Vancomycin is commonly used to treat serious infections caused by
+                methicillin-resistant staphylococci and other resistant Gram-positive bacteria.
+            </p>
         </div>
+    `,
 
-        <button
-            class="remove-test-btn"
-            onclick="removeTest('${testKey}')">
-            Remove Test
-        </button>
-    `;
+    linezolid: `
+        <div class="result-card positive">
+            <h3>Treatment Card: Linezolid</h3>
 
-    resultContainer.prepend(card);
+            <p><strong>Drug Class:</strong> Oxazolidinone antibiotic</p>
 
-    card.scrollIntoView({
-        behavior: "smooth",
-        block: "nearest"
-    });
-}
+            <p>
+                <strong>Mechanism of Action:</strong>
+                Linezolid inhibits bacterial protein synthesis by preventing
+                formation of the 70S initiation complex at the 50S ribosomal subunit.
+            </p>
 
-// ======================================================
-// REMOVE TEST
-// ======================================================
+            <p>
+                <strong>Why It Works:</strong>
+                This isolate has a 24 mm zone diameter for linezolid,
+                which falls in the sensitive range.
+            </p>
 
-function removeTest(testKey) {
+            <p>
+                <strong>Clinical Pearl:</strong>
+                Linezolid is often reserved for resistant Gram-positive infections,
+                especially when vancomycin cannot be used.
+            </p>
+        </div>
+    `,
 
-    const card = document.getElementById(`result-${testKey}`);
-    const counter = document.getElementById("test-count");
-    const resultContainer = document.getElementById("test-results");
+    daptomycin: `
+        <div class="result-card positive">
+            <h3>Treatment Card: Daptomycin</h3>
 
-    if (card) {
-        card.remove();
-    }
+            <p><strong>Drug Class:</strong> Cyclic lipopeptide antibiotic</p>
 
-    orderedTests.delete(testKey);
+            <p>
+                <strong>Mechanism of Action:</strong>
+                Daptomycin disrupts the bacterial cell membrane, causing rapid
+                depolarization and bacterial cell death.
+            </p>
 
-    if (counter) {
-        counter.textContent = orderedTests.size;
-    }
+            <p>
+                <strong>Why It Works:</strong>
+                This isolate has a 20 mm zone diameter for daptomycin,
+                which falls in the sensitive range.
+            </p>
 
-    if (resultContainer && orderedTests.size === 0) {
-        resultContainer.innerHTML = "No tests ordered yet.";
-    }
-}
+            <p>
+                <strong>Clinical Pearl:</strong>
+                Daptomycin is highly effective against resistant Gram-positive bacteria,
+                but it should not be used to treat pneumonia because it is inactivated by lung surfactant.
+            </p>
+        </div>
+    `
 
-// ======================================================
-// DIAGNOSIS CHECKER
-// ======================================================
-
-function submitDiagnosis() {
-
-    const diagnosisInput = document.getElementById("diagnosis-input");
-    const feedback = document.getElementById("diagnosis-feedback");
-
-    const answer = diagnosisInput.value.trim().toLowerCase();
-
-    if (!answer) {
-        feedback.innerHTML = `
-            <div class="error-message">
-                Enter an organism before submitting.
-            </div>
-        `;
-        return;
-    }
-
-    if (acceptedDiagnoses.includes(answer)) {
-
-        feedback.innerHTML = `
-            <div class="success-message">
-                ✅ Correct! The causative organism is
-                <strong>${correctDiagnosis}</strong>.
-            </div>
-        `;
-
-    } else {
-
-        feedback.innerHTML = `
-            <div class="error-message">
-                ❌ Not quite. Review the laboratory findings and try again.
-            </div>
-        `;
-
-    }
-}
+};
 
 // ======================================================
-// ENTER KEY SUPPORT
+// CASE REVIEW CARD
 // ======================================================
 
-document.addEventListener("DOMContentLoaded", () => {
+const caseReviewCard = `
+    <div class="result-card">
+        <h3>Case Review: Infective Endocarditis</h3>
 
-    const diagnosisInput = document.getElementById("diagnosis-input");
+        <p>
+            <strong>Prosthetic Aortic Valve:</strong>
+            <em>Staphylococcus epidermidis</em> is part of the normal skin microbiota
+            and is a common cause of infections involving implanted medical devices.
+            It readily forms biofilms on prosthetic heart valves.
+        </p>
 
-    if (diagnosisInput) {
+        <p>
+            <strong>Vegetations on Echocardiogram:</strong>
+            Vegetations are masses of bacteria, fibrin, platelets, and inflammatory cells
+            attached to the valve surface.
+        </p>
 
-        diagnosisInput.addEventListener("keypress", function (e) {
+        <p>
+            <strong>New Holosystolic Murmur:</strong>
+            Infection and valve damage disrupt normal blood flow through the heart,
+            producing turbulent flow that can be heard as a murmur.
+        </p>
 
-            if (e.key === "Enter") {
-                submitDiagnosis();
-            }
+        <p>
+            <strong>Petechiae and Splinter Hemorrhages:</strong>
+            Small fragments from infected vegetations can break loose and damage
+            blood vessels, producing classic signs of infective endocarditis.
+        </p>
 
-        });
+        <p>
+            <strong>Fever and Night Sweats:</strong>
+            The body's inflammatory response to infection releases cytokines that
+            trigger fever and systemic symptoms.
+        </p>
 
-    }
+        <p>
+            <strong>Elevated White Blood Cell Count:</strong>
+            The immune system is actively responding to the bacterial infection.
+        </p>
 
-});
+        <p>
+            <strong>Clinical Pearl:</strong>
+            Prosthetic-valve endocarditis often requires prolonged intravenous
+            antibiotic therapy and may require surgical valve replacement.
+        </p>
+    </div>
+`;
