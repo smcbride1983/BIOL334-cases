@@ -40,7 +40,7 @@ const testResults = {
     coagulase: {
         title: "Coagulase Test",
         image: "../images/coagulase/coagulase_negative.jpg",
-        prompt: "Determine whether agglutination has occurred formation is present."
+        prompt: "Determine whether agglutination has occurred."
     },
 
     endospore: {
@@ -94,14 +94,24 @@ const testResults = {
 };
 
 // ======================================================
+// TRACK ORDERED TESTS
+// ======================================================
+
+let orderedTests = new Set();
+
+// ======================================================
 // DISPLAY TEST RESULTS
 // ======================================================
 
 function showTest(testKey) {
 
     const resultContainer = document.getElementById("test-results");
+    const counter = document.getElementById("test-count");
 
-    // Prevent duplicate tests
+    if (!resultContainer) {
+        return;
+    }
+
     if (document.getElementById(`result-${testKey}`)) {
         return;
     }
@@ -113,29 +123,42 @@ function showTest(testKey) {
         return;
     }
 
+    if (resultContainer.textContent.trim() === "No tests ordered yet.") {
+        resultContainer.innerHTML = "";
+    }
+
+    orderedTests.add(testKey);
+
+    if (counter) {
+        counter.textContent = orderedTests.size;
+    }
+
     const card = document.createElement("section");
-    card.className = "card";
+    card.className = "result-card";
     card.id = `result-${testKey}`;
 
     card.innerHTML = `
         <h3>${test.title}</h3>
+
         <p>${test.prompt}</p>
 
-        <img
-            src="${test.image}"
-            alt="${test.title}"
-            class="test-image"
-        >
+        <div class="image-container">
+            <img
+                src="${test.image}"
+                alt="${test.title}"
+                class="test-image"
+            >
+        </div>
 
-        <button class="remove-test-btn"
-                onclick="removeTest('${testKey}')">
+        <button
+            class="remove-test-btn"
+            onclick="removeTest('${testKey}')">
             Remove Test
         </button>
     `;
 
-    resultContainer.appendChild(card);
+    resultContainer.prepend(card);
 
-    // Scroll to newly added result
     card.scrollIntoView({
         behavior: "smooth",
         block: "nearest"
@@ -149,9 +172,21 @@ function showTest(testKey) {
 function removeTest(testKey) {
 
     const card = document.getElementById(`result-${testKey}`);
+    const counter = document.getElementById("test-count");
+    const resultContainer = document.getElementById("test-results");
 
     if (card) {
         card.remove();
+    }
+
+    orderedTests.delete(testKey);
+
+    if (counter) {
+        counter.textContent = orderedTests.size;
+    }
+
+    if (resultContainer && orderedTests.size === 0) {
+        resultContainer.innerHTML = "No tests ordered yet.";
     }
 }
 
@@ -161,14 +196,19 @@ function removeTest(testKey) {
 
 function submitDiagnosis() {
 
-    const diagnosisInput =
-        document.getElementById("diagnosis-input");
+    const diagnosisInput = document.getElementById("diagnosis-input");
+    const feedback = document.getElementById("diagnosis-feedback");
 
-    const feedback =
-        document.getElementById("diagnosis-feedback");
+    const answer = diagnosisInput.value.trim().toLowerCase();
 
-    const answer =
-        diagnosisInput.value.trim().toLowerCase();
+    if (!answer) {
+        feedback.innerHTML = `
+            <div class="error-message">
+                Enter an organism before submitting.
+            </div>
+        `;
+        return;
+    }
 
     if (acceptedDiagnoses.includes(answer)) {
 
@@ -186,6 +226,7 @@ function submitDiagnosis() {
                 ❌ Not quite. Review the laboratory findings and try again.
             </div>
         `;
+
     }
 }
 
@@ -195,8 +236,7 @@ function submitDiagnosis() {
 
 document.addEventListener("DOMContentLoaded", () => {
 
-    const diagnosisInput =
-        document.getElementById("diagnosis-input");
+    const diagnosisInput = document.getElementById("diagnosis-input");
 
     if (diagnosisInput) {
 
@@ -207,6 +247,7 @@ document.addEventListener("DOMContentLoaded", () => {
             }
 
         });
+
     }
 
 });
