@@ -225,44 +225,43 @@ font-size: 1rem;
 RESULTS
 ===================================== */
 
-/* =====================================
-RESULTS
-===================================== */
-
-#results-box {
-    min-height: 150px;
+#results-box,
+#test-results {
+min-height: 150px;
 }
 
 .result-card {
-    background: #f8fafc;
-    border-left: 5px solid #2563eb;
-    border-radius: 10px;
-    padding: 1rem;
-    margin-bottom: 1rem;
+background: #f8fafc;
+border-left: 5px solid #2563eb;
+border-radius: 10px;
+padding: 1rem;
+margin-bottom: 1rem;
 }
 
 .result-card h4 {
-    margin-bottom: 0.5rem;
+margin-bottom: 0.5rem;
 }
 
-/* Small consistent microbiology images */
+/* Images */
 
+.card img,
 .result-card img,
 .test-image {
-    display: block;
-    width: auto;
-    max-width: 350px;
-    max-height: 250px;
-    height: auto;
-    object-fit: contain;
+display: block;
 
-    margin: 1rem auto;
+```
+max-width: 400px;
+width: 100%;
+height: auto;
 
-    border: 1px solid #cbd5e1;
-    border-radius: 8px;
+margin: 1rem auto;
 
-    cursor: pointer;
+border: 1px solid #cbd5e1;
+border-radius: 8px;
+```
+
 }
+
 /* =====================================
 DIAGNOSIS
 ===================================== */
