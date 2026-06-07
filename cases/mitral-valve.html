@@ -1,267 +1,153 @@
 <!DOCTYPE html>
-
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-```
-<title>Case X: Disease Name</title>
-
-<link rel="stylesheet" href="../css/style.css">
-```
-
+    <title>BIOL 334 Case Study: Mitral Valve Endocarditis</title>
+    <link rel="stylesheet" href="../style.css">
 </head>
-
 <body>
 
-<header>
-    <h1>BIOL 334 Clinical Microbiology Case Studies</h1>
-    <p>Case X: Disease Name</p>
-</header>
+    <header>
+        <h1>BIOL 334 Clinical Microbiology Case Study</h1>
+        <p>Native Mitral Valve Infective Endocarditis</p>
+    </header>
 
-<main class="case-container">
+    <main class="case-container">
 
-```
-<a href="../index.html" class="back-link">
-    ← Return to Case Selection
-</a>
+        <a href="../index.html" class="back-link">← Back to Case List</a>
 
-<!-- ===================================================== -->
-<!-- START REPLACE PATIENT INFORMATION                     -->
-<!-- ===================================================== -->
+        <section class="card">
+            <span class="badge">Case Study</span>
+            <h2>🫀 Patient Case: Dental-Associated Infective Endocarditis</h2>
 
-<div class="patient-banner">
-    <h3>Ricarda Wright</h3>
-    <p>63-year-old patient</p>
+            <div class="patient-banner">
+                <h3>Patient Background</h3>
+                <p>
+                    Ricarda Wright, a 63-year-old woman with a history of rheumatic heart disease,
+                    presents to the hospital with fatigue, low-grade fever, and joint pain that have
+                    gradually worsened over the past month. Three weeks ago, she underwent a tooth
+                    extraction for a severe dental abscess. Since then, she has noticed increasing
+                    weakness, poor appetite, and unintentional weight loss.
+                </p>
+            </div>
 
-    <p>
-        <strong>Chief Concern:</strong>
-        Fatigue, weight loss, and shortness of breath following mitral valve repair.
-    </p>
-</div>
-
-<h3>Patient Background</h3>
-
-<p>
-Ricarda Wright has a history of rheumatic heart disease and underwent mitral
-valve repair eight months ago. Over several weeks she has developed fatigue,
-joint pain, intermittent fever, weight loss, and increasing shortness of breath.
-</p>
-
-<h3>Clinical Findings</h3>
-
-<table>
-<tr><th>Finding</th><th>Result</th></tr>
-<tr><td>Temperature</td><td>100.9°F</td></tr>
-<tr><td>Heart Rate</td><td>102 bpm</td></tr>
-<tr><td>Blood Pressure</td><td>116/70 mm Hg</td></tr>
-<tr><td>Cardiac Exam</td><td>New systolic murmur</td></tr>
-<tr><td>Skin</td><td>Osler's nodes and conjunctival petechiae</td></tr>
-<tr><td>Echocardiogram</td><td>Vegetations on mitral valve</td></tr>
-<tr><td>WBC Count</td><td>14,200 /µL</td></tr>
-</table>
-
-<h3>Available Sample</h3>
-<div class="sample-box">Blood Culture</div>
-<!-- ===================================================== -->
-<!-- STOP REPLACE PATIENT INFORMATION                      -->
-<!-- ===================================================== -->
-
-<section class="card">
-
-    <button id="guideBtn" class="guide-btn">
-        🔬 Open Diagnostic Guide
-    </button>
-
-</section>
-
-<section class="card">
-
-    <h2>Order Diagnostic Tests</h2>
-
-    <div class="counter">
-        Tests Ordered:
-        <span id="test-count">0</span>
-    </div>
-
-    <div class="test-grid">
-
-        <button onclick="orderTest('gram')">Gram Stain</button>
-
-        <button onclick="orderTest('bloodAgar')">Blood Agar</button>
-
-        <button onclick="orderTest('catalase')">Catalase</button>
-
-        <button onclick="orderTest('coagulase')">Coagulase</button>
-
-        <button onclick="orderTest('endospore')">Endospore Stain</button>
-
-        <button onclick="orderTest('macconkey')">MacConkey Agar</button>
-
-        <button onclick="orderTest('indole')">Indole Test</button>
-
-        <button onclick="orderTest('citrate')">Citrate Test</button>
-
-        <button onclick="orderTest('oxidase')">Oxidase Test</button>
-
-        <button onclick="orderTest('urease')">Urease Test</button>
-
-        <button onclick="orderTest('smac')">Sorbitol MacConkey</button>
-
-        <button onclick="orderTest('kirby')">Kirby-Bauer</button>
-
-    </div>
-
-</section>
-
-<section class="card">
-
-    <h2>Results</h2>
-
-    <div id="results-box">
-        No tests ordered yet.
-    </div>
-
-</section>
-
-<section class="card">
-
-    <h2>Final Diagnosis</h2>
-
-    <label>
-        Most Likely Organism
-    </label>
-
-    <input
-        type="text"
-        id="diagnosis"
-        placeholder="Enter organism name">
-
-    <label>
-        Antibiotic Recommendation
-    </label>
-
-    <input
-        type="text"
-        id="treatment"
-        placeholder="Enter antibiotic">
-
-    <button onclick="checkDiagnosis()">
-        Submit Diagnosis
-    </button>
-
-    <div id="feedback"></div>
-
-</section>
-```
-
-</main>
-
-<!-- ===================================================== -->
-
-<!-- DIAGNOSTIC GUIDE MODAL                                -->
-
-<!-- ===================================================== -->
-
-<div id="guideModal" class="modal">
-
-```
-<div class="modal-content">
-
-    <span class="close">&times;</span>
-
-    <h2>BIOL 334 Unknown Identification Guide</h2>
-
-    <ol>
-
-        <li>
-            Perform a Gram Stain
+            <h3>Clinical Findings</h3>
             <ul>
-                <li>Gram-positive cocci → Step 2</li>
-                <li>Gram-positive rods → Step 5</li>
-                <li>Gram-negative rods → Step 6</li>
+                <li>Temperature: 100.9 °F</li>
+                <li>Heart rate: 102 bpm</li>
+                <li>Blood pressure: 116/70 mm Hg</li>
+                <li>Cardiac exam: new systolic murmur heard best at the apex</li>
+                <li>Mild splenomegaly noted on abdominal examination</li>
+                <li>Weight loss of 8 pounds over the past month</li>
+                <li>Echocardiogram: vegetations present on the mitral valve</li>
+                <li>Blood work: WBC 14,200/µL, elevated ESR and CRP</li>
             </ul>
-        </li>
 
-        <li>
-            Catalase Test
-            <ul>
-                <li>Catalase positive → Step 3</li>
-                <li>Catalase negative → Step 4</li>
-            </ul>
-        </li>
+            <div class="sample-box">
+                Sample Collected: Blood cultures
+            </div>
 
-        <li>
-            Coagulase Test
-            <ul>
-                <li>Positive → Staphylococcus aureus</li>
-                <li>Negative → Staphylococcus epidermidis</li>
-            </ul>
-        </li>
+            <h3>Hospital Concern</h3>
+            <p>
+                The cardiology team suspects infective endocarditis involving a previously damaged
+                native mitral valve. The recent dental procedure raises concern that bacteria from
+                the oral microbiota entered the bloodstream and colonized the heart valve.
+            </p>
+        </section>
 
-        <li>
-            Blood Agar
-            <ul>
-                <li>Alpha hemolytic → Viridans streptococci</li>
-            </ul>
-        </li>
+        <section class="card">
+            <h2>Lab Task</h2>
+            <ol>
+                <li>Perform a Gram stain on the blood culture to determine Gram reaction, shape, and arrangement.</li>
+                <li>Inoculate appropriate media and perform biochemical tests to identify the pathogen.</li>
+                <li>After identifying the organism, set up a Kirby-Bauer disk diffusion test on Mueller-Hinton agar.</li>
+                <li>Report the most likely organism and recommend an antibiotic that may be effective.</li>
+            </ol>
+        </section>
 
-        <li>
-            Endospore Stain
-            <ul>
-                <li>Positive → Bacillus cereus</li>
-            </ul>
-        </li>
+        <section class="card">
+            <h2>Diagnostic Guide</h2>
+            <p>
+                Use the guide if you need help deciding which test to order next.
+            </p>
 
-        <li>
-            MacConkey Agar
-            <ul>
-                <li>Pink colonies → Step 7</li>
-                <li>Colorless colonies → Step 8</li>
-            </ul>
-        </li>
+            <button id="guideBtn" class="guide-btn">Open / Close Diagnostic Guide</button>
 
-        <li>
-            Lactose Fermenters
-            <ul>
-                <li>Indole positive → Escherichia coli</li>
-                <li>Sorbitol negative → E. coli O157:H7</li>
-                <li>Citrate positive → Klebsiella aerogenes</li>
-            </ul>
-        </li>
+            <div id="diagnostic-guide" class="guide-box hidden">
+                <div id="guide-content"></div>
+            </div>
+        </section>
 
-        <li>
-            Non-Lactose Fermenters
-            <ul>
-                <li>Oxidase positive → Pseudomonas aeruginosa</li>
-                <li>Urease positive → Proteus mirabilis</li>
-            </ul>
-        </li>
+        <section class="card">
+            <h2>Order Laboratory Tests</h2>
 
-    </ol>
+            <div class="counter">
+                Tests ordered: <span id="test-count">0</span>
+            </div>
 
-</div>
-```
+            <div class="test-grid">
+                <button class="test-btn" onclick="showTest('gram')">Gram Stain</button>
+                <button class="test-btn" onclick="showTest('bloodAgar')">Blood Agar</button>
+                <button class="test-btn" onclick="showTest('catalase')">Catalase Test</button>
+                <button class="test-btn" onclick="showTest('coagulase')">Coagulase Test</button>
+                <button class="test-btn" onclick="showTest('endospore')">Endospore Stain</button>
+                <button class="test-btn" onclick="showTest('macconkey')">MacConkey Agar</button>
+                <button class="test-btn" onclick="showTest('indole')">Indole Test</button>
+                <button class="test-btn" onclick="showTest('citrate')">Citrate Test</button>
+                <button class="test-btn" onclick="showTest('oxidase')">Oxidase Test</button>
+                <button class="test-btn" onclick="showTest('urease')">Urease Test</button>
+                <button class="test-btn" onclick="showTest('smac')">Sorbitol MacConkey Agar</button>
+                <button class="test-btn" onclick="showTest('kirby')">Kirby-Bauer Test</button>
+            </div>
+        </section>
 
-</div>
+        <section class="card">
+            <h2>Test Results</h2>
+            <div id="test-results">No tests ordered yet.</div>
+        </section>
 
-<!-- ===================================================== -->
+        <section class="card">
+            <h2>Submit Organism Identification</h2>
+            <p>
+                Enter the organism you think is causing the infection.
+            </p>
 
-<!-- START REPLACE CASE JS FILE                            -->
+            <input
+                type="text"
+                id="diagnosis-input"
+                placeholder="Example: Viridans streptococci">
 
-<!-- ===================================================== -->
+            <button onclick="submitDiagnosis()">Submit Diagnosis</button>
 
-<script src="../js/case-template.js"></script>
+            <div id="diagnosis-feedback"></div>
+        </section>
 
-<script src="../js/prosthetic-aortic-valve.js"></script>
+        <section class="card hidden" id="treatment-section">
+            <h2>Recommend Treatment</h2>
+            <p>
+                Use the Kirby-Bauer susceptibility results to recommend an antibiotic that falls
+                in the sensitive range.
+            </p>
 
-<!-- ===================================================== -->
+            <input
+                type="text"
+                id="treatment-input"
+                placeholder="Example: Penicillin">
 
-<!-- STOP REPLACE CASE JS FILE                             -->
+            <button onclick="submitTreatment()">Submit Treatment</button>
 
-<!-- ===================================================== -->
+            <div id="treatment-feedback"></div>
+        </section>
+
+    </main>
+
+    <footer>
+        <p>BIOL 334 Clinical Microbiology Cases</p>
+    </footer>
+
+    <script src="mitral-valve.js"></script>
+    <script src="../case-template.js"></script>
 
 </body>
 </html>
