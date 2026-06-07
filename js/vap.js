@@ -1,160 +1,259 @@
-```html
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Case 06 - Ventilator-Associated Pneumonia</title>
+```javascript
+// ======================================================
+// CASE CONFIGURATION
+// ======================================================
 
-    <link rel="stylesheet" href="../css/style.css">
-</head>
-<body>
+const correctDiagnosis = "Pseudomonas aeruginosa";
 
-<header>
-    <h1>Case 06: Ventilator-Associated Pneumonia</h1>
-    <p>Clinical Microbiology Case Study</p>
-</header>
+const acceptedDiagnoses = [
+    "pseudomonas aeruginosa",
+    "p aeruginosa",
+    "p. aeruginosa",
+    "pseudomonas",
+    "pseudo"
+];
 
-<main class="case-container">
+// ======================================================
+// ACCEPTED TREATMENTS
+// lowercase only
+// ======================================================
 
-    <a href="../index.html" class="back-link">
-        ← Back to Case List
-    </a>
+const acceptedTreatments = [
+    "ciprofloxacin",
+    "gentamicin",
+    "meropenem"
+];
 
-    <section class="card">
+// ======================================================
+// TEST DATABASE
+// ======================================================
 
-        <h2>Patient Chart</h2>
+const testResults = {
 
-        <div class="patient-banner">
-            <h3>Barbara Iglewski</h3>
-            <p>56-year-old female</p>
+    gram: {
+        title: "Gram Stain",
+        image: "../images/gram/gram_negative_rods.jpg",
+        prompt: "Determine the Gram reaction, morphology, and cellular arrangement."
+    },
+
+    bloodAgar: {
+        title: "Blood Agar",
+        image: "../images/blood/beta.jpg",
+        prompt: "Evaluate hemolysis pattern."
+    },
+
+    macconkey: {
+        title: "MacConkey Agar",
+        image: "../images/Maconkey/maconkey_nlf.jpg",
+        prompt: "Evaluate growth and lactose fermentation."
+    },
+
+    catalase: {
+        title: "Catalase Test",
+        image: "../images/catalase/catalase_positive.jpg",
+        prompt: "Interpret the presence or absence of bubble formation."
+    },
+
+    oxidase: {
+        title: "Oxidase Test",
+        image: "../images/oxidase/oxidase_positive.jpg",
+        prompt: "Interpret the oxidase reaction."
+    },
+
+    indole: {
+        title: "Indole Test",
+        image: "../images/indole/indole_negative.jpg",
+        prompt: "Interpret the color change following Kovac's reagent."
+    },
+
+    citrate: {
+        title: "Citrate Test",
+        image: "../images/citrate/citrate_positive.jpg",
+        prompt: "Determine whether citrate is utilized."
+    },
+
+    urease: {
+        title: "Urease Test",
+        image: "../images/urease/urease_negative.jpg",
+        prompt: "Interpret the urease reaction."
+    },
+
+    kirby: {
+        type: "kirby",
+        title: "Kirby-Bauer Susceptibility Test",
+        prompt: "Use the measured zone diameter and the interpretation chart to determine which antibiotics are sensitive, intermediate, or resistant.",
+        antibiotics: [
+            {
+                antibiotic: "Ampicillin",
+                zone: 6,
+                sensitive: "≥ 17 mm",
+                intermediate: "14–16 mm",
+                resistant: "≤ 13 mm"
+            },
+            {
+                antibiotic: "Ciprofloxacin",
+                zone: 25,
+                sensitive: "≥ 21 mm",
+                intermediate: "16–20 mm",
+                resistant: "≤ 15 mm"
+            },
+            {
+                antibiotic: "Gentamicin",
+                zone: 22,
+                sensitive: "≥ 15 mm",
+                intermediate: "13–14 mm",
+                resistant: "≤ 12 mm"
+            },
+            {
+                antibiotic: "Meropenem",
+                zone: 30,
+                sensitive: "≥ 23 mm",
+                intermediate: "20–22 mm",
+                resistant: "≤ 19 mm"
+            }
+        ]
+    }
+
+};
+
+// ======================================================
+// TREATMENT CARDS
+// Keys must match acceptedTreatments
+// ======================================================
+
+const treatmentCards = {
+
+    ciprofloxacin: `
+        <div class="result-card positive">
+            <h3>Treatment Card: Ciprofloxacin</h3>
+
+            <p><strong>Drug Class:</strong> Fluoroquinolone antibiotic</p>
+
+            <p>
+                <strong>Mechanism of Action:</strong>
+                Ciprofloxacin inhibits bacterial DNA gyrase and topoisomerase IV,
+                preventing proper DNA replication.
+            </p>
+
+            <p>
+                <strong>Why It Works:</strong>
+                This isolate has a 25 mm zone diameter for ciprofloxacin,
+                which falls in the sensitive range.
+            </p>
+
+            <p>
+                <strong>Clinical Pearl:</strong>
+                Ciprofloxacin can be active against some Gram-negative rods,
+                including susceptible strains of <em>Pseudomonas aeruginosa</em>.
+            </p>
         </div>
+    `,
+
+    gentamicin: `
+        <div class="result-card positive">
+            <h3>Treatment Card: Gentamicin</h3>
+
+            <p><strong>Drug Class:</strong> Aminoglycoside antibiotic</p>
+
+            <p>
+                <strong>Mechanism of Action:</strong>
+                Gentamicin binds the 30S ribosomal subunit and interferes with
+                bacterial protein synthesis.
+            </p>
+
+            <p>
+                <strong>Why It Works:</strong>
+                This isolate has a 22 mm zone diameter for gentamicin,
+                which falls in the sensitive range.
+            </p>
+
+            <p>
+                <strong>Clinical Pearl:</strong>
+                Aminoglycosides may be used against serious Gram-negative infections,
+                but toxicity risk means they require careful clinical monitoring.
+            </p>
+        </div>
+    `,
+
+    meropenem: `
+        <div class="result-card positive">
+            <h3>Treatment Card: Meropenem</h3>
+
+            <p><strong>Drug Class:</strong> Carbapenem antibiotic</p>
+
+            <p>
+                <strong>Mechanism of Action:</strong>
+                Meropenem inhibits bacterial cell wall synthesis by binding
+                penicillin-binding proteins.
+            </p>
+
+            <p>
+                <strong>Why It Works:</strong>
+                This isolate has a 30 mm zone diameter for meropenem,
+                which falls in the sensitive range.
+            </p>
+
+            <p>
+                <strong>Clinical Pearl:</strong>
+                Meropenem is often reserved for serious hospital-acquired
+                Gram-negative infections, including susceptible <em>Pseudomonas</em>.
+            </p>
+        </div>
+    `
+
+};
+
+// ======================================================
+// CASE REVIEW CARD
+// ======================================================
+
+const caseReviewCard = `
+    <div class="result-card">
+        <h3>Case Review: Ventilator-Associated Pneumonia</h3>
 
         <p>
-            Barbara Iglewski is a 56-year-old woman recovering in the ICU after
-            major abdominal surgery. Due to complications during surgery, she has
-            remained intubated and mechanically ventilated for the past seven days.
-            She has received broad-spectrum antibiotics throughout her recovery.
+            <strong>Mechanical Ventilation:</strong>
+            Endotracheal tubes bypass normal upper airway defenses and provide
+            a surface where bacteria can persist and move into the lower respiratory tract.
         </p>
 
         <p>
-            Over the last 24 hours she has developed a high fever, worsening oxygen
-            saturation, and increased production of thick respiratory secretions.
+            <strong>Broad-Spectrum Antibiotic Exposure:</strong>
+            Antibiotic exposure can reduce normal competing microbiota and select
+            for opportunistic hospital-associated organisms.
         </p>
 
-        <h3>Clinical Findings</h3>
+        <p>
+            <strong>Low Oxygen Saturation:</strong>
+            Pneumonia fills alveoli with fluid, inflammatory cells, and debris,
+            reducing gas exchange and lowering blood oxygen levels.
+        </p>
 
-        <ul>
-            <li>Temperature: 102.4°F</li>
-            <li>Respiratory Rate: 30 breaths/min</li>
-            <li>O₂ Saturation: 84%</li>
-            <li>Diffuse crackles and wheezes</li>
-            <li>Chest X-ray: right lower lobe consolidation</li>
-            <li>WBC Count: 17,800/µL</li>
-            <li>Neutrophil predominance</li>
-        </ul>
+        <p>
+            <strong>Chest X-Ray Consolidation:</strong>
+            Consolidation indicates that part of the lung is filled with inflammatory
+            material instead of air.
+        </p>
 
-        <div class="sample-box">
-            Sample Submitted: Endotracheal Aspirate
-        </div>
+        <p>
+            <strong>Elevated WBC Count with Neutrophilia:</strong>
+            Neutrophils are the major white blood cells involved in acute bacterial
+            infections.
+        </p>
 
-    </section>
+        <p>
+            <strong>Why <em>Pseudomonas aeruginosa</em> Fits:</strong>
+            <em>Pseudomonas aeruginosa</em> is an opportunistic Gram-negative rod
+            associated with healthcare settings, ventilators, moist environments,
+            and infections in patients with weakened defenses.
+        </p>
 
-    <section class="card">
-
-        <button id="guideBtn" class="guide-btn">
-            Open Diagnostic Guide
-        </button>
-
-        <div id="diagnostic-guide" class="hidden">
-            <div id="guide-content"></div>
-        </div>
-
-    </section>
-
-    <section class="card">
-
-        <h2>Order Laboratory Tests</h2>
-
-        <div class="counter">
-            Tests Ordered:
-            <span id="test-count">0</span>
-        </div>
-
-        <div class="test-grid">
-
-            <button onclick="showTest('gram')">Gram Stain</button>
-            <button onclick="showTest('bloodAgar')">Blood Agar</button>
-            <button onclick="showTest('macconkey')">MacConkey Agar</button>
-            <button onclick="showTest('oxidase')">Oxidase</button>
-            <button onclick="showTest('catalase')">Catalase</button>
-            <button onclick="showTest('indole')">Indole</button>
-            <button onclick="showTest('citrate')">Citrate</button>
-            <button onclick="showTest('urease')">Urease</button>
-
-        </div>
-
-    </section>
-
-    <section class="card">
-
-        <h2>Laboratory Results</h2>
-
-        <div id="test-results">
-            No tests ordered yet.
-        </div>
-
-    </section>
-
-    <section class="card">
-
-        <h2>Identify the Organism</h2>
-
-        <input
-            type="text"
-            id="diagnosis-input"
-            placeholder="Enter organism name">
-
-        <button onclick="submitDiagnosis()">
-            Submit Identification
-        </button>
-
-        <div id="diagnosis-feedback"></div>
-
-    </section>
-
-    <section class="card">
-
-        <h2>Antibiotic Susceptibility Testing</h2>
-
-        <button onclick="showTest('kirby')">
-            Order Kirby-Bauer Test
-        </button>
-
-    </section>
-
-    <section id="treatment-section" class="card hidden">
-
-        <h2>Select Treatment</h2>
-
-        <input
-            type="text"
-            id="treatment-input"
-            placeholder="Enter antibiotic">
-
-        <button onclick="submitTreatment()">
-            Submit Treatment
-        </button>
-
-        <div id="treatment-feedback"></div>
-
-    </section>
-
-</main>
-
-<script src="../js/case-template.js"></script>
-<script src="../js/vap.js"></script>
-
-</body>
-</html>
+        <p>
+            <strong>Clinical Pearl:</strong>
+            Susceptibility testing is especially important for hospital-acquired
+            <em>Pseudomonas</em> infections because resistance patterns can vary
+            widely between isolates.
+        </p>
+    </div>
+`;
 ```
