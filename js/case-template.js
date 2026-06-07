@@ -3,6 +3,10 @@
    case-template.js
 ===================================== */
 
+let orderedTests = new Set();
+let diagnosisConfirmed = false;
+let kirbyOrdered = false;
+
 /* =====================================
    DIAGNOSTIC GUIDE TREE
 ===================================== */
@@ -187,7 +191,6 @@ function guideSelect(step) {
 
     let html = `
         <h3>${node.title}</h3>
-
         <p>${node.reason}</p>
     `;
 
@@ -224,7 +227,344 @@ function guideSelect(step) {
 }
 
 /* =====================================
-   GUIDE OPEN / CLOSE
+   SHOW TEST RESULTS
+===================================== */
+
+function showTest(testKey) {
+
+    const resultContainer = document.getElementById("test-results");
+    const counter = document.getElementById("test-count");
+
+    if (!resultContainer) {
+        return;
+    }
+
+    if (testKey === "kirby" && !diagnosisConfirmed) {
+        alert("Identify the organism first. Then order Kirby-Bauer testing to determine antibiotic susceptibility.");
+        return;
+    }
+
+    if (document.getElementById(`result-${testKey}`)) {
+        return;
+    }
+
+    if (typeof testResults === "undefined" || !testResults[testKey]) {
+        alert("No result has been entered for this test yet.");
+        return;
+    }
+
+    const test = testResults[testKey];
+
+    if (resultContainer.textContent.trim() === "No tests ordered yet.") {
+        resultContainer.innerHTML = "";
+    }
+
+    orderedTests.add(testKey);
+
+    if (counter) {
+        counter.textContent = orderedTests.size;
+    }
+
+    const card = document.createElement("section");
+    card.className = "result-card";
+    card.id = `result-${testKey}`;
+
+    if (test.type === "kirby") {
+        card.innerHTML = buildKirbyResult(test);
+        kirbyOrdered = true;
+        unlockTreatmentSection();
+    } else {
+        card.innerHTML = buildStandardTestResult(test, testKey);
+    }
+
+    resultContainer.prepend(card);
+
+    card.scrollIntoView({
+        behavior: "smooth",
+        block: "nearest"
+    });
+}
+
+function buildStandardTestResult(test, testKey) {
+
+    return `
+        <h3>${test.title}</h3>
+
+        <p>${test.prompt}</p>
+
+        <div class="image-container">
+            <img
+                src="${test.image}"
+                alt="${test.title}"
+                class="test-image">
+        </div>
+
+        <button
+            class="remove-test-btn"
+            onclick="removeTest('${testKey}')">
+            Remove Test
+        </button>
+    `;
+}
+
+function buildKirbyResult(test) {
+
+    let rows = "";
+
+    test.antibiotics.forEach(item => {
+
+        rows += `
+            <tr>
+                <td><strong>${item.antibiotic}</strong></td>
+                <td>${item.zone} mm</td>
+                <td>${item.sensitive}</td>
+                <td>${item.intermediate}</td>
+                <td>${item.resistant}</td>
+            </tr>
+        `;
+
+    });
+
+    return `
+        <h3>${test.title}</h3>
+
+        <p>${test.prompt}</p>
+
+        <table>
+            <tr>
+                <th>Antibiotic</th>
+                <th>Zone Diameter</th>
+                <th><strong>S</strong>ensitive</th>
+                <th><strong>I</strong>ntermediate</th>
+                <th><strong>R</strong>esistant</th>
+            </tr>
+
+            ${rows}
+        </table>
+
+        <p class="small-text">
+            Compare the measured zone diameter to the interpretation ranges.
+            Then choose an antibiotic that falls in the sensitive range.
+        </p>
+
+        <button
+            class="remove-test-btn"
+            onclick="removeTest('kirby')">
+            Remove Test
+        </button>
+    `;
+}
+
+/* =====================================
+   REMOVE TEST
+===================================== */
+
+function removeTest(testKey) {
+
+    const card = document.getElementById(`result-${testKey}`);
+    const counter = document.getElementById("test-count");
+    const resultContainer = document.getElementById("test-results");
+
+    if (card) {
+        card.remove();
+    }
+
+    orderedTests.delete(testKey);
+
+    if (counter) {
+        counter.textContent = orderedTests.size;
+    }
+
+    if (testKey === "kirby") {
+        kirbyOrdered = false;
+        hideTreatmentSection();
+    }
+
+    if (resultContainer && orderedTests.size === 0) {
+        resultContainer.innerHTML = "No tests ordered yet.";
+    }
+}
+
+/* =====================================
+   DIAGNOSIS CHECKER
+===================================== */
+
+function submitDiagnosis() {
+
+    const diagnosisInput = document.getElementById("diagnosis-input");
+    const feedback = document.getElementById("diagnosis-feedback");
+
+    if (!diagnosisInput || !feedback) {
+        return;
+    }
+
+    const answer = diagnosisInput.value.trim().toLowerCase();
+
+    if (!answer) {
+
+        feedback.innerHTML = `
+            <div class="result-card negative">
+                <h3>Diagnosis Needed</h3>
+                <p>Enter an organism before submitting.</p>
+            </div>
+        `;
+
+        return;
+    }
+
+    const isCorrect = acceptedDiagnoses.some(accepted =>
+        answer === accepted.toLowerCase()
+    );
+
+    if (isCorrect) {
+
+        diagnosisConfirmed = true;
+
+        feedback.innerHTML = `
+            <div class="result-card positive">
+                <h3>Correct Identification</h3>
+                <p>
+                    The causative organism is
+                    <strong>${correctDiagnosis}</strong>.
+                </p>
+                <p>
+                    Now order a <strong>Kirby-Bauer susceptibility test</strong>
+                    to determine which antibiotics may be effective.
+                </p>
+            </div>
+        `;
+
+    } else {
+
+        feedback.innerHTML = `
+            <div class="result-card negative">
+                <h3>Not Quite</h3>
+                <p>
+                    Review the laboratory findings and diagnostic guide,
+                    then try again.
+                </p>
+            </div>
+        `;
+
+    }
+}
+
+/* =====================================
+   TREATMENT SECTION
+===================================== */
+
+function unlockTreatmentSection() {
+
+    const treatmentSection = document.getElementById("treatment-section");
+
+    if (treatmentSection) {
+        treatmentSection.classList.remove("hidden");
+    }
+}
+
+function hideTreatmentSection() {
+
+    const treatmentSection = document.getElementById("treatment-section");
+    const treatmentFeedback = document.getElementById("treatment-feedback");
+
+    if (treatmentSection) {
+        treatmentSection.classList.add("hidden");
+    }
+
+    if (treatmentFeedback) {
+        treatmentFeedback.innerHTML = "";
+    }
+}
+
+function submitTreatment() {
+
+    const treatmentInput = document.getElementById("treatment-input");
+    const treatmentFeedback = document.getElementById("treatment-feedback");
+
+    if (!treatmentInput || !treatmentFeedback) {
+        return;
+    }
+
+    if (!diagnosisConfirmed) {
+
+        treatmentFeedback.innerHTML = `
+            <div class="result-card negative">
+                <h3>Identify the Organism First</h3>
+                <p>
+                    Submit the correct organism identification before selecting treatment.
+                </p>
+            </div>
+        `;
+
+        return;
+    }
+
+    if (!kirbyOrdered) {
+
+        treatmentFeedback.innerHTML = `
+            <div class="result-card negative">
+                <h3>Susceptibility Testing Needed</h3>
+                <p>
+                    Order a Kirby-Bauer test before recommending treatment.
+                </p>
+            </div>
+        `;
+
+        return;
+    }
+
+    const answer = treatmentInput.value.trim().toLowerCase();
+
+    if (!answer) {
+
+        treatmentFeedback.innerHTML = `
+            <div class="result-card negative">
+                <h3>Treatment Needed</h3>
+                <p>Enter an antibiotic treatment before submitting.</p>
+            </div>
+        `;
+
+        return;
+    }
+
+    const matchedTreatment = acceptedTreatments.find(treatment =>
+        answer.includes(treatment)
+    );
+
+    if (matchedTreatment) {
+
+        treatmentFeedback.innerHTML = `
+            <div class="result-card positive">
+                <h3>Correct Treatment</h3>
+                <p>
+                    Your treatment recommendation is appropriate based on
+                    the Kirby-Bauer susceptibility results.
+                </p>
+            </div>
+
+            ${treatmentCards[matchedTreatment]}
+
+            ${caseReviewCard}
+        `;
+
+    } else {
+
+        treatmentFeedback.innerHTML = `
+            <div class="result-card negative">
+                <h3>Review Susceptibility Results</h3>
+                <p>
+                    That treatment is not one of the susceptible options for this isolate.
+                    Compare the zone diameters to the sensitive, intermediate,
+                    and resistant breakpoints.
+                </p>
+            </div>
+        `;
+
+    }
+}
+
+/* =====================================
+   PAGE SETUP
 ===================================== */
 
 document.addEventListener("DOMContentLoaded", () => {
@@ -240,6 +580,34 @@ document.addEventListener("DOMContentLoaded", () => {
 
             if (!diagnosticGuide.classList.contains("hidden")) {
                 resetGuide();
+            }
+
+        });
+
+    }
+
+    const diagnosisInput = document.getElementById("diagnosis-input");
+
+    if (diagnosisInput) {
+
+        diagnosisInput.addEventListener("keypress", event => {
+
+            if (event.key === "Enter") {
+                submitDiagnosis();
+            }
+
+        });
+
+    }
+
+    const treatmentInput = document.getElementById("treatment-input");
+
+    if (treatmentInput) {
+
+        treatmentInput.addEventListener("keypress", event => {
+
+            if (event.key === "Enter") {
+                submitTreatment();
             }
 
         });
