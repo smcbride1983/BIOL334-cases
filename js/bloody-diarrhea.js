@@ -1,3 +1,184 @@
+javascript
+const testResults = {
+
+    gram: `
+    <div class="result-card">
+        <h3>Gram Stain</h3>
+
+        <p>
+            Numerous <strong>Gram-negative rods</strong> observed.
+        </p>
+
+        <img src="../images/gram-negative-rods.jpg"
+             alt="Gram-negative rods"
+             class="result-image">
+    </div>
+    `,
+
+    bloodAgar: `
+    <div class="result-card">
+        <h3>Blood Agar</h3>
+
+        <p>
+            Moderate growth of smooth gray colonies.
+            No hemolysis observed.
+        </p>
+
+        <img src="../images/blood-agar-ecoli.jpg"
+             alt="Blood agar"
+             class="result-image">
+    </div>
+    `,
+
+    macconkey: `
+    <div class="result-card">
+        <h3>MacConkey Agar</h3>
+
+        <p>
+            Growth present.
+            Colonies appear <strong>pink</strong>.
+        </p>
+
+        <p>
+            Organism ferments lactose.
+        </p>
+
+        <img src="../images/macconkey-lactose.jpg"
+             alt="MacConkey agar"
+             class="result-image">
+    </div>
+    `,
+
+    smac: `
+    <div class="result-card positive">
+        <h3>Sorbitol MacConkey Agar</h3>
+
+        <p>
+            Growth present.
+            Colonies remain <strong>colorless</strong>.
+        </p>
+
+        <p>
+            Organism does not ferment sorbitol.
+        </p>
+
+        <p>
+            This finding is highly suspicious for
+            <strong>Escherichia coli O157:H7</strong>.
+        </p>
+
+        <img src="../images/smac-o157.jpg"
+             alt="Sorbitol MacConkey agar"
+             class="result-image">
+    </div>
+    `,
+
+    oxidase: `
+    <div class="result-card">
+        <h3>Oxidase Test</h3>
+
+        <p>
+            <strong>Negative</strong>
+        </p>
+
+        <p>
+            No purple color develops.
+        </p>
+    </div>
+    `,
+
+    indole: `
+    <div class="result-card positive">
+        <h3>Indole Test</h3>
+
+        <p>
+            <strong>Positive</strong>
+        </p>
+
+        <p>
+            Red ring develops after addition of Kovac's reagent.
+        </p>
+    </div>
+    `,
+
+    citrate: `
+    <div class="result-card">
+        <h3>Citrate Test</h3>
+
+        <p>
+            <strong>Negative</strong>
+        </p>
+
+        <p>
+            Medium remains green.
+        </p>
+    </div>
+    `,
+
+    urease: `
+    <div class="result-card">
+        <h3>Urease Test</h3>
+
+        <p>
+            <strong>Negative</strong>
+        </p>
+
+        <p>
+            No pink color develops.
+        </p>
+    </div>
+    `,
+
+    kirby: `
+    <div class="result-card">
+        <h3>Kirby-Bauer Susceptibility Test</h3>
+
+        <table class="kirby-table">
+            <thead>
+                <tr>
+                    <th>Antibiotic</th>
+                    <th>Zone Diameter (mm)</th>
+                    <th>S / I / R</th>
+                </tr>
+            </thead>
+
+            <tbody>
+                <tr>
+                    <td><strong>C</strong>iprofloxacin</td>
+                    <td>34</td>
+                    <td>S</td>
+                </tr>
+
+                <tr>
+                    <td><strong>T</strong>rimethoprim-Sulfamethoxazole</td>
+                    <td>28</td>
+                    <td>S</td>
+                </tr>
+
+                <tr>
+                    <td><strong>C</strong>eftriaxone</td>
+                    <td>31</td>
+                    <td>S</td>
+                </tr>
+
+                <tr>
+                    <td><strong>A</strong>mpicillin</td>
+                    <td>20</td>
+                    <td>S</td>
+                </tr>
+            </tbody>
+        </table>
+
+        <p>
+            Despite apparent susceptibility, antibiotic therapy is generally
+            avoided in STEC infections because treatment may increase toxin
+            release and increase the risk of Hemolytic Uremic Syndrome (HUS).
+        </p>
+    </div>
+    `
+};
+
+
 const interpretationCards = `
 
 <div class="result-card">
