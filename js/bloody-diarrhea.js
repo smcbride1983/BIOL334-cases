@@ -1,185 +1,183 @@
-javascript
+```javascript
+// ======================================================
+// CASE CONFIGURATION
+// ======================================================
+
+const correctDiagnosis = "E. coli O157:H7";
+
+const acceptedDiagnoses = [
+    "e. coli o157:h7",
+    "e coli o157:h7",
+    "escherichia coli o157:h7",
+    "o157:h7",
+    "stec",
+    "shiga toxin producing e coli",
+    "shiga toxin-producing e coli"
+];
+
+// ======================================================
+// ACCEPTED TREATMENTS
+// ======================================================
+
+const acceptedTreatments = [
+    "supportive care",
+    "fluids",
+    "hydration"
+];
+
+// ======================================================
+// TEST DATABASE
+// ======================================================
+
 const testResults = {
 
-    gram: `
-    <div class="result-card">
-        <h3>Gram Stain</h3>
+    gram: {
+        title: "Gram Stain",
+        image: "../images/gram_negative_rods.jpg",
+        prompt: "Numerous Gram-negative rods observed."
+    },
 
-        <p>
-            Numerous <strong>Gram-negative rods</strong> observed.
-        </p>
+    bloodAgar: {
+        title: "Blood Agar",
+        image: "../images/gamma.jpg",
+        prompt: "Moderate growth of smooth gray colonies. No hemolysis observed."
+    },
 
-        <img src="../images/gram-negative-rods.jpg"
-             alt="Gram-negative rods"
-             class="result-image">
-    </div>
+    macconkey: {
+        title: "MacConkey Agar",
+        image: "../images/Maconkey-positive.jpg",
+        prompt: "Growth present. Colonies appear pink indicating lactose fermentation."
+    },
+
+    smac: {
+        title: "Sorbitol MacConkey Agar",
+        image: "../images/smac_negative.jpg",
+        prompt: "Growth present. Colonies remain colorless. The organism does not ferment sorbitol."
+    },
+
+    oxidase: {
+        title: "Oxidase Test",
+        image: "../images/oxidase_negative.jpg",
+        prompt: "No purple color develops. Oxidase negative."
+    },
+
+    indole: {
+        title: "Indole Test",
+        image: "../images/indole_positive.jpg",
+        prompt: "Red ring develops after addition of Kovac's reagent."
+    },
+
+    citrate: {
+        title: "Citrate Test",
+        image: "../images/citrate_negative.jpg",
+        prompt: "Medium remains green. Citrate negative."
+    },
+
+    urease: {
+        title: "Urease Test",
+        image: "../images/urease_negative.jpg",
+        prompt: "No pink color develops. Urease negative."
+    },
+
+    kirby: {
+        type: "kirby",
+        title: "Kirby-Bauer Susceptibility Test",
+        prompt: "Compare the measured zone diameter to the interpretation ranges.",
+
+        antibiotics: [
+            {
+                antibiotic: "Ciprofloxacin",
+                zone: 34,
+                sensitive: "≥ 21 mm",
+                intermediate: "16–20 mm",
+                resistant: "≤ 15 mm"
+            },
+            {
+                antibiotic: "Trimethoprim-Sulfamethoxazole",
+                zone: 28,
+                sensitive: "≥ 16 mm",
+                intermediate: "11–15 mm",
+                resistant: "≤ 10 mm"
+            },
+            {
+                antibiotic: "Ceftriaxone",
+                zone: 31,
+                sensitive: "≥ 23 mm",
+                intermediate: "20–22 mm",
+                resistant: "≤ 19 mm"
+            },
+            {
+                antibiotic: "Ampicillin",
+                zone: 20,
+                sensitive: "≥ 17 mm",
+                intermediate: "14–16 mm",
+                resistant: "≤ 13 mm"
+            }
+        ]
+    }
+
+};
+
+// ======================================================
+// TREATMENT CARDS
+// ======================================================
+
+const treatmentCards = {
+
+    "supportive care": `
+        <div class="result-card positive">
+            <h3>Recommended Management</h3>
+
+            <p>
+                Antibiotics are generally avoided for STEC infections because
+                bacterial killing may increase Shiga toxin release and increase
+                the risk of Hemolytic Uremic Syndrome (HUS).
+            </p>
+
+            <p>
+                Treatment is primarily supportive and includes hydration,
+                electrolyte replacement, and monitoring kidney function.
+            </p>
+        </div>
     `,
 
-    bloodAgar: `
-    <div class="result-card">
-        <h3>Blood Agar</h3>
+    fluids: `
+        <div class="result-card positive">
+            <h3>Recommended Management</h3>
 
-        <p>
-            Moderate growth of smooth gray colonies.
-            No hemolysis observed.
-        </p>
+            <p>
+                Intravenous or oral fluid replacement is the cornerstone of
+                treatment for STEC infections.
+            </p>
 
-        <img src="../images/blood-agar-ecoli.jpg"
-             alt="Blood agar"
-             class="result-image">
-    </div>
+            <p>
+                Antibiotics are generally avoided because they may worsen
+                toxin-mediated disease.
+            </p>
+        </div>
     `,
 
-    macconkey: `
-    <div class="result-card">
-        <h3>MacConkey Agar</h3>
+    hydration: `
+        <div class="result-card positive">
+            <h3>Recommended Management</h3>
 
-        <p>
-            Growth present.
-            Colonies appear <strong>pink</strong>.
-        </p>
+            <p>
+                Hydration helps maintain kidney function and supports recovery
+                while the infection resolves.
+            </p>
 
-        <p>
-            Organism ferments lactose.
-        </p>
-
-        <img src="../images/macconkey-lactose.jpg"
-             alt="MacConkey agar"
-             class="result-image">
-    </div>
-    `,
-
-    smac: `
-    <div class="result-card positive">
-        <h3>Sorbitol MacConkey Agar</h3>
-
-        <p>
-            Growth present.
-            Colonies remain <strong>colorless</strong>.
-        </p>
-
-        <p>
-            Organism does not ferment sorbitol.
-        </p>
-
-        <p>
-            This finding is highly suspicious for
-            <strong>Escherichia coli O157:H7</strong>.
-        </p>
-
-        <img src="../images/smac-o157.jpg"
-             alt="Sorbitol MacConkey agar"
-             class="result-image">
-    </div>
-    `,
-
-    oxidase: `
-    <div class="result-card">
-        <h3>Oxidase Test</h3>
-
-        <p>
-            <strong>Negative</strong>
-        </p>
-
-        <p>
-            No purple color develops.
-        </p>
-    </div>
-    `,
-
-    indole: `
-    <div class="result-card positive">
-        <h3>Indole Test</h3>
-
-        <p>
-            <strong>Positive</strong>
-        </p>
-
-        <p>
-            Red ring develops after addition of Kovac's reagent.
-        </p>
-    </div>
-    `,
-
-    citrate: `
-    <div class="result-card">
-        <h3>Citrate Test</h3>
-
-        <p>
-            <strong>Negative</strong>
-        </p>
-
-        <p>
-            Medium remains green.
-        </p>
-    </div>
-    `,
-
-    urease: `
-    <div class="result-card">
-        <h3>Urease Test</h3>
-
-        <p>
-            <strong>Negative</strong>
-        </p>
-
-        <p>
-            No pink color develops.
-        </p>
-    </div>
-    `,
-
-    kirby: `
-    <div class="result-card">
-        <h3>Kirby-Bauer Susceptibility Test</h3>
-
-        <table class="kirby-table">
-            <thead>
-                <tr>
-                    <th>Antibiotic</th>
-                    <th>Zone Diameter (mm)</th>
-                    <th>S / I / R</th>
-                </tr>
-            </thead>
-
-            <tbody>
-                <tr>
-                    <td><strong>C</strong>iprofloxacin</td>
-                    <td>34</td>
-                    <td>S</td>
-                </tr>
-
-                <tr>
-                    <td><strong>T</strong>rimethoprim-Sulfamethoxazole</td>
-                    <td>28</td>
-                    <td>S</td>
-                </tr>
-
-                <tr>
-                    <td><strong>C</strong>eftriaxone</td>
-                    <td>31</td>
-                    <td>S</td>
-                </tr>
-
-                <tr>
-                    <td><strong>A</strong>mpicillin</td>
-                    <td>20</td>
-                    <td>S</td>
-                </tr>
-            </tbody>
-        </table>
-
-        <p>
-            Despite apparent susceptibility, antibiotic therapy is generally
-            avoided in STEC infections because treatment may increase toxin
-            release and increase the risk of Hemolytic Uremic Syndrome (HUS).
-        </p>
-    </div>
+            <p>
+                Monitoring for Hemolytic Uremic Syndrome is essential.
+            </p>
+        </div>
     `
 };
 
+// ======================================================
+// CASE REVIEW CARD
+// ======================================================
 
-const interpretationCards = `
+const caseReviewCard = `
 
 <div class="result-card">
 
@@ -187,9 +185,8 @@ const interpretationCards = `
 
     <p>
         <strong>Escherichia coli O157:H7</strong> produces Shiga toxin.
-        This toxin damages cells lining the intestine and injures blood vessels
-        in the colon. As tissue damage occurs, blood enters the intestinal tract,
-        resulting in bloody diarrhea.
+        This toxin damages intestinal epithelial cells and blood vessels
+        within the colon, leading to bloody diarrhea.
     </p>
 
 </div>
@@ -199,37 +196,40 @@ const interpretationCards = `
     <h3>How Did the Laboratory Tests Identify the Organism?</h3>
 
     <p>
+        <strong>Gram Stain:</strong>
+        Gram-negative rods narrowed the possibilities to enteric bacteria.
+    </p>
+
+    <p>
         <strong>MacConkey Agar:</strong>
-        Growth with pink colonies indicates a lactose-fermenting Gram-negative rod.
+        Pink colonies demonstrated lactose fermentation.
     </p>
 
     <p>
         <strong>Indole Test:</strong>
-        Positive indole production is consistent with Escherichia coli.
+        Positive indole production is characteristic of Escherichia coli.
     </p>
 
     <p>
         <strong>Sorbitol MacConkey Agar:</strong>
-        Most E. coli ferment sorbitol, but O157:H7 does not.
-        Colorless colonies on SMAC are the key clue that distinguishes
-        this pathogen from normal intestinal E. coli.
+        Most E. coli ferment sorbitol. O157:H7 does not, producing
+        colorless colonies and providing the key diagnostic clue.
     </p>
 
 </div>
 
 <div class="result-card">
 
-    <h3>What Do the Urinalysis Findings Mean?</h3>
+    <h3>Urinalysis Findings</h3>
 
     <p>
-        The presence of red blood cells and protein in the urine may indicate
-        early kidney injury.
+        Trace protein and red blood cells in the urine suggest possible
+        kidney involvement.
     </p>
 
     <p>
-        Some patients infected with STEC develop
-        <strong>Hemolytic Uremic Syndrome (HUS)</strong>,
-        a serious complication caused by Shiga toxin.
+        Patients infected with STEC may develop
+        <strong>Hemolytic Uremic Syndrome (HUS)</strong>.
     </p>
 
     <ul>
@@ -244,20 +244,17 @@ const interpretationCards = `
 
     <h3>Epidemiology</h3>
 
-    <p>
-        Common sources of STEC include:
-    </p>
-
     <ul>
         <li>Undercooked ground beef</li>
         <li>Leafy greens</li>
-        <li>Contaminated produce</li>
+        <li>Raw produce</li>
         <li>Unpasteurized juices</li>
+        <li>Contaminated water</li>
     </ul>
 
     <p>
         The patient's history of consuming hamburgers and unrefrigerated
-        salad at a picnic is consistent with a foodborne STEC outbreak.
+        salad at a picnic is consistent with STEC transmission.
     </p>
 
 </div>
@@ -267,10 +264,12 @@ const interpretationCards = `
     <h3>Clinical Pearl</h3>
 
     <p>
-        Many bacterial infections are treated with antibiotics, but STEC is unusual.
-        Antibiotic treatment may increase toxin release and increase the risk of
-        Hemolytic Uremic Syndrome. Because of this, supportive care is often preferred.
+        Unlike many bacterial infections, STEC is usually not treated with
+        antibiotics. Supportive care is preferred because antibiotic therapy
+        may increase Shiga toxin release and increase the risk of HUS.
     </p>
 
 </div>
+
 `;
+```
