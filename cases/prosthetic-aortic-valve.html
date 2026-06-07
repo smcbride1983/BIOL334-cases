@@ -1,17 +1,11 @@
 <!DOCTYPE html>
-
 <html lang="en">
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-
-<title>Case 1: Endocarditis</title>
-
-<link rel="stylesheet" href="../css/style.css">
-
-
+    <title>Case 1: Endocarditis</title>
+    <link rel="stylesheet" href="../css/style.css">
 </head>
 
 <body>
@@ -23,246 +17,244 @@
 
 <main class="case-container">
 
+    <a href="../index.html" class="back-link">
+        ← Return to Case Selection
+    </a>
 
-<a href="../index.html" class="back-link">
-    ← Return to Case Selection
-</a>
+    <section class="card">
 
-<!-- ===================================================== -->
-<!-- START REPLACE PATIENT INFORMATION                     -->
-<!-- ===================================================== -->
+        <div class="patient-banner">
+            <h3>William Osler</h3>
+            <p>67-year-old patient</p>
 
-<section class="card">
+            <p>
+                <strong>Chief Concern:</strong>
+                Fever, fatigue, and night sweats following prosthetic valve replacement.
+            </p>
+        </div>
 
-    <div class="patient-banner">
-        <h3>William Osler</h3>
-
-        <p>67-year-old patient</p>
+        <h3>Patient Background</h3>
 
         <p>
-            <strong>Chief Concern:</strong>
-            Fever, fatigue, and night sweats following prosthetic valve replacement.
+            William Osler underwent placement of a prosthetic aortic valve six months ago.
+            He presents with fatigue, fever, night sweats, mild shortness of breath,
+            and swelling in his ankles.
         </p>
-    </div>
 
-    <h3>Patient Background</h3>
+        <h3>Clinical Findings</h3>
 
-    <p>
-        William Osler underwent placement of a prosthetic aortic valve six months ago.
-        He presents with fatigue, fever, night sweats, mild shortness of breath,
-        and swelling in his ankles.
-    </p>
+        <table>
+            <tr>
+                <th>Finding</th>
+                <th>Result</th>
+            </tr>
 
-    <h3>Clinical Findings</h3>
+            <tr>
+                <td>Temperature</td>
+                <td>101.9°F</td>
+            </tr>
 
-    <table>
-        <tr>
-            <th>Finding</th>
-            <th>Result</th>
-        </tr>
+            <tr>
+                <td>Heart Rate</td>
+                <td>110 bpm</td>
+            </tr>
 
-        <tr>
-            <td>Temperature</td>
-            <td>101.9°F</td>
-        </tr>
+            <tr>
+                <td>Blood Pressure</td>
+                <td>118/72 mm Hg</td>
+            </tr>
 
-        <tr>
-            <td>Heart Rate</td>
-            <td>110 bpm</td>
-        </tr>
+            <tr>
+                <td>Cardiac Exam</td>
+                <td>New holosystolic murmur</td>
+            </tr>
 
-        <tr>
-            <td>Blood Pressure</td>
-            <td>118/72 mm Hg</td>
-        </tr>
+            <tr>
+                <td>Skin</td>
+                <td>Petechiae and splinter hemorrhages</td>
+            </tr>
 
-        <tr>
-            <td>Cardiac Exam</td>
-            <td>New holosystolic murmur</td>
-        </tr>
+            <tr>
+                <td>Echocardiogram</td>
+                <td>Vegetations on prosthetic valve</td>
+            </tr>
 
-        <tr>
-            <td>Skin</td>
-            <td>Petechiae and splinter hemorrhages</td>
-        </tr>
+            <tr>
+                <td>WBC Count</td>
+                <td>15,600 /µL</td>
+            </tr>
+        </table>
 
-        <tr>
-            <td>Echocardiogram</td>
-            <td>Vegetations on prosthetic valve</td>
-        </tr>
+        <h3>Available Sample</h3>
 
-        <tr>
-            <td>WBC Count</td>
-            <td>15,600 /µL</td>
-        </tr>
-    </table>
+        <div class="sample-box">
+            Blood Culture
+        </div>
 
-    <h3>Available Sample</h3>
+    </section>
 
-    <div class="sample-box">
-        Blood Culture
-    </div>
+    <section class="card">
 
-</section>
+        <button id="guideBtn" class="guide-btn">
+            🔬 Open Diagnostic Guide
+        </button>
 
-<!-- ===================================================== -->
-<!-- STOP REPLACE PATIENT INFORMATION                      -->
-<!-- ===================================================== -->
+        <div id="diagnostic-guide" class="hidden">
 
-<section class="card">
+            <div class="guide-header">
+                <h2>Diagnostic Assistant</h2>
 
-    <button id="guideBtn" class="guide-btn">
-        🔬 Open Diagnostic Guide
-    </button>
+                <button onclick="resetGuide()">
+                    Start Over
+                </button>
+            </div>
 
-</section>
+            <div id="guide-content">
+                <!-- filled by case-template.js -->
+            </div>
 
-<section class="card">
+            <details class="flowchart-box">
 
-    <h2>Order Diagnostic Tests</h2>
+                <summary>
+                    Show Full Identification Flowchart
+                </summary>
 
-    <div class="counter">
-        Tests Ordered:
-        <span id="test-count">0</span>
-    </div>
+                <div class="flowchart-content">
 
-    <div class="test-grid">
+                    <h3>BIOL 334 Unknown Identification Guide</h3>
 
-        <button onclick="showTest('gram')">Gram Stain</button>
-        <button onclick="showTest('bloodAgar')">Blood Agar</button>
-        <button onclick="showTest('catalase')">Catalase</button>
-        <button onclick="showTest('coagulase')">Coagulase</button>
-        <button onclick="showTest('endospore')">Endospore Stain</button>
-        <button onclick="showTest('macconkey')">MacConkey Agar</button>
-        <button onclick="showTest('indole')">Indole Test</button>
-        <button onclick="showTest('citrate')">Citrate Test</button>
-        <button onclick="showTest('oxidase')">Oxidase Test</button>
-        <button onclick="showTest('urease')">Urease Test</button>
-        <button onclick="showTest('smac')">Sorbitol MacConkey</button>
-        <button onclick="showTest('kirby')">Kirby-Bauer</button>
+                    <ol>
+                        <li>
+                            Gram Stain
+                            <ul>
+                                <li>Gram-positive cocci → Catalase Test</li>
+                                <li>Gram-positive rods → Endospore Stain</li>
+                                <li>Gram-negative rods → MacConkey Agar</li>
+                            </ul>
+                        </li>
 
-    </div>
+                        <li>
+                            Catalase Test
+                            <ul>
+                                <li>Catalase positive → Coagulase Test</li>
+                                <li>Catalase negative → Blood Agar</li>
+                            </ul>
+                        </li>
 
-</section>
+                        <li>
+                            Coagulase Test
+                            <ul>
+                                <li>Positive → Staphylococcus aureus</li>
+                                <li>Negative → Staphylococcus epidermidis</li>
+                            </ul>
+                        </li>
 
-<section class="card">
+                        <li>
+                            Blood Agar
+                            <ul>
+                                <li>Alpha hemolytic → Viridans streptococci</li>
+                            </ul>
+                        </li>
 
-    <h2>Results</h2>
+                        <li>
+                            Endospore Stain
+                            <ul>
+                                <li>Positive → Bacillus cereus</li>
+                            </ul>
+                        </li>
 
-    <div id="test-results">
-        No tests ordered yet.
-    </div>
+                        <li>
+                            MacConkey Agar
+                            <ul>
+                                <li>Pink colonies → Lactose fermenters</li>
+                                <li>Colorless colonies → Non-lactose fermenters</li>
+                            </ul>
+                        </li>
 
-</section>
+                        <li>
+                            Lactose Fermenters
+                            <ul>
+                                <li>Indole positive → Escherichia coli</li>
+                                <li>Sorbitol negative → E. coli O157:H7</li>
+                                <li>Citrate positive → Klebsiella aerogenes</li>
+                            </ul>
+                        </li>
 
-<section class="card">
+                        <li>
+                            Non-Lactose Fermenters
+                            <ul>
+                                <li>Oxidase positive → Pseudomonas aeruginosa</li>
+                                <li>Urease positive → Proteus mirabilis</li>
+                            </ul>
+                        </li>
+                    </ol>
 
-    <h2>Final Diagnosis</h2>
+                </div>
 
-    <input
-        type="text"
-        id="diagnosis-input"
-        placeholder="Enter organism name">
+            </details>
 
-    <button onclick="submitDiagnosis()">
-        Submit Diagnosis
-    </button>
+        </div>
 
-    <div id="diagnosis-feedback"></div>
+    </section>
 
-</section>
+    <section class="card">
 
+        <h2>Order Diagnostic Tests</h2>
+
+        <div class="counter">
+            Tests Ordered:
+            <span id="test-count">0</span>
+        </div>
+
+        <div class="test-grid">
+
+            <button onclick="showTest('gram')">Gram Stain</button>
+            <button onclick="showTest('bloodAgar')">Blood Agar</button>
+            <button onclick="showTest('catalase')">Catalase</button>
+            <button onclick="showTest('coagulase')">Coagulase</button>
+            <button onclick="showTest('endospore')">Endospore Stain</button>
+            <button onclick="showTest('macconkey')">MacConkey Agar</button>
+            <button onclick="showTest('indole')">Indole Test</button>
+            <button onclick="showTest('citrate')">Citrate Test</button>
+            <button onclick="showTest('oxidase')">Oxidase Test</button>
+            <button onclick="showTest('urease')">Urease Test</button>
+            <button onclick="showTest('smac')">Sorbitol MacConkey</button>
+            <button onclick="showTest('kirby')">Kirby-Bauer</button>
+
+        </div>
+
+    </section>
+
+    <section class="card">
+
+        <h2>Results</h2>
+
+        <div id="test-results">
+            No tests ordered yet.
+        </div>
+
+    </section>
+
+    <section class="card">
+
+        <h2>Final Diagnosis</h2>
+
+        <input
+            type="text"
+            id="diagnosis-input"
+            placeholder="Enter organism name">
+
+        <button onclick="submitDiagnosis()">
+            Submit Diagnosis
+        </button>
+
+        <div id="diagnosis-feedback"></div>
+
+    </section>
 
 </main>
 
-<!-- ===================================================== -->
-
-<!-- DIAGNOSTIC GUIDE MODAL                                -->
-
-<!-- ===================================================== -->
-
-<div id="guideModal" class="modal">
-
-
-<div class="modal-content">
-
-    <span class="close">&times;</span>
-
-    <h2>BIOL 334 Unknown Identification Guide</h2>
-
-    <ol>
-        <li>
-            Perform a Gram Stain
-            <ul>
-                <li>Gram-positive cocci → Step 2</li>
-                <li>Gram-positive rods → Step 5</li>
-                <li>Gram-negative rods → Step 6</li>
-            </ul>
-        </li>
-
-        <li>
-            Catalase Test
-            <ul>
-                <li>Catalase positive → Step 3</li>
-                <li>Catalase negative → Step 4</li>
-            </ul>
-        </li>
-
-        <li>
-            Coagulase Test
-            <ul>
-                <li>Positive → Staphylococcus aureus</li>
-                <li>Negative → Staphylococcus epidermidis</li>
-            </ul>
-        </li>
-
-        <li>
-            Blood Agar
-            <ul>
-                <li>Alpha hemolytic → Viridans streptococci</li>
-            </ul>
-        </li>
-
-        <li>
-            Endospore Stain
-            <ul>
-                <li>Positive → Bacillus cereus</li>
-            </ul>
-        </li>
-
-        <li>
-            MacConkey Agar
-            <ul>
-                <li>Pink colonies → Step 7</li>
-                <li>Colorless colonies → Step 8</li>
-            </ul>
-        </li>
-
-        <li>
-            Lactose Fermenters
-            <ul>
-                <li>Indole positive → Escherichia coli</li>
-                <li>Sorbitol negative → E. coli O157:H7</li>
-                <li>Citrate positive → Klebsiella aerogenes</li>
-            </ul>
-        </li>
-
-        <li>
-            Non-Lactose Fermenters
-            <ul>
-                <li>Oxidase positive → Pseudomonas aeruginosa</li>
-                <li>Urease positive → Proteus mirabilis</li>
-            </ul>
-        </li>
-    </ol>
-
-</div>
-
-
-</div>
-
 <script src="../js/case-template.js"></script>
-
 <script src="../js/prosthetic-aortic-valve.js"></script>
 
 </body>
