@@ -3,125 +3,247 @@
    case-template.js
 ===================================== */
 
-let testCount = 0;
-let orderedTests = new Set();
+/* =====================================
+   DIAGNOSTIC GUIDE TREE
+===================================== */
 
-/*
-Each case-specific JS file must define:
+const guideTree = {
 
-const correctDiagnosis = "Organism name";
+    start: {
+        title: "Start with a Gram Stain",
+        reason: "The Gram stain tells you Gram reaction, cell shape, and arrangement. This determines the next major branch.",
+        choices: {
+            "Gram-positive cocci": "gpc",
+            "Gram-positive rods": "gpr",
+            "Gram-negative rods": "gnr"
+        }
+    },
 
-const acceptedDiagnoses = [
-  "organism name",
-  "abbreviation"
-];
+    gpc: {
+        title: "Recommended Next Test: Catalase Test",
+        reason: "Catalase separates Staphylococcus from Streptococcus.",
+        remaining: [
+            "Staphylococcus aureus",
+            "Staphylococcus epidermidis",
+            "Viridans streptococci"
+        ],
+        choices: {
+            "Catalase positive": "cat_pos",
+            "Catalase negative": "cat_neg"
+        }
+    },
 
-const testResults = {
-  gram: {
-    title: "Gram Stain",
-    image: "../images/gram/example.jpg",
-    prompt: "Interpret the Gram reaction, shape, and arrangement."
-  }
+    cat_pos: {
+        title: "Recommended Next Test: Coagulase Test",
+        reason: "Coagulase separates Staphylococcus aureus from coagulase-negative staphylococci.",
+        remaining: [
+            "Staphylococcus aureus",
+            "Staphylococcus epidermidis"
+        ],
+        choices: {
+            "Coagulase positive": "s_aureus",
+            "Coagulase negative": "s_epidermidis"
+        }
+    },
+
+    cat_neg: {
+        title: "Recommended Next Test: Blood Agar",
+        reason: "Blood agar allows you to evaluate hemolysis patterns.",
+        remaining: [
+            "Viridans streptococci"
+        ],
+        choices: {
+            "Alpha hemolysis": "viridans"
+        }
+    },
+
+    gpr: {
+        title: "Recommended Next Test: Endospore Stain",
+        reason: "Endospore staining helps identify spore-forming Gram-positive rods such as Bacillus.",
+        remaining: [
+            "Bacillus cereus"
+        ],
+        choices: {
+            "Endospore positive": "b_cereus"
+        }
+    },
+
+    gnr: {
+        title: "Recommended Next Test: MacConkey Agar",
+        reason: "MacConkey agar separates lactose fermenters from non-lactose fermenters.",
+        remaining: [
+            "Escherichia coli",
+            "E. coli O157:H7",
+            "Klebsiella aerogenes",
+            "Pseudomonas aeruginosa",
+            "Proteus mirabilis"
+        ],
+        choices: {
+            "Pink colonies / lactose positive": "lac_pos",
+            "Colorless colonies / lactose negative": "lac_neg"
+        }
+    },
+
+    lac_pos: {
+        title: "Recommended Next Tests: Indole, Sorbitol MacConkey, or Citrate",
+        reason: "These tests separate the lactose-fermenting Gram-negative rods.",
+        remaining: [
+            "Escherichia coli",
+            "E. coli O157:H7",
+            "Klebsiella aerogenes"
+        ],
+        choices: {
+            "Indole positive": "ecoli",
+            "Sorbitol negative": "o157",
+            "Citrate positive": "kleb"
+        }
+    },
+
+    lac_neg: {
+        title: "Recommended Next Tests: Oxidase or Urease",
+        reason: "These tests separate the non-lactose-fermenting Gram-negative rods.",
+        remaining: [
+            "Pseudomonas aeruginosa",
+            "Proteus mirabilis"
+        ],
+        choices: {
+            "Oxidase positive": "pseudo",
+            "Urease positive": "proteus"
+        }
+    },
+
+    s_aureus: {
+        diagnosis: "Staphylococcus aureus"
+    },
+
+    s_epidermidis: {
+        diagnosis: "Staphylococcus epidermidis"
+    },
+
+    viridans: {
+        diagnosis: "Viridans streptococci"
+    },
+
+    b_cereus: {
+        diagnosis: "Bacillus cereus"
+    },
+
+    ecoli: {
+        diagnosis: "Escherichia coli"
+    },
+
+    o157: {
+        diagnosis: "E. coli O157:H7"
+    },
+
+    kleb: {
+        diagnosis: "Klebsiella aerogenes"
+    },
+
+    pseudo: {
+        diagnosis: "Pseudomonas aeruginosa"
+    },
+
+    proteus: {
+        diagnosis: "Proteus mirabilis"
+    }
+
 };
-*/
 
-function orderTest(testName) {
-    const resultsBox = document.getElementById("results-box");
-    const counter = document.getElementById("test-count");
+/* =====================================
+   DIAGNOSTIC GUIDE FUNCTIONS
+===================================== */
 
-    if (typeof testResults === "undefined" || !testResults[testName]) {
-        alert("No result has been entered for this test yet.");
-        return;
-    }
-
-    if (!orderedTests.has(testName)) {
-        orderedTests.add(testName);
-        testCount++;
-        counter.textContent = testCount;
-    }
-
-    if (resultsBox.textContent.trim() === "No tests ordered yet.") {
-        resultsBox.innerHTML = "";
-    }
-
-    const test = testResults[testName];
-
-    const card = document.createElement("div");
-    card.className = "result-card";
-
-card.innerHTML = `
-    <h3>${test.title}</h3>
-
-    <p>${test.prompt}</p>
-
-    <div class="image-container">
-        <img
-            src="${test.image}"
-            alt="${test.title}"
-            class="test-image"
-        >
-    </div>
-`;
-
-    resultsBox.prepend(card);
+function resetGuide() {
+    guideSelect("start");
 }
 
-function checkDiagnosis() {
-    const diagnosisInput = document
-        .getElementById("diagnosis")
-        .value
-        .trim()
-        .toLowerCase();
+function guideSelect(step) {
 
-    const feedback = document.getElementById("feedback");
+    const node = guideTree[step];
+    const guideContent = document.getElementById("guide-content");
 
-    if (!diagnosisInput) {
-        feedback.textContent = "Enter an organism before submitting.";
-        feedback.style.color = "crimson";
+    if (!node || !guideContent) {
         return;
     }
 
-    if (typeof acceptedDiagnoses === "undefined") {
-        feedback.textContent = "No answer key has been loaded for this case.";
-        feedback.style.color = "crimson";
+    if (node.diagnosis) {
+
+        guideContent.innerHTML = `
+            <h3>Likely Organism</h3>
+
+            <div class="result-card positive">
+                <h4>${node.diagnosis}</h4>
+                <p>Identification pathway complete.</p>
+            </div>
+
+            <button onclick="resetGuide()">
+                Start Over
+            </button>
+        `;
+
         return;
     }
 
-    const isCorrect = acceptedDiagnoses.some(answer =>
-        diagnosisInput.includes(answer.toLowerCase())
-    );
+    let html = `
+        <h3>${node.title}</h3>
 
-    if (isCorrect) {
-        feedback.textContent =
-            "Correct. Your diagnosis matches the microbiology results.";
-        feedback.style.color = "green";
-    } else {
-        feedback.textContent =
-            "Not quite. Review the diagnostic guide and the test images you ordered.";
-        feedback.style.color = "crimson";
+        <p>${node.reason}</p>
+    `;
+
+    if (node.remaining) {
+
+        html += `
+            <div class="possible-box">
+                <h4>Possible organisms remaining:</h4>
+                <ul>
+                    ${node.remaining.map(org => `<li>${org}</li>`).join("")}
+                </ul>
+            </div>
+        `;
+
     }
+
+    html += `<div class="guide-choice-grid">`;
+
+    for (const choice in node.choices) {
+
+        html += `
+            <button
+                class="guide-choice"
+                onclick="guideSelect('${node.choices[choice]}')">
+                ${choice}
+            </button>
+        `;
+
+    }
+
+    html += `</div>`;
+
+    guideContent.innerHTML = html;
 }
 
 /* =====================================
-   Diagnostic Guide Modal
+   GUIDE OPEN / CLOSE
 ===================================== */
 
-const modal = document.getElementById("guideModal");
-const guideBtn = document.getElementById("guideBtn");
-const closeBtn = document.querySelector(".close");
+document.addEventListener("DOMContentLoaded", () => {
 
-if (guideBtn && modal && closeBtn) {
-    guideBtn.addEventListener("click", () => {
-        modal.style.display = "block";
-    });
+    const guideBtn = document.getElementById("guideBtn");
+    const diagnosticGuide = document.getElementById("diagnostic-guide");
 
-    closeBtn.addEventListener("click", () => {
-        modal.style.display = "none";
-    });
+    if (guideBtn && diagnosticGuide) {
 
-    window.addEventListener("click", event => {
-        if (event.target === modal) {
-            modal.style.display = "none";
-        }
-    });
-}
+        guideBtn.addEventListener("click", () => {
+
+            diagnosticGuide.classList.toggle("hidden");
+
+            if (!diagnosticGuide.classList.contains("hidden")) {
+                resetGuide();
+            }
+
+        });
+
+    }
+
+});
