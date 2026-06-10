@@ -11,7 +11,7 @@ const correctDiagnosis = "Gram-positive cocci in chains";
 
 const acceptedDiagnoses = [
 
-```
+
 // Full interpretations
 "gram positive cocci in chains",
 "gram-positive cocci in chains",
@@ -43,7 +43,7 @@ const acceptedDiagnoses = [
 "Gram-positive cocci in chains",
 "Gram positive cocci",
 "Gram-positive cocci"
-```
+
 
 ];
 
@@ -59,13 +59,13 @@ const acceptedTreatments = [];
 
 const testResults = {
 
-```
+
 gram: {
     title: "Gram Stain",
     image: "../images/gram/gram_positive_cocci_chains.png",
     prompt: "Interpret the Gram reaction, morphology, and cellular arrangement."
 }
-```
+
 
 };
 
@@ -79,7 +79,7 @@ const caseReviewCard = `
 
 <div class="result-card positive">
 
-```
+
 <h3>Interpretation Review</h3>
 
 <p>
@@ -113,7 +113,7 @@ const caseReviewCard = `
     <em>Enterococcus</em>,
     or another related organism without additional testing.
 </p>
-```
+
 
 </div>
 `;
@@ -124,7 +124,7 @@ const caseReviewCard = `
 
 function submitDiagnosis() {
 
-```
+
 const diagnosisInput = document.getElementById("diagnosis-input");
 const feedback = document.getElementById("diagnosis-feedback");
 
@@ -193,7 +193,7 @@ if (correct) {
     `;
 
 }
-```
+
 
 }
 
@@ -203,13 +203,13 @@ if (correct) {
 
 document.addEventListener("DOMContentLoaded", () => {
 
-```
+
 const treatmentSection =
     document.getElementById("treatment-section");
 
 if (treatmentSection) {
     treatmentSection.style.display = "none";
 }
-```
+
 
 });
