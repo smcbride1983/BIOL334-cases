@@ -33,50 +33,42 @@ const testResults = {
 
     gram: {
         title: "Gram Stain",
-        image: "../images/gram/gram_negative_rods.jpg",
-        prompt: "Numerous Gram-negative rods observed."
+        image: "../images/gram/gram_negative_rods.jpg"
     },
 
     bloodAgar: {
         title: "Blood Agar",
-        image: "../images/blood/gamma.jpg",
-        prompt: "Moderate growth of smooth gray colonies. No hemolysis observed."
+        image: "../images/blood/gamma.jpg"
     },
 
     macconkey: {
         title: "MacConkey Agar",
-        image: "../images/Maconkey/maconkey_positive.jpg",
-        prompt: "Growth present. Colonies appear pink indicating lactose fermentation."
+        image: "../images/Maconkey/maconkey_positive.jpg"
     },
 
     smac: {
         title: "Sorbitol MacConkey Agar",
-        image: "../images/smac/smac_negative.jpg",
-        prompt: "Growth present. Colonies remain colorless. The organism does not ferment sorbitol."
+        image: "../images/smac/smac_negative.jpg"
     },
 
     oxidase: {
         title: "Oxidase Test",
-        image: "../images/oxidase/oxidase_negative.jpg",
-        prompt: "No purple color develops. Oxidase negative."
+        image: "../images/oxidase/oxidase_negative.jpg"
     },
 
     indole: {
         title: "Indole Test",
-        image: "../images/indole/indole_positive.jpg",
-        prompt: "Red ring develops after addition of Kovac's reagent."
+        image: "../images/indole/indole_positive.jpg"
     },
 
     citrate: {
         title: "Citrate Test",
-        image: "../images/citrate/citrate_negative.jpg",
-        prompt: "Medium remains green. Citrate negative."
+        image: "../images/citrate/citrate_negative.jpg"
     },
 
     urease: {
         title: "Urease Test",
-        image: "../images/urease/urease_negative.jpg",
-        prompt: "No pink color develops. Urease negative."
+        image: "../images/urease/urease_negative.jpg"
     },
 
     kirby: {
