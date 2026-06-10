@@ -78,7 +78,10 @@ const testResults = {
     prompt: `
         Several antibiotics demonstrate in vitro activity against this isolate.
         However, treatment decisions should also consider the organism's virulence
-        mechanisms and the potential consequences of antibiotic therapy.
+        mechanisms and the potential consequences of antibiotic therapy. 
+        For infections like E. coli O157:H7 it is often best to provide supportive
+        care instead of actual antibiotic treatment.
+        
         Compare the zone diameters to the interpretation ranges and determine
         whether antibiotic treatment is actually recommended for this patient.
     `,
