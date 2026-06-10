@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gram Stain Interpretation - Gram Positive Cocci in Chains</title>
+
+```
+<link rel="stylesheet" href="../css/style.css">
+```
+
+</head>
+<body>
+
+<header>
+    <h1>Gram Stain Interpretation</h1>
+    <p>Microscopy Skills Practice</p>
+</header>
+
+<main class="case-container">
+
+```
+<a href="../index.html" class="back-link">
+    ← Back to Activities
+</a>
+
+<section class="card">
+
+    <h2>Microscopy Exercise</h2>
+
+    <p>
+        A bacterial smear has been stained using the Gram stain procedure.
+        Examine the image and determine:
+    </p>
+
+    <ol>
+        <li>Gram reaction</li>
+        <li>Cell shape (morphology)</li>
+        <li>Cell arrangement</li>
+    </ol>
+
+    <div class="sample-box">
+        Sample: Unknown Bacterial Isolate
+    </div>
+
+</section>
+
+<section class="card">
+
+    <h2>Available Tests</h2>
+
+    <div class="counter">
+        Tests Ordered: <span id="test-count">0</span>
+    </div>
+
+    <div class="test-grid">
+
+        <button
+            class="test-btn"
+            onclick="showTest('gram')">
+            Gram Stain
+        </button>
+
+    </div>
+
+</section>
+
+<section class="card">
+
+    <h2>Results</h2>
+
+    <div id="test-results">
+        No tests ordered yet.
+    </div>
+
+</section>
+
+<section class="card">
+
+    <h2>Interpretation</h2>
+
+    <p>
+        Enter your interpretation of the Gram stain.
+    </p>
+
+    <input
+        type="text"
+        id="diagnosis-input"
+        placeholder="Example: Gram-positive cocci in chains">
+
+    <button onclick="submitDiagnosis()">
+        Submit Interpretation
+    </button>
+
+    <div id="diagnosis-feedback"></div>
+
+</section>
+```
+
+</main>
+
+<footer>
+    BIOL 334 Clinical Microbiology
+</footer>
+
+<script src="../js/case-template.js"></script>
+
+<script src="../js/gram_positive_cocci_chains.js"></script>
+
+</body>
+</html>
