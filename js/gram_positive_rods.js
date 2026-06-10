@@ -11,7 +11,7 @@ const correctDiagnosis = "Gram-positive rods";
 
 const acceptedDiagnoses = [
 
-```
+
 "gram positive rods",
 "gram-positive rods",
 "gram positive rod",
@@ -29,7 +29,7 @@ const acceptedDiagnoses = [
 "Gram-positive rods",
 "Gram positive bacilli",
 "Gram-positive bacilli"
-```
+
 
 ];
 
@@ -45,13 +45,13 @@ const acceptedTreatments = [];
 
 const testResults = {
 
-```
+
 gram: {
     title: "Gram Stain",
     image: "../images/gram/gram_positive_rods.jpg",
     prompt: "Interpret the Gram reaction, morphology, and cellular arrangement."
 }
-```
+
 
 };
 
@@ -65,7 +65,7 @@ const caseReviewCard = `
 
 <div class="result-card positive">
 
-```
+
 <h3>Interpretation Review</h3>
 
 <p>
@@ -97,7 +97,7 @@ const caseReviewCard = `
     A Gram stain alone cannot identify the organism to genus or species.
     Additional testing would be required.
 </p>
-```
+
 
 </div>
 `;
@@ -108,7 +108,7 @@ const caseReviewCard = `
 
 function submitDiagnosis() {
 
-```
+
 const diagnosisInput = document.getElementById("diagnosis-input");
 const feedback = document.getElementById("diagnosis-feedback");
 
@@ -175,7 +175,7 @@ if (correct) {
     `;
 
 }
-```
+
 
 }
 
@@ -185,13 +185,13 @@ if (correct) {
 
 document.addEventListener("DOMContentLoaded", () => {
 
-```
+
 const treatmentSection =
     document.getElementById("treatment-section");
 
 if (treatmentSection) {
     treatmentSection.style.display = "none";
 }
-```
+
 
 });
