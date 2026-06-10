@@ -71,40 +71,47 @@ const testResults = {
         image: "../images/urease/urease_negative.jpg"
     },
 
-    kirby: {
-        type: "kirby",
-        title: "Kirby-Bauer Susceptibility Test",
-        prompt: "Compare the measured zone diameter to the interpretation ranges.",
+  kirby: {
+    type: "kirby",
+    title: "Kirby-Bauer Susceptibility Test",
 
-        antibiotics: [
-            {
-                antibiotic: "Ciprofloxacin",
-                zone: 34,
-                sensitive: "≥ 21 mm",
-                intermediate: "16–20 mm",
-                resistant: "≤ 15 mm"
-            },
-            {
-                antibiotic: "Trimethoprim-Sulfamethoxazole",
-                zone: 28,
-                sensitive: "≥ 16 mm",
-                intermediate: "11–15 mm",
-                resistant: "≤ 10 mm"
-            },
-            {
-                antibiotic: "Ceftriaxone",
-                zone: 31,
-                sensitive: "≥ 23 mm",
-                intermediate: "20–22 mm",
-                resistant: "≤ 19 mm"
-            },
-            {
-                antibiotic: "Ampicillin",
-                zone: 20,
-                sensitive: "≥ 17 mm",
-                intermediate: "14–16 mm",
-                resistant: "≤ 13 mm"
-            }
+    prompt: `
+        Several antibiotics demonstrate in vitro activity against this isolate.
+        However, treatment decisions should also consider the organism's virulence
+        mechanisms and the potential consequences of antibiotic therapy.
+        Compare the zone diameters to the interpretation ranges and determine
+        whether antibiotic treatment is actually recommended for this patient.
+    `,
+
+    antibiotics: [
+        {
+            antibiotic: "Ciprofloxacin",
+            zone: 34,
+            sensitive: "≥ 21 mm",
+            intermediate: "16–20 mm",
+            resistant: "≤ 15 mm"
+        },
+        {
+            antibiotic: "Trimethoprim-Sulfamethoxazole",
+            zone: 28,
+            sensitive: "≥ 16 mm",
+            intermediate: "11–15 mm",
+            resistant: "≤ 10 mm"
+        },
+        {
+            antibiotic: "Ceftriaxone",
+            zone: 31,
+            sensitive: "≥ 23 mm",
+            intermediate: "20–22 mm",
+            resistant: "≤ 19 mm"
+        },
+        {
+            antibiotic: "Ampicillin",
+            zone: 20,
+            sensitive: "≥ 17 mm",
+            intermediate: "14–16 mm",
+            resistant: "≤ 13 mm"
+        }    
         ]
     }
 
