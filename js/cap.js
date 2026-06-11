@@ -56,7 +56,12 @@ const testResults = {
         image: "../images/citrate/citrate_positive.jpg",
         prompt: "Determine citrate utilization."
     },
-
+    
+    smac: {
+        title: "Sorbitol MacConkey Agar",
+        image: "../images/smac/smac_negative.jpg"
+    },
+    
     oxidase: {
         title: "Oxidase Test",
         image: "../images/oxidase/oxidase_negative.jpg",
