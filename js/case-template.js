@@ -88,20 +88,33 @@ const guideTree = {
         }
     },
 
-    lac_pos: {
-        title: "Recommended Next Tests: Indole, Sorbitol MacConkey, or Citrate",
-        reason: "These tests separate the lactose-fermenting Gram-negative rods.",
-        remaining: [
-            "Escherichia coli",
-            "E. coli O157:H7",
-            "Klebsiella aerogenes"
-        ],
-        choices: {
-            "Indole positive": "ecoli",
-            "Sorbitol negative": "o157",
-            "Citrate positive": "kleb"
-        }
-    },
+lac_pos: {
+    title: "Recommended Next Tests: Indole, Sorbitol MacConkey, or Citrate",
+    reason: "These tests separate the lactose-fermenting Gram-negative rods.",
+    remaining: [
+        "Escherichia coli",
+        "E. coli O157:H7",
+        "Klebsiella aerogenes"
+    ],
+    choices: {
+        "Indole positive": "ecoli_group",
+        "Sorbitol negative": "o157",
+        "Citrate positive": "kleb"
+    }
+},
+   
+   ecoli_group: {
+    title: "Presumptive E. coli",
+    reason: "The isolate is indole positive, supporting identification as E. coli. Additional testing is needed to determine whether this is a typical E. coli strain or E. coli O157:H7.",
+    remaining: [
+        "Escherichia coli",
+        "E. coli O157:H7"
+    ],
+    choices: {
+        "Sorbitol positive": "ecoli",
+        "Sorbitol negative": "o157"
+    }
+},
 
     lac_neg: {
         title: "Recommended Next Tests: Oxidase or Urease",
